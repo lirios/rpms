@@ -1,9 +1,10 @@
 Summary:        Plymouth "Hawaii" theme
 Name:           plymouth-theme-hawaii
 Version:        0.2.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        GPLv2+
 Source:         https://github.com/hawaii-desktop/hawaii-plymouth-theme/archive/v%{version}.tar.gz
+Requires:       plymouth-plugin-two-step
 BuildRequires:  cmake
 BuildArch:      noarch
 
@@ -35,6 +36,9 @@ make install DESTDIR=%{buildroot} -C %{_target_platform}
 %{_datadir}/plymouth/themes/hawaii/hawaii.plymouth
 
 %changelog
+* Fri Jun 19 2015 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 0.2.1-2
+- Requires plymouth-plugin-two-step.
+
 * Sat Jun 13 2015 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 0.2.1-1
 - Initial packaging.
 
