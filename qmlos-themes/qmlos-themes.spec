@@ -1,7 +1,7 @@
 Summary:        Plymouth "Hawaii" theme
 Name:           plymouth-theme-hawaii
 Version:        0.2.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 License:        GPLv2+
 Source:         https://github.com/hawaii-desktop/hawaii-plymouth-theme/archive/v%{version}.tar.gz
 Requires:       plymouth-plugin-two-step
@@ -28,6 +28,24 @@ make %{?_smp_mflags} -C %{_target_platform}
 make install DESTDIR=%{buildroot} -C %{_target_platform}
 
 
+%post
+export LIB=%{_lib}
+if [ $1 -eq 1 ]; then
+    %{_sbindir}/plymouth-set-default-theme hawaii
+    %{_libexecdir}/plymouth/plymouth-generate-initrd
+fi
+
+
+%postun
+export LIB=%{_lib}
+if [ $1 -eq 0 ]; then
+    if [ "$(%{_sbindir}/plymouth-set-default-theme)" == "hawaii" ]; then
+        %{_sbindir}/plymouth-set-default-theme --reset
+        %{_libexecdir}/plymouth/plymouth-generate-initrd
+    fi
+fi
+
+
 %files
 %defattr(-,root,root,-)
 %doc AUTHORS README.md
@@ -36,6 +54,9 @@ make install DESTDIR=%{buildroot} -C %{_target_platform}
 %{_datadir}/plymouth/themes/hawaii/hawaii.plymouth
 
 %changelog
+* Sat Jun 20 2015 Pier Luigi Fiorini - 0.2.1-3
+- Set theme on post-install and reset on post-uninstall.
+
 * Fri Jun 19 2015 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 0.2.1-2
 - Requires plymouth-plugin-two-step.
 
