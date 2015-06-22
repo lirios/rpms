@@ -1,7 +1,7 @@
 Summary:        Plymouth "Hawaii" theme
 Name:           plymouth-theme-hawaii
-Version:        0.2.1
-Release:        3%{?dist}
+Version:        0.2.2
+Release:        1%{?dist}
 License:        GPLv2+
 Source:         https://github.com/hawaii-desktop/hawaii-plymouth-theme/archive/v%{version}.tar.gz
 Requires:       plymouth-plugin-two-step
@@ -54,6 +54,9 @@ fi
 %{_datadir}/plymouth/themes/hawaii/hawaii.plymouth
 
 %changelog
+* Mon Jun 22 2015 Pier Luigi Fiorini - 0.2.2-1
+- New release.
+
 * Sat Jun 20 2015 Pier Luigi Fiorini - 0.2.1-3
 - Set theme on post-install and reset on post-uninstall.
 
