@@ -3,6 +3,7 @@ Name:           plymouth-theme-hawaii
 Version:        0.2.2
 Release:        1%{?dist}
 License:        GPLv2+
+URL:            http://hawaiios.org
 Source:         https://github.com/hawaii-desktop/hawaii-plymouth-theme/archive/v%{version}.tar.gz
 Requires:       plymouth-plugin-two-step
 BuildRequires:  cmake
