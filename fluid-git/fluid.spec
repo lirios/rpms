@@ -6,8 +6,8 @@ Summary:        Library for fluid and dynamic applications development with QtQu
 Version:        0.9.0
 Release:        1%{?snaphash:.%{snapdate}git%(echo %{snaphash} | cut -c -13)}%{?dist}
 License:        MPLv2
-URL:            https://github.com/qmlos
-Source0:        https://github.com/qmlos/%{name}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
+URL:            http://liri.io
+Source0:        https://github.com/lirios/%{name}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
 
 Requires:       qt5-graphicaleffects
 Requires:       qt5-qtquickcontrols2
