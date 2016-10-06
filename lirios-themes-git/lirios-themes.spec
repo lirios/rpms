@@ -19,7 +19,7 @@ BuildArch:      noarch
 This package contains Liri OS themes for GRUB and Plymouth.
 
 
-%package -n grub2-themes-lirios
+%package -n grub2-lirios-theme
 Summary:        Liri OS theme for GRUB
 %ifnarch aarch64
 Requires:       grub2
@@ -27,7 +27,7 @@ Requires:       grub2
 Requires:       grub2-efi
 %endif
 
-%description -n grub2-themes-lirios
+%description -n grub2-lirios-theme
 This package contains the "Liri OS" theme for GRUB.
 
 
@@ -82,7 +82,7 @@ if [ $1 -eq 0 ]; then
 fi
 
 
-%files -n grub2-themes-lirios
+%files -n grub2-lirios-theme
 %defattr(-,root,root,-)
 %doc AUTHORS.md README.md
 %dir %{_grubthemedir}/lirios
