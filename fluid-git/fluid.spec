@@ -4,7 +4,7 @@
 Name:           fluid
 Summary:        Library for fluid and dynamic applications development with QtQuick
 Version:        0.9.0
-Release:        1%{?snaphash:.%{snapdate}git%(echo %{snaphash} | cut -c -13)}%{?dist}
+Release:        0.1%{?snaphash:.%{snapdate}git%(echo %{snaphash} | cut -c -13)}%{?dist}
 License:        MPLv2
 URL:            http://liri.io
 Source0:        https://github.com/lirios/%{name}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz

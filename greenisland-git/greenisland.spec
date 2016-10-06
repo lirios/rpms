@@ -4,7 +4,7 @@
 Name:           greenisland
 Summary:        QtQuick-based Wayland compositor in library form
 Version:        0.9.0
-Release:        1%{?snaphash:.%{snapdate}git%(echo %{snaphash} | cut -c -13)}%{?dist}
+Release:        0.1%{?snaphash:.%{snapdate}git%(echo %{snaphash} | cut -c -13)}%{?dist}
 # Most files are LGPLv2.1+, alternatively GPLv2+ but some are derived from Qt
 # which is now LGPLv3, alternatively GPLv2 or GPLv3 or later approved by the KDE Free Qt Foundation.
 # Code derived from QtWaylandCompositor is LGPLv3, alternatively GPLv2+.
