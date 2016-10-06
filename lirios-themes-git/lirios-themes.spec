@@ -48,7 +48,7 @@ This package contains the "Liri OS" theme for SDDM.
 
 
 %prep
-%setup -q -n %{?snaphash:%{name}-%{snaphash}}%{!?snaphash:%{name}-%{version}}
+%setup -q -n %{?snaphash:%{modulename}-%{snaphash}}%{!?snaphash:%{name}-%{version}}
 
 
 %build
