@@ -85,21 +85,19 @@ fi
 %files -n grub2-lirios-theme
 %defattr(-,root,root,-)
 %doc AUTHORS.md README.md
-%dir %{_grubthemedir}/lirios
+%{_grubthemedir}/lirios/
 
 
 %files -n plymouth-theme-lirios
 %defattr(-,root,root,-)
 %doc AUTHORS.md README.md
-%dir %{_datadir}/plymouth/themes/lirios
-%{_datadir}/plymouth/themes/lirios/*.png
-%{_datadir}/plymouth/themes/lirios/lirios.plymouth
+%{_datadir}/plymouth/themes/lirios/
 
 
 %files -n sddm-theme-lirios
 %defattr(-,root,root,-)
 %doc AUTHORS.md README.md
-%dir %{_datadir}/sddm/themes/lirios
+%{_datadir}/sddm/themes/lirios/
 
 
 %changelog
