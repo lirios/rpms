@@ -1,5 +1,5 @@
-%define snapdate 20160917
-%define snaphash 4662c106e7e2b69dad26533b74e0ace90f8f1143
+%define snapdate 20160929
+%define snaphash 94bd34c25c0c9f00b4d47a05f8726f6e777e02e5
 
 %define modulename themes
 
