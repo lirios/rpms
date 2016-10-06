@@ -3,7 +3,7 @@
 
 %define modulename themes
 
-%global _grubthemedir /boot/grub2/themes
+%global _grubthemedir /boot/grub/themes
 
 Summary:        Liri OS themes
 Name:           lirios-%{modulename}
