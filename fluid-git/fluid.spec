@@ -57,6 +57,7 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %files
 %license LICENSE.MPL2
 %doc AUTHORS.md README.md
+%{_bindir}/fluid-demo
 %{_kf5_qmldir}/Fluid/
 %{_libdir}/libFluid*.so.*
 
