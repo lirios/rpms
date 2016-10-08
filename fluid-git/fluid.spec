@@ -1,5 +1,5 @@
-%global snapdate 20160916
-%global snaphash c48f350addfac04c0d117ac3696f5c36c243e9d5
+%global snapdate @DATE@
+%global snaphash @HASH@
 
 Name:           fluid
 Summary:        Library for fluid and dynamic applications development with QtQuick

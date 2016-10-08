@@ -1,5 +1,5 @@
-%define snapdate 20160915
-%define snaphash f4d04d23b7bec7fbfab71c544f093c6f2ce3c7bd
+%define snapdate @DATE@
+%define snaphash @HASH@
 
 Name:           greenisland
 Summary:        QtQuick-based Wayland compositor in library form
