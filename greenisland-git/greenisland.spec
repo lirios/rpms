@@ -172,7 +172,6 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %files devel
 %{_bindir}/greenisland-wayland-scanner
 %{_includedir}/Hawaii/GreenIsland/
-%{_includedir}/Hawaii/greenisland_version.h
 %{_libdir}/cmake/GreenIsland/
 
 %files -n libgreenisland-client
