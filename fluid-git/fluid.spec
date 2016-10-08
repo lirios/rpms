@@ -30,6 +30,15 @@ Library for fluid and dynamic applications development with QtQuick.
 %setup -q -n %{?snaphash:%{name}-%{snaphash}}%{!?snaphash:%{name}-%{version}}
 
 
+%package devel
+Summary:        Development files for %{name}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
+Requires:       extra-cmake-modules
+
+%description devel
+%{summary}.
+
+
 %build
 ./scripts/fetch_icons.sh
 
@@ -49,6 +58,15 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %license LICENSE.MPL2
 %doc AUTHORS.md README.md
 %{_kf5_qmldir}/Fluid/
+%{_libdir}/libFluid*.so.*
+
+
+%files devel
+%license LICENSE.MPL2
+%doc AUTHORS.md README.md
+%{_includedir}/Fluid/
+%{_libdir}/cmake/Fluid/
+%{_libdir}/libFluid*.so
 
 
 %changelog
