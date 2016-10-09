@@ -67,6 +67,7 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %files
 %license LICENSE.LGPLv3
 %doc AUTHORS.md README.md
+%{_bindir}/notify
 %{_kf5_qmldir}/*
 %{_libdir}/libVibe*.so.*
 
