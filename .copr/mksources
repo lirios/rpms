@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -ex
+
+outdir=$1
+spec=$2
+
+if [ -z "$outdir" -o -z "$spec" ]; then
+    echo "Usage: $0 [outdir] [spec_path]"
+    exit 1
+fi
+
+if ! test `command -v spectool`; then
+    dnf -y install rpmdevtools
+fi
+
+spectool -C $outdir -g $spec
+
+LC_ALL=C rpmbuild --define "_sourcedir ${outdir}" --define "_specdir ${outdir}" --define "_builddir ${outdir}" \
+    --define "_srcrpmdir ${outdir}" --define "_rpmdir ${outdir}" --define "_buildrootdir ${outdir}/.build" \
+    -bs ${spec}
+
+rm -rf ${outdir}/.build
