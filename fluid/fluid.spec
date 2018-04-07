@@ -21,6 +21,7 @@ BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  qt5-rpm-macros
 BuildRequires:  liri-qbs-shared
+BuildRequires:  desktop-file-utils
 
 %description
 Library for fluid and dynamic development of QtQuick apps
@@ -68,11 +69,17 @@ qbs build --no-install -d build %{?_smp_mflags} profile:qt5 \
 qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 
 
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
+
+
 %files
 %license LICENSE.MPL2
 %doc AUTHORS.md README.md
 %{_bindir}/fluid-demo
 %{_qt5_qmldir}/Fluid/
+%{_datadir}/appdata/io.liri.Fluid.Demo.appdata.xml
+%{_datadir}/applications/io.liri.Fluid.Demo.desktop
 
 
 %files devel
