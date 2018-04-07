@@ -2,73 +2,81 @@
 %global snaphash @HASH@
 
 Name:           fluid
-Summary:        Library for fluid and dynamic applications development with QtQuick
-Version:        0.9.0
+Summary:        Library for QtQuick apps with Material Design
+Version:        1.1.0
 Release:        0.1%{?snaphash:.%{snapdate}git%(echo %{snaphash} | cut -c -13)}%{?dist}
 License:        MPLv2
-URL:            http://liri.io
+Url:            https://liri.io
 Source0:        https://github.com/lirios/%{name}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
 
-Requires:       qt5-qtgraphicaleffects
+Requires:       qt5-graphicaleffects
 Requires:       qt5-qtquickcontrols2
 
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  kf5-rpm-macros
-BuildRequires:  extra-cmake-modules
-BuildRequires:  git
+BuildRequires:  qt5-rpm-macros
+BuildRequires:  liri-qbs-shared
 
 %description
-Library for fluid and dynamic applications development with QtQuick.
-
-
-%prep
-%setup -q -n %{?snaphash:%{name}-%{snaphash}}%{!?snaphash:%{name}-%{version}}
+Library for fluid and dynamic development of QtQuick apps
+with the Material Design language.
 
 
 %package devel
 Summary:        Development files for %{name}
-Requires:       %{name}%{?_isa} = %{version}-%{release}
-Requires:       extra-cmake-modules
-Requires:       pkgconfig(Qt5QuickControls2)
+Group:          Development/System
+Requires:       %{name} = %{version}-%{release}
+Requires:       qbs
 
 %description devel
-%{summary}.
+The %{name}-devel package contains libraries and header files for
+developing applications that use %{name}.
+
+
+%prep
+%setup -q -n %{?snaphash:%{name}-%{snaphash}}%{!?snaphash:%{name}-%{version}}
+qbs setup-toolchains --type gcc /usr/bin/g++ gcc
+qbs setup-qt %{_qt5_qmake} qt5
+qbs config profiles.qt5.baseProfile gcc
 
 
 %build
-./scripts/fetch_icons.sh
-
-mkdir -p %{_target_platform}
-pushd %{_target_platform}
-%{cmake_kf5} ..
-popd
-
-make %{?_smp_mflags} -C %{_target_platform}
+qbs build --no-install -d build %{?_smp_mflags} profile:qt5 \
+    project.withDocumentation:false \
+    project.useSystemQbsShared:true \
+    modules.lirideployment.prefix:%{_prefix} \
+    modules.lirideployment.etcDir:%{_sysconfdir} \
+    modules.lirideployment.binDir:%{_bindir} \
+    modules.lirideployment.sbinDir:%{_sbindir} \
+    modules.lirideployment.libDir:%{_libdir} \
+    modules.lirideployment.libexecDir:%{_libexecdir} \
+    modules.lirideployment.includeDir:%{_includedir} \
+    modules.lirideployment.dataDir:%{_datadir} \
+    modules.lirideployment.docDir:%{_docdir} \
+    modules.lirideployment.manDir:%{_mandir} \
+    modules.lirideployment.infoDir:%{_infodir} \
+    modules.lirideployment.qmlDir:%{_qt5_qmldir} \
+    modules.lirideployment.pluginsDir:%{_qt5_plugindir}
 
 
 %install
-make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
+qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 
 
 %files
 %license LICENSE.MPL2
 %doc AUTHORS.md README.md
 %{_bindir}/fluid-demo
-%{_kf5_qmldir}/Fluid/
-%{_libdir}/libFluid*.so.*
+%{_qt5_qmldir}/Fluid/
 
 
 %files devel
-%license LICENSE.MPL2
-%doc AUTHORS.md README.md
-%{_includedir}/Fluid/
-%{_libdir}/cmake/Fluid/
-%{_libdir}/libFluid*.so
+%{_datadir}/qbs/modules/Fluid/
 
 
 %changelog
