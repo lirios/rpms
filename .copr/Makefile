@@ -1,5 +1,2 @@
 srpm:
-	@(cd .. && ./mksources $(outdir) $(spec))
-
-clean:
-	@rm -f ../*.src.rpm
+	../.copr/mksources $(outdir) $(spec)

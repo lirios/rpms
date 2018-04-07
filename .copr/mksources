@@ -1,14 +1,14 @@
 #!/bin/bash
 
+set -ex
+
 outdir=$1
-srcpkgdir=$2
+spec=$2
 
 if [ -z "$outdir" -o -z "$spec" ]; then
     echo "Usage: $0 [outdir] [spec_path]"
     exit 1
 fi
-
-pkgname=`basename $srcpkgdir -git`
 
 if ! test `command -v git`; then
     dnf -y install git
@@ -18,7 +18,10 @@ if ! test `command -v spectool`; then
     dnf -y install rpmdevtools
 fi
 
-source ${srcpkgdir}/.sourceinfo
+pkgdir=$(realpath `dirname $spec`)
+pkgname=$(basename $spec .spec)
+
+source ${pkgdir}/.sourceinfo
 
 pushd /tmp >/dev/null
 git clone --depth 1 -b $gitbranch $giturl $pkgname
@@ -30,16 +33,12 @@ rm -rf /tmp/$pkgname
 
 [ -z "$_gitdate" -o -z "$_githash" ] && exit 1
 
-sed -e "s,@DATE@,${_gitdate},g" -e "s,@HASH@,${_githash},g" ${srcpkgdir}/${pkgname}.spec > ${outdir}/${pkgname}.spec
+sed -e "s,@DATE@,${_gitdate},g" -e "s,@HASH@,${_githash},g" ${pkgdir}/${pkgname}.spec > ${outdir}/${pkgname}.spec
 pushd $outdir >/dev/null
 spectool -g ${pkgname}.spec
-srpm=$(LC_ALL=C rpmbuild --define "_sourcedir ${outdir}" --define "_specdir ${outdir}" --define "_builddir ${outdir}" \
+LC_ALL=C rpmbuild --define "_sourcedir ${outdir}" --define "_specdir ${outdir}" --define "_builddir ${outdir}" \
     --define "_srcrpmdir ${outdir}" --define "_rpmdir ${outdir}" --define "_buildrootdir ${outdir}/.build" \
-    -bs ${pkgname}.spec | sed -e 's,Wrote: ,,g')
+    -bs ${pkgname}.spec
 popd >/dev/null
-if [ -z "$srpm" ]; then
-	exit 1
-fi
-cp $srpm .
 
-echo $(basename $srpm)
+rm -rf ${outdir}/.build
