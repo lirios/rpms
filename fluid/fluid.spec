@@ -84,8 +84,3 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 
 %files devel
 %{_datadir}/qbs/modules/Fluid/
-
-
-%changelog
-* Sat Sep 17 2016 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 0.9.0-1
-- Initial packaging.
