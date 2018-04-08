@@ -89,6 +89,3 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_kf5_qmldir}/Liri/Launcher/
 %{_kf5_qmldir}/Liri/LoginManager/
 %{_kf5_qmldir}/Liri/Shell/
-
-
-%changelog

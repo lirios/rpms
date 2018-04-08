@@ -83,8 +83,3 @@ qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 %{_libdir}/libQt5GSettings.so
 %{_libdir}/cmake/Qt5GSettings/
 %{_libdir}/pkgconfig/Qt5GSettings.pc
-
-
-%changelog
-* Fri Apr 06 2018 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 1.1.0-1
-- Initial packaging.

@@ -90,6 +90,3 @@ fi
 %{_datadir}/glib-2.0/schemas/*
 %{_datadir}/liri-workspace/translations/*.qm
 %{_kf5_qtplugindir}/platformthemes/liriplatformtheme.so
-
-
-%changelog

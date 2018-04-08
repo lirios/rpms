@@ -98,8 +98,3 @@ fi
 %defattr(-,root,root,-)
 %doc AUTHORS.md README.md
 %{_datadir}/sddm/themes/lirios/
-
-
-%changelog
-* Sat Sep 17 2016 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 0.9.0-1
-- Initial packaging.

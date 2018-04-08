@@ -91,6 +91,3 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 
 %files devel
 %{_libdir}/cmake/LiriSettings/
-
-
-%changelog

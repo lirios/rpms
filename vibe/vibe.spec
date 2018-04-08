@@ -76,6 +76,3 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_includedir}/Vibe/
 %{_libdir}/cmake/Vibe/
 %{_libdir}/libVibe*.so
-
-
-%changelog

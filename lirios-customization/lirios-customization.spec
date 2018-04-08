@@ -33,8 +33,3 @@ EOF
 %files
 %defattr(-,root,root,-)
 %{_udevrulesdir}/10-disk-scheduler.rules
-
-
-%changelog
-* Sun Oct 09 2016 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 0.9.0-1.20161009
-- Initial packaging.

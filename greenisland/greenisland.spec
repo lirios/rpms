@@ -212,8 +212,3 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_libdir}/libGreenIslandPlatform.so
 %{_kf5_archdatadir}/mkspecs/modules/qt_GreenIslandPlatform.pri
 #{_libdir}/pkgconfig/GreenIslandPlatform.pc
-
-
-%changelog
-* Sat Sep 17 2016 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 0.9.0-1
-- Initial packaging.

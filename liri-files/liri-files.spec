@@ -58,6 +58,3 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 %{_bindir}/liri-files
 %{_datadir}/applications/io.liri.Files.desktop
 %{_kf5_qmldir}/Liri/Files/
-
-
-%changelog
