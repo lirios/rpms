@@ -15,6 +15,7 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  liri-qbs-shared
 BuildRequires:  fluid-devel
 BuildRequires:  desktop-file-utils
+BuildRequires:  libappstream-glib
 
 Requires:       fluid
 
@@ -53,6 +54,7 @@ qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata.xml
 
 
 %posttrans
