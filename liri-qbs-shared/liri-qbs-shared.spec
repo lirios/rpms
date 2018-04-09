@@ -1,10 +1,12 @@
-Name:           liri-qbs-shared
+%define modulename qbs-shared
+
+Name:           liri-%{modulename}
 Summary:        Extra imports and modules for Qbs
 Version:        1.2.0
 Release:        1%{dist}
 License:        BSD-3
 Url:            https://liri.io
-Source0:        https://github.com/lirios/qbs-shared/releases/download/v%{version}/%{name}-%{version}.tar.xz
+Source0:        https://github.com/lirios/%{modulename}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 BuildArch:      noarch
 
 Requires:       qbs
