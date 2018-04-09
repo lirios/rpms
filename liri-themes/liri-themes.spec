@@ -19,6 +19,13 @@ BuildArch:      noarch
 This package contains Liri OS themes for GRUB and Plymouth.
 
 
+%package -n liri-color-schemes
+Summary:        Color schemes for Qt applications
+
+%description -n liri-color-schemes
+This package contains color schemes for Qt applications.
+
+
 %package -n grub2-lirios-theme
 Summary:        Liri OS theme for GRUB
 %ifnarch aarch64
@@ -89,6 +96,11 @@ if [ $1 -eq 0 ]; then
         %{_libexecdir}/plymouth/plymouth-generate-initrd
     fi
 fi
+
+
+%files -n liri-color-schemes
+%defattr(-,root,root,-)
+%{_datadir}/color-schemes/*.colors
 
 
 %files -n grub2-lirios-theme
