@@ -1,13 +1,15 @@
 %global snapdate @DATE@
 %global snaphash @HASH@
 
-Name:           liri-qbs-shared
+%define modulename terminal
+
+Name:           liri-%{modulename}
 Summary:        Extra imports and modules for Qbs
 Version:        1.3.0
 Release:        0.1%{?snaphash:.%{snapdate}git%(echo %{snaphash} | cut -c -13)}%{?dist}
 License:        BSD-3
 Url:            https://liri.io
-Source0:        https://github.com/lirios/qbs-shared/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/qbs-shared-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
+Source0:        https://github.com/lirios/%{modulename}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
 BuildArch:      noarch
 
 Requires:       qbs
@@ -19,7 +21,7 @@ Shared imports and modules for projects using the qbs build system.
 
 
 %prep
-%setup -q -n %{?snaphash:qbs-shared-%{snaphash}}%{!?snaphash:qbs-shared-%{version}}
+%setup -q -n %{?snaphash:%{modulename}-%{snaphash}}%{!?snaphash:%{name}-%{version}}
 qbs setup-toolchains --type gcc /usr/bin/g++ gcc
 
 
