@@ -1,7 +1,7 @@
 %global snapdate @DATE@
 %global snaphash @HASH@
 
-%define modulename terminal
+%define modulename qbs-shared
 
 Name:           liri-%{modulename}
 Summary:        Extra imports and modules for Qbs
