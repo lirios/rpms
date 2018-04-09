@@ -1,12 +1,12 @@
 Name:           fluid
 Summary:        Library for QtQuick apps with Material Design
 Version:        1.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        MPLv2
 Url:            https://liri.io
 Source0:        https://github.com/lirios/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 
-Requires:       qt5-graphicaleffects
+Requires:       qt5-qtgraphicaleffects
 Requires:       qt5-qtquickcontrols2
 
 BuildRequires:  pkgconfig(Qt5Core)
@@ -77,6 +77,9 @@ qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 
 
 %changelog
+* Mon Apr 09 2018 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 1.0.0-2
+- Fix qt5-qtgraphicaleffects dependency.
+
 * Fri Apr 06 2018 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 1.0.0-1
 - Update to 1.0.0.
 
