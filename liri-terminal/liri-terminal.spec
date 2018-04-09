@@ -39,6 +39,7 @@ qbs build --no-install -d build %{?_smp_mflags} profile:qt5 \
     modules.lirideployment.libexecDir:%{_libexecdir} \
     modules.lirideployment.includeDir:%{_includedir} \
     modules.lirideployment.dataDir:%{_datadir} \
+    modules.lirideployment.appDataDir:%{_datadir}/metainfo \
     modules.lirideployment.docDir:%{_docdir} \
     modules.lirideployment.manDir:%{_mandir} \
     modules.lirideployment.infoDir:%{_infodir} \
@@ -68,6 +69,6 @@ fi
 %license LICENSE.GPLv3
 %doc AUTHORS.md README.md
 %{_bindir}/liri-terminal
-%{_datadir}/appdata/*.appdata.xml
+%{_datadir}/metainfo/*.appdata.xml
 %{_datadir}/applications/*.desktop
 %{_qt5_qmldir}/Liri/Terminal/
