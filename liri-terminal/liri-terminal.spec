@@ -56,6 +56,16 @@ qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 
 
+%posttrans
+glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
+
+
+%postun
+if [ $1 -eq 0 ]; then
+  glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
+fi
+
+
 %files
 %license LICENSE.GPLv3
 %doc AUTHORS.md README.md
