@@ -72,4 +72,5 @@ fi
 %{_bindir}/liri-terminal
 %{_datadir}/metainfo/*.appdata.xml
 %{_datadir}/applications/*.desktop
+%{_datadir}/glib-2.0/schemas/io.liri.Terminal.gschema.xml
 %{_qt5_qmldir}/Liri/Terminal/
