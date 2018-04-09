@@ -34,6 +34,7 @@ Summary:        Development files for %{name}
 Group:          Development/System
 Requires:       %{name} = %{version}-%{release}
 Requires:       qbs
+Requires:       qt5-qtdeclarative-devel%{?_isa}
 Requires:       qt5-qtquickcontrols2-devel%{?_isa}
 
 %description devel
