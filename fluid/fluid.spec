@@ -59,6 +59,7 @@ qbs build --no-install -d build %{?_smp_mflags} profile:qt5 \
     modules.lirideployment.libexecDir:%{_libexecdir} \
     modules.lirideployment.includeDir:%{_includedir} \
     modules.lirideployment.dataDir:%{_datadir} \
+    modules.lirideployment.appDataDir:%{_datadir}/metainfo \
     modules.lirideployment.docDir:%{_docdir} \
     modules.lirideployment.manDir:%{_mandir} \
     modules.lirideployment.infoDir:%{_infodir} \
@@ -72,7 +73,7 @@ qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
-appstream-util validate-relax --nonet %{buildroot}%{_datadir}/appdata/*.appdata.xml
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata.xml
 
 
 %files
@@ -80,7 +81,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/appdata/*.appdata.
 %doc AUTHORS.md README.md
 %{_bindir}/fluid-demo
 %{_qt5_qmldir}/Fluid/
-%{_datadir}/appdata/io.liri.Fluid.Demo.appdata.xml
+%{_datadir}/metainfo/io.liri.Fluid.Demo.appdata.xml
 %{_datadir}/applications/io.liri.Fluid.Demo.desktop
 
 
