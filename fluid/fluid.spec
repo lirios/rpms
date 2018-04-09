@@ -22,6 +22,7 @@ BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  qt5-rpm-macros
 BuildRequires:  liri-qbs-shared
 BuildRequires:  desktop-file-utils
+BuildRequires:  libappstream-glib
 
 %description
 Library for fluid and dynamic development of QtQuick apps
@@ -71,6 +72,7 @@ qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/appdata/*.appdata.xml
 
 
 %files
