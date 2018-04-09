@@ -1,18 +1,18 @@
-%define snapdate @DATE@
-%define snaphash @HASH@
+%global snapdate @DATE@
+%global snaphash @HASH@
 
 %define modulename themes
 
 %global _grubthemedir /boot/grub/themes
 
 Summary:        Liri OS themes
-Name:           lirios-%{modulename}
-Version:        0.9.0
+Name:           liri-%{modulename}
+Version:        0.10.0
 Release:        0.1%{?snaphash:.%{snapdate}git%(echo %{snaphash} | cut -c -13)}%{?dist}
 License:        GPLv3+
 URL:            http://liri.io
 Source:         https://github.com/lirios/%{modulename}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  liri-qbs-shared
 BuildArch:      noarch
 
 %description
@@ -49,19 +49,28 @@ This package contains the "Liri OS" theme for SDDM.
 
 %prep
 %setup -q -n %{?snaphash:%{modulename}-%{snaphash}}%{!?snaphash:%{name}-%{version}}
+qbs setup-toolchains --type gcc /usr/bin/g++ gcc
 
 
 %build
-mkdir -p %{_target_platform}
-pushd %{_target_platform}
-%{cmake} ..
-popd
-
-make %{?_smp_mflags} -C %{_target_platform}
+qbs build --no-install -d build %{?_smp_mflags} profile:gcc \
+    modules.lirideployment.prefix:%{_prefix} \
+    modules.lirideployment.etcDir:%{_sysconfdir} \
+    modules.lirideployment.binDir:%{_bindir} \
+    modules.lirideployment.sbinDir:%{_sbindir} \
+    modules.lirideployment.libDir:%{_libdir} \
+    modules.lirideployment.libexecDir:%{_libexecdir} \
+    modules.lirideployment.includeDir:%{_includedir} \
+    modules.lirideployment.dataDir:%{_datadir} \
+    modules.lirideployment.docDir:%{_docdir} \
+    modules.lirideployment.manDir:%{_mandir} \
+    modules.lirideployment.infoDir:%{_infodir} \
+    modules.lirideployment.qmlDir:%{_qt5_qmldir} \
+    modules.lirideployment.pluginsDir:%{_qt5_plugindir}
 
 
 %install
-make install DESTDIR=%{buildroot} -C %{_target_platform}
+qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 
 
 %post -n plymouth-theme-lirios
