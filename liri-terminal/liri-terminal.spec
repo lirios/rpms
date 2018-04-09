@@ -40,7 +40,6 @@ qbs build --no-install -d build %{?_smp_mflags} profile:qt5 \
     modules.lirideployment.libexecDir:%{_libexecdir} \
     modules.lirideployment.includeDir:%{_includedir} \
     modules.lirideployment.dataDir:%{_datadir} \
-    modules.lirideployment.appDataDir:%{_datadir}/metainfo \
     modules.lirideployment.docDir:%{_docdir} \
     modules.lirideployment.manDir:%{_mandir} \
     modules.lirideployment.infoDir:%{_infodir} \
