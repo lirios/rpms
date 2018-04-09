@@ -9,7 +9,7 @@ License:        MPLv2
 Url:            https://liri.io
 Source0:        https://github.com/lirios/%{name}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
 
-Requires:       qt5-graphicaleffects
+Requires:       qt5-qtgraphicaleffects
 Requires:       qt5-qtquickcontrols2
 
 BuildRequires:  pkgconfig(Qt5Core)
