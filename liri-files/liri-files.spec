@@ -16,6 +16,7 @@ BuildRequires:  taglib-devel
 BuildRequires:  fluid-devel
 BuildRequires:  liri-qbs-shared
 BuildRequires:  desktop-file-utils
+BuildRequires:  libappstream-glib
 
 Requires:       fluid
 
@@ -53,6 +54,7 @@ qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata.xml
 
 
 %files
@@ -60,4 +62,5 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 %doc AUTHORS.md README.md
 %{_bindir}/liri-files
 %{_datadir}/applications/io.liri.Files.desktop
+%{_datadir}/metainfo/io.liri.Files.appdata.xml
 %{_qt5_qmldir}/Liri/Files/
