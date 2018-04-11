@@ -67,8 +67,38 @@ qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 %license LICENSE.LGPLv3
 %doc AUTHORS.md README.md
 %{_bindir}/liri-notify
-%{_qt5_qmldir}/Liri/*/
+%{_qt5_qmldir}/Liri/Core/
+%{_qt5_qmldir}/Liri/Device/
+%{_qt5_qmldir}/Liri/Notifications/
+%{_libdir}/libLiriCore.so.*
+%{_libdir}/libLiriDBusService.so.*
+%{_libdir}/libLiriLocalDevice.so.*
+%{_libdir}/libLiriLogind.so.*
+%{_libdir}/libLiriModels.so.*
+%{_libdir}/libLiriNotifications.so.*
 
 
 %files devel
-%{_datadir}/qbs/modules/Liri*/
+%{_includedir}/LiriCore/
+%{_includedir}/LiriDBusService/
+%{_includedir}/LiriLocalDevice/
+%{_includedir}/LiriLogind/
+%{_includedir}/LiriModels/
+%{_includedir}/LiriNotifications/
+%{_libdir}/libLiriCore.so
+%{_libdir}/libLiriDBusService.so
+%{_libdir}/libLiriLocalDevice.so
+%{_libdir}/libLiriLogind.so
+%{_libdir}/libLiriModels.so
+%{_libdir}/libLiriNotifications.so
+%{_datadir}/qbs/modules/LiriCore/
+%{_datadir}/qbs/modules/LiriDBusService/
+%{_datadir}/qbs/modules/LiriLocalDevice/
+%{_datadir}/qbs/modules/LiriLogind/
+%{_datadir}/qbs/modules/LiriModels/
+%{_datadir}/qbs/modules/LiriNotifications/
+%{_libdir}/cmake/LiriCore/
+%{_libdir}/cmake/LiriDBusService/
+%{_libdir}/cmake/LiriLogind/
+%{_libdir}/cmake/LiriModels/
+%{_libdir}/cmake/LiriNotifications/
