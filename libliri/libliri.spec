@@ -99,6 +99,13 @@ qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 %{_datadir}/qbs/modules/LiriNotifications/
 %{_libdir}/cmake/LiriCore/
 %{_libdir}/cmake/LiriDBusService/
+%{_libdir}/cmake/LiriLocalDevice/
 %{_libdir}/cmake/LiriLogind/
 %{_libdir}/cmake/LiriModels/
 %{_libdir}/cmake/LiriNotifications/
+%{_libdir}/pkgconfig/LiriCore.pc
+%{_libdir}/pkgconfig/LiriDBusService.pc
+%{_libdir}/pkgconfig/LiriLocalDevice.pc
+%{_libdir}/pkgconfig/LiriLogind.pc
+%{_libdir}/pkgconfig/LiriModels.pc
+%{_libdir}/pkgconfig/LiriNotifications.pc
