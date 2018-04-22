@@ -5,7 +5,7 @@
 
 Name:           liri-%{modulename}
 Summary:        Liri workspace, applications and plugins
-Version:        0.9.0
+Version:        @VERSION@
 Release:        0.1%{?snaphash:.%{snapdate}git%(echo %{snaphash} | cut -c -13)}%{?dist}
 License:        GPLv3+
 URL:            http://liri.io

@@ -3,7 +3,7 @@
 
 Name:           fluid
 Summary:        Library for QtQuick apps with Material Design
-Version:        1.1.0
+Version:        @VERSION@
 Release:        0.1%{?snaphash:.%{snapdate}git%(echo %{snaphash} | cut -c -13)}%{?dist}
 License:        MPLv2
 Url:            https://liri.io

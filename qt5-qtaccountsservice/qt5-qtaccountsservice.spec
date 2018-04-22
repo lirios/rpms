@@ -5,7 +5,7 @@
 
 Name:           qt5-%{qt_module}
 Summary:        Qt5 - AccountService addon
-Version:        1.3.0
+Version:        @VERSION@
 Release:        0.1%{?snaphash:.%{snapdate}git%(echo %{snaphash} | cut -c -13)}%{?dist}
 
 License:        LGPLv3+

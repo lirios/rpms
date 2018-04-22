@@ -5,7 +5,7 @@
 
 Name:           liri-%{modulename}
 Summary:        Extra imports and modules for Qbs
-Version:        1.3.0
+Version:        @VERSION@
 Release:        0.1%{?snaphash:.%{snapdate}git%(echo %{snaphash} | cut -c -13)}%{?dist}
 License:        BSD-3
 Url:            https://liri.io
