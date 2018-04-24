@@ -1,0 +1,12 @@
+#!/bin/sh
+
+srcdir=$(pwd)
+pkgname=$1
+
+if [ -z "$pkgname" ]; then
+    echo "Usage: build [package name]"
+    exit 1
+fi
+
+cd $1
+make -f $srcdir/.copr/Makefile srpm outdir=$srcdir spec=$srcdir/$pkgname/${pkgname}.spec
