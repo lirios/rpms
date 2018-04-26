@@ -22,6 +22,8 @@ BuildRequires:  qt5-qtbase-devel
 BuildRequires:  qt5-rpm-macros
 BuildRequires:  liri-qbs-shared
 
+Requires:       dconf
+
 %description
 Qt-style API wrapper for GSettings.
 
