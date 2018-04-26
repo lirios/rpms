@@ -19,6 +19,7 @@ BuildRequires:  fluid-devel
 BuildRequires:  desktop-file-utils
 
 Requires:       fluid
+Requires:       qt5-qtgsettings
 
 
 %description
