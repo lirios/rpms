@@ -18,6 +18,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  libappstream-glib
 
 Requires:       fluid
+Requires:       qt5-gsettings
 
 
 %description
