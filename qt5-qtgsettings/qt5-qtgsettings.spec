@@ -31,7 +31,6 @@ Qt-style API wrapper for GSettings.
 %package devel
 Summary:    Development files for %{name}
 Requires:   %{name}%{?isa} = %{version}-%{release}
-Requires:   qbs
 
 %description devel
 The %{name}-devel package contains libraries and header files for

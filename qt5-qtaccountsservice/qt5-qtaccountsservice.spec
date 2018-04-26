@@ -30,7 +30,6 @@ http://www.freedesktop.org/wiki/Software/AccountsService).
 %package devel
 Summary:    Development files for Qt Account Service Addon
 Requires:   %{name}%{?isa} = %{version}-%{release}
-Requires:   qbs
 
 %description devel
 Files for development using Qt Account Service Addon.
