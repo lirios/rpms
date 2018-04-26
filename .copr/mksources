@@ -36,7 +36,7 @@ if [ -z "$_gitdate" -o -z "$_githash" ]; then
     exit 1
 fi
 
-qbs_filename=$(echo $pkgname | sed -e 's,^liri-,,g').qbs
+qbs_filename=$(echo $pkgname | sed -e 's,^liri-,,g' -e 's,^qt5-,,g').qbs
 version=$(cat $qbs_filename | grep 'property string version' | perl -p -e 's@.+"([\d.]+)"$@$1@g')
 if [ -z "$version" ]; then
     echo "Failed to determine package version"
