@@ -16,6 +16,7 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(libudev)
 BuildRequires:  qt5-rpm-macros
 BuildRequires:  liri-qbs-shared
 
