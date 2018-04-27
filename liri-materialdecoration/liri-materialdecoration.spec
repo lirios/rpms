@@ -13,6 +13,7 @@ Source0:        https://github.com/lirios/%{modulename}/%{?snaphash:archive}%{!?
 BuildArch:      noarch
 
 BuildRequires:  pkgconfig(Qt5WaylandClient)
+BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  qt5-rpm-macros
 BuildRequires:  liri-qbs-shared
 
