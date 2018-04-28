@@ -28,7 +28,7 @@ Library for all Liri components.
 Summary:        Development files for %{name}
 Group:          Development/System
 Requires:       %{name}%{?_isa} = %{version}-%{release}
-Requires:       qbs
+Requires:       liri-qbs-shared
 
 %description devel
 The %{name}-devel package contains libraries and header files for

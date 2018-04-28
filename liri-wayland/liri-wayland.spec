@@ -58,6 +58,7 @@ and an XWayland implementation.
 Summary:        Development files for %{name}
 Group:          Development/System
 Requires:       %{name} = %{version}-%{release}
+Requires:       liri-qbs-shared
 
 %description devel
 The %{name}-devel package contains libraries and header files for
@@ -83,6 +84,7 @@ Summary:        Development files for Wayland client applications
 Requires:       %{name}-devel = %{version}-%{release}
 Requires:       pkgconfig(wayland-client)
 Requires:       pkgconfig(wayland-cursor)
+Requires:       liri-qbs-shared
 
 %description -n libliriwayland-client-devel
 The libliriwayland-client-devel package contains libraries and header files
@@ -97,6 +99,7 @@ Requires:       pkgconfig(wayland-client)
 Requires:       pkgconfig(wayland-cursor)
 Requires:       pkgconfig(wayland-server)
 Requires:       pkgconfig(wayland-egl)
+Requires:       liri-qbs-shared
 
 %description -n libliriwayland-server-devel
 The libliriwayland-server-devel package contains libraries and header files
