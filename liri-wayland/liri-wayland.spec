@@ -44,6 +44,7 @@ BuildRequires:  pkgconfig(xcb-cursor)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  qt5-rpm-macros
 BuildRequires:  liri-qbs-shared
+BuildRequires:  qt5-qtudev-devel
 
 %description
 Wayland client and server libraries for Qt applications.
