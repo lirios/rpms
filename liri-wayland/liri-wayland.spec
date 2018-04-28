@@ -30,6 +30,8 @@ BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5WaylandClient)
 BuildRequires:  pkgconfig(Qt5WaylandCompositor)
+BuildRequires:  pkgconfig(Qt5Udev)
+BuildRequires:  pkgconfig(LiriLogind)
 BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-server)
@@ -46,7 +48,6 @@ BuildRequires:  pkgconfig(xcb-cursor)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  qt5-rpm-macros
 BuildRequires:  liri-qbs-shared
-BuildRequires:  qt5-qtudev-devel
 
 %description
 Wayland client and server libraries for Qt applications.
