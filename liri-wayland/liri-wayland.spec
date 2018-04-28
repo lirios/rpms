@@ -136,6 +136,10 @@ qbs build --no-install -d build %{?_smp_mflags} profile:qt5 \
 
 %install
 qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
+rm -f %{buildroot}%{_libdir}/libLiriKmsSupport.a
+rm -f %{buildroot}%{_libdir}/libLiriEdidSupport.a
+rm -rf %{buildroot}%{_includedir}/LiriEdidSupport/
+rm -rf %{buildroot}%{_includedir}/LiriKmsSupport/
 
 
 %post -p /sbin/ldconfig
@@ -148,28 +152,41 @@ qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 %license LICENSE.LGPLv3 LICENSE.GPLv3
 %doc AUTHORS.md README.md
 %{_qt5_qmldir}/Liri/XWayland/
-%{_qt5_plugindir}/platforms/*
-%{_qt5_plugindir}/liri/egldeviceintegrations/*
+%{_qt5_plugindir}/platforms/liblirieglfs.so
+%{_qt5_plugindir}/wayland-shell-integration/libfullscreen-shell.so
+%{_qt5_plugindir}/liri/egldeviceintegrations/
+%{_libdir}/libLiriEglFSDeviceIntegration.so.*
+%{_libdir}/libLiriEglFSKmsSupport.so.*
+%{_libdir}/libLiriLibInput.so.*
 
 %files devel
-%{_includedir}/Liri/LibInput/
-%{_includedir}/Liri/UDev/
+%{_includedir}/LiriLibInput/
+%{_includedir}/LiriEglFSDeviceIntegration/
+%{_includedir}/LiriEglFSKmsSupport/
 %{_libdir}/pkgconfig/LiriLibInput.pc
-%{_libdir}/pkgconfig/LiriUDev.pc
+%{_datadir}/qbs/modules/LiriEglFSDeviceIntegration/
+%{_datadir}/qbs/modules/LiriEglFSKmsSupport/
+%{_datadir}/qbs/modules/LiriLibInput/
+%{_libdir}/libLiriEglFSDeviceIntegration.so
+%{_libdir}/libLiriEglFSKmsSupport.so
+%{_libdir}/libLiriLibInput.so
 
 %files -n libliriwayland-client
 %{_libdir}/libLiriWaylandClient.so.*
 
 %files -n libliriwayland-client-devel
-%{_includedir}/Liri/WaylandClient/
+%{_includedir}/LiriWaylandClient/
 %{_libdir}/libLiriWaylandClient.so
 %{_libdir}/pkgconfig/LiriWaylandClient.pc
+%{_datadir}/qbs/modules/LiriWaylandClient/
+%{_libdir}/cmake/LiriWaylandClient/
 
 %files -n libliriwayland-server
 %{_libdir}/libLiriWaylandServer.so.*
 %{_qt5_qmldir}/Liri/WaylandServer/
 
 %files -n libliriwayland-server-devel
-%{_includedir}/Liri/WaylandServer/
+%{_includedir}/LiriWaylandServer/
 %{_libdir}/libLiriWaylandServer.so
 %{_libdir}/pkgconfig/LiriWaylandServer.pc
+%{_datadir}/qbs/modules/LiriWaylandServer/
