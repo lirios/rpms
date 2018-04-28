@@ -12,6 +12,7 @@ Url:            https://liri.io
 Source0:        https://github.com/lirios/%{modulename}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
 
 BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  qt5-rpm-macros
 BuildRequires:  liri-qbs-shared
 
