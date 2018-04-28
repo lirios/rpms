@@ -15,6 +15,7 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  qt5-rpm-macros
 BuildRequires:  liri-qbs-shared
+BuildRequires:  qt5-qtgsettings-devel
 
 %description
 Qt Platform Theme integration plugin for Liri.
