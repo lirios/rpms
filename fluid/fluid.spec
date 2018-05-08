@@ -1,3 +1,6 @@
+%global snapdate @DATE@
+%global snaphash @HASH@
+
 Name:           fluid
 Summary:        Library for QtQuick apps with Material Design
 Version:        1.0.0
@@ -18,6 +21,8 @@ BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  qt5-rpm-macros
 BuildRequires:  liri-qbs-shared
+BuildRequires:  desktop-file-utils
+BuildRequires:  libappstream-glib
 
 %description
 Library for fluid and dynamic development of QtQuick apps
@@ -28,7 +33,9 @@ with the Material Design language.
 Summary:        Development files for %{name}
 Group:          Development/System
 Requires:       %{name} = %{version}-%{release}
-Requires:       qbs
+Requires:       qt5-qtdeclarative-devel%{?_isa}
+Requires:       qt5-qtquickcontrols2-devel%{?_isa}
+Requires:       liri-qbs-shared
 
 %description devel
 The %{name}-devel package contains libraries and header files for
@@ -65,23 +72,19 @@ qbs build --no-install -d build %{?_smp_mflags} profile:qt5 \
 qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 
 
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata.xml
+
+
 %files
 %license LICENSE.MPL2
 %doc AUTHORS.md README.md
 %{_bindir}/fluid-demo
 %{_qt5_qmldir}/Fluid/
+%{_datadir}/metainfo/io.liri.Fluid.Demo.appdata.xml
+%{_datadir}/applications/io.liri.Fluid.Demo.desktop
 
 
 %files devel
 %{_datadir}/qbs/modules/Fluid/
-
-
-%changelog
-* Mon Apr 09 2018 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 1.0.0-2
-- Fix qt5-qtgraphicaleffects dependency.
-
-* Fri Apr 06 2018 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 1.0.0-1
-- Update to 1.0.0.
-
-* Sat Sep 17 2016 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 0.8.90-1
-- Initial packaging.
