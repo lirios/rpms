@@ -8,18 +8,14 @@ License:        GPLv3+
 URL:            http://liri.io
 Source0:        https://github.com/lirios/%{modulename}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Qml)
-BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  liri-qbs-shared
 BuildRequires:  fluid-devel
 BuildRequires:  desktop-file-utils
+BuildRequires:  libappstream-glib
 
 Requires:       fluid
-Requires:       qt5-qtgsettings
+Requires:       qt5-gsettings
 
 
 %description
@@ -55,6 +51,7 @@ qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata.xml
 
 
 %posttrans
@@ -71,6 +68,8 @@ fi
 %license LICENSE.GPLv3
 %doc AUTHORS.md README.md
 %{_bindir}/liri-terminal
-%{_datadir}/appdata/*.appdata.xml
+%{_datadir}/metainfo/*.appdata.xml
 %{_datadir}/applications/*.desktop
+%{_datadir}/glib-2.0/schemas/io.liri.Terminal.gschema.xml
+%{_datadir}/liri-terminal/
 %{_qt5_qmldir}/Liri/Terminal/
