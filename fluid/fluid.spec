@@ -84,6 +84,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata
 %{_qt5_qmldir}/Fluid/
 %{_datadir}/metainfo/io.liri.Fluid.Demo.appdata.xml
 %{_datadir}/applications/io.liri.Fluid.Demo.desktop
+%{_datadir}/icons/hicolor/*/apps/io.liri.Fluid.Demo.png
 
 
 %files devel
