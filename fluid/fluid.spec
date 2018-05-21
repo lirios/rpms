@@ -11,6 +11,7 @@ Source0:        https://github.com/lirios/%{name}/%{?snaphash:archive}%{!?snapha
 
 Requires:       qt5-qtgraphicaleffects
 Requires:       qt5-qtquickcontrols2
+Requires:       qt5-qtsvg
 
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
