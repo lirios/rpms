@@ -136,10 +136,12 @@ qbs build --no-install -d build %{?_smp_mflags} profile:qt5 \
 
 %install
 qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
-rm -f %{buildroot}%{_libdir}/libLiriKmsSupport.a
 rm -f %{buildroot}%{_libdir}/libLiriEdidSupport.a
+rm -f %{buildroot}%{_libdir}/libLiriKmsSupport.a
+rm -f %{buildroot}%{_libdir}/libLiriLibInput.a
 rm -rf %{buildroot}%{_includedir}/LiriEdidSupport/
 rm -rf %{buildroot}%{_includedir}/LiriKmsSupport/
+rm -rf %{buildroot}%{_includedir}/LiriLibInput/
 
 
 %post -p /sbin/ldconfig
@@ -157,19 +159,14 @@ rm -rf %{buildroot}%{_includedir}/LiriKmsSupport/
 %{_qt5_plugindir}/liri/egldeviceintegrations/
 %{_libdir}/libLiriEglFSDeviceIntegration.so.*
 %{_libdir}/libLiriEglFSKmsSupport.so.*
-%{_libdir}/libLiriLibInput.so.*
 
 %files devel
-%{_includedir}/LiriLibInput/
 %{_includedir}/LiriEglFSDeviceIntegration/
 %{_includedir}/LiriEglFSKmsSupport/
-%{_libdir}/pkgconfig/LiriLibInput.pc
 %{_datadir}/qbs/modules/LiriEglFSDeviceIntegration/
 %{_datadir}/qbs/modules/LiriEglFSKmsSupport/
-%{_datadir}/qbs/modules/LiriLibInput/
 %{_libdir}/libLiriEglFSDeviceIntegration.so
 %{_libdir}/libLiriEglFSKmsSupport.so
-%{_libdir}/libLiriLibInput.so
 
 %files -n libliriwayland-client
 %{_libdir}/libLiriWaylandClient.so.*
