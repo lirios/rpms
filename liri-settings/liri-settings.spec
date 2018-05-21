@@ -21,19 +21,14 @@ BuildRequires:  pkgconfig(polkit-qt5-1)
 BuildRequires:  pkgconfig(Qt5Xdg)
 BuildRequires:  qt5-qttools
 BuildRequires:  qt5-qttools-devel
-BuildRequires:  cmake(Fluid)
-BuildRequires:  cmake(Vibe)
-BuildRequires:  cmake(GreenIslandClient)
-
-BuildRequires:  kf5-rpm-macros
-BuildRequires:  extra-cmake-modules
+BuildRequires:  qt5-rpm-macros
+BuildRequires:  liri-qbs-shared
+BuildRequires:  fluid-devel
 BuildRequires:  desktop-file-utils
 
-Requires:       qt5-qtgraphicaleffects
 Requires:       qt5-qtaccountsservice
 Requires:       polkit-qt5-1
 Requires:       fluid
-Requires:       vibe
 Requires:       xkeyboard-config
 
 
@@ -44,30 +39,34 @@ mouse properties, sound setup, desktop theme and background, user interface
 properties, screen resolution, and other settings.
 
 
-%package devel
-Summary:        Development files for %{name}
-Requires:       %{name}%{?_isa} = %{version}-%{release}
-Requires:       cmake(Vibe)
-
-%description devel
-%{summary}.
-
-
 %prep
 %setup -q -n %{?snaphash:%{modulename}-%{snaphash}}%{!?snaphash:%{name}-%{version}}
+qbs setup-toolchains --type gcc /usr/bin/g++ gcc
+qbs setup-qt %{_qt5_qmake} qt5
+qbs config profiles.qt5.baseProfile gcc
 
 
 %build
-mkdir -p %{_target_platform}
-pushd %{_target_platform}
-%{cmake_kf5} ..
-popd
-
-make %{?_smp_mflags} -C %{_target_platform}
+qbs build --no-install -d build %{?_smp_mflags} profile:qt5 \
+    project.withDocumentation:false \
+    project.useSystemQbsShared:true \
+    modules.lirideployment.prefix:%{_prefix} \
+    modules.lirideployment.etcDir:%{_sysconfdir} \
+    modules.lirideployment.binDir:%{_bindir} \
+    modules.lirideployment.sbinDir:%{_sbindir} \
+    modules.lirideployment.libDir:%{_libdir} \
+    modules.lirideployment.libexecDir:%{_libexecdir} \
+    modules.lirideployment.includeDir:%{_includedir} \
+    modules.lirideployment.dataDir:%{_datadir} \
+    modules.lirideployment.docDir:%{_docdir} \
+    modules.lirideployment.manDir:%{_mandir} \
+    modules.lirideployment.infoDir:%{_infodir} \
+    modules.lirideployment.qmlDir:%{_qt5_qmldir} \
+    modules.lirideployment.pluginsDir:%{_qt5_plugindir}
 
 
 %install
-make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
+qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 
 %find_lang %{name} --all-name --with-qt
 
@@ -83,11 +82,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 %dir %{_datadir}/liri/settings/
 %{_datadir}/liri/settings/modules/*
 %{_datadir}/applications/*.desktop
-%{_kf5_qmldir}/Liri/Settings/
+%{_qt5_qmldir}/Liri/Settings/
 # Not picked up by %find_lang
 %{_datadir}/liri/settings/translations/modules/*_???.qm
 %{_datadir}/liri/settings/translations/app/*_???.qm
-
-
-%files devel
-%{_libdir}/cmake/LiriSettings/
