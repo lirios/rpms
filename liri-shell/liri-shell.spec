@@ -4,7 +4,7 @@
 %define modulename shell
 
 Name:           liri-%{modulename}
-Summary:        Liri shell for desktop, netbook and tablet
+Summary:        Liri shell for desktop and mobile
 Version:        @VERSION@
 Release:        0.1%{?snaphash:.%{snapdate}git%(echo %{snaphash} | cut -c -13)}%{?dist}
 License:        GPLv3+
@@ -17,26 +17,17 @@ BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5WaylandClient)
 BuildRequires:  pkgconfig(Qt5Xdg)
-#BuildRequires:  pkgconfig(QtAccountsService)
-BuildRequires:  qt5-qtaccountsservice-devel
+BuildRequires:  pkgconfig(Qt5AccountsService)
 BuildRequires:  pkgconfig(xkbcommon)
-BuildRequires:  cmake(GreenIslandClient)
-BuildRequires:  cmake(GreenIslandServer)
-BuildRequires:  cmake(Fluid)
-BuildRequires:  cmake(Vibe)
 BuildRequires:  pam-devel
-
 BuildRequires:  git
-BuildRequires:  kf5-rpm-macros
-BuildRequires:  extra-cmake-modules
+BuildRequires:  qt5-rpm-macros
+BuildRequires:  liri-qbs-shared
 
 Requires:       qt5-qtsvg
 Requires:       qt5-qttools
-Requires:       greenisland >= 0.8.0
 Requires:       dbus
-Requires:       dbus-x11
 Requires:       pam
 Requires:       udisks2
 Requires:       upower
@@ -44,7 +35,6 @@ Requires:       dconf
 Requires:       fluid
 Requires:       vibe
 Requires:       %{name}-components = %{version}
-Requires:       liri-workspace >= %{version}
 
 %description
 This is the Liri desktop environment shell.
@@ -60,32 +50,58 @@ with the SDDM theme.
 
 %prep
 %setup -q -n %{?snaphash:%{modulename}-%{snaphash}}%{!?snaphash:%{name}-%{version}}
+qbs setup-toolchains --type gcc /usr/bin/g++ gcc
+qbs setup-qt %{_qt5_qmake} qt5
+qbs config profiles.qt5.baseProfile gcc
 
 
 %build
-mkdir -p %{_target_platform}
-pushd %{_target_platform}
-%{cmake_kf5} -DDEVELOPMENT_BUILD:BOOL=ON ..
-popd
-
-make %{?_smp_mflags} -C %{_target_platform}
+qbs build --no-install -d build %{?_smp_mflags} profile:qt5 \
+    project.withDocumentation:false \
+    project.useSystemQbsShared:true \
+    modules.lirideployment.prefix:%{_prefix} \
+    modules.lirideployment.etcDir:%{_sysconfdir} \
+    modules.lirideployment.binDir:%{_bindir} \
+    modules.lirideployment.sbinDir:%{_sbindir} \
+    modules.lirideployment.libDir:%{_libdir} \
+    modules.lirideployment.libexecDir:%{_libexecdir} \
+    modules.lirideployment.includeDir:%{_includedir} \
+    modules.lirideployment.dataDir:%{_datadir} \
+    modules.lirideployment.docDir:%{_docdir} \
+    modules.lirideployment.manDir:%{_mandir} \
+    modules.lirideployment.infoDir:%{_infodir} \
+    modules.lirideployment.qmlDir:%{_qt5_qmldir} \
+    modules.lirideployment.pluginsDir:%{_qt5_plugindir}
 
 
 %install
-make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
+qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
+
+
+%posttrans
+glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
+
+
+%postun
+if [ $1 -eq 0 ]; then
+  glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
+fi
 
 
 %files
 %license LICENSE.GPLv3
 %doc AUTHORS.md README.md
-%{_bindir}/*
+%{_bindir}/liri-shell
+%{_sysconfdir}/xdg/menus/*
 %{_datadir}/wayland-sessions/*
-%{_datadir}/greenisland/shells/*
+%{_datadir}/desktop-directories/*
+%{_datadir}/glib-2.0/schemas/*
 %{_userunitdir}/*
-#%{_kf5_qtplugindir}/wayland-decoration-client/*
 %{_libexecdir}/liri-shell-helper
+%{_qt5_qmldir}/Liri/PolicyKit/
 
 %files components
-%{_kf5_qmldir}/Liri/Launcher/
-%{_kf5_qmldir}/Liri/LoginManager/
-%{_kf5_qmldir}/Liri/Shell/
+%{_qt5_qmldir}/Liri/Mpris/
+%{_qt5_qmldir}/Liri/Launcher/
+%{_qt5_qmldir}/Liri/LoginManager/
+%{_qt5_qmldir}/Liri/Shell/
