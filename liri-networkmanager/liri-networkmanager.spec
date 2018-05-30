@@ -19,6 +19,7 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.31.0
 BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(ModemManager)
+BuildRequires:  pkgconfig(mm-glib)
 BuildRequires:  cmake(KF5NetworkManagerQt)
 BuildRequires:  cmake(KF5ModemManagerQt)
 BuildRequires:  qt5-rpm-macros
