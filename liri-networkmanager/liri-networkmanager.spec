@@ -64,5 +64,6 @@ qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 %files
 %license LICENSE.GPLv3
 %doc AUTHORS.md README.md
-%{_datadir}/liri/settings/modules/network/
+%{_datadir}/liri/settings/modules/networkmanager/
 %{_datadir}/liri-shell/indicators/networkmanager/
+%{_qt5_qmldir}/Liri/NetworkManager/
