@@ -17,7 +17,7 @@ BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.31.0
-BuildRequires:  pkgconfig(NetworkManager)
+BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(ModemManager)
 BuildRequires:  cmake(KF5NetworkManagerQt)
 BuildRequires:  cmake(KF5ModemManagerQt)
