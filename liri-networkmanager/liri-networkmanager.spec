@@ -23,6 +23,7 @@ BuildRequires:  pkgconfig(mm-glib)
 BuildRequires:  cmake(KF5NetworkManagerQt)
 BuildRequires:  cmake(KF5ModemManagerQt)
 BuildRequires:  qt5-rpm-macros
+BuildRequires:  qt5-linguist
 BuildRequires:  liri-qbs-shared
 BuildRequires:  fluid-devel
 

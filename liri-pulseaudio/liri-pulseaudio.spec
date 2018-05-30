@@ -19,6 +19,7 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
 BuildRequires:  qt5-rpm-macros
+BuildRequires:  qt5-linguist
 BuildRequires:  liri-qbs-shared
 BuildRequires:  fluid-devel
 
