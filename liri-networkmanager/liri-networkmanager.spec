@@ -61,11 +61,14 @@ qbs build --no-install -d build %{?_smp_mflags} profile:qt5 \
 
 %install
 qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
+%find_lang %{name} --all-name --with-qt
 
 
-%files
+%files -f %{name}.lang
 %license LICENSE.GPLv3
 %doc AUTHORS.md README.md
 %{_datadir}/liri/settings/modules/networkmanager/
 %{_datadir}/liri-shell/indicators/networkmanager/
 %{_qt5_qmldir}/Liri/NetworkManager/
+# Not picked up by %find_lang
+%{_datadir}/liri/settings/translations/modules/networkmanager_*.qm
