@@ -1,3 +1,5 @@
+# This package needs to be rebuilt every time Qt is updated.
+
 %global snapdate @DATE@
 %global snaphash @HASH@
 
