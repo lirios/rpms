@@ -30,7 +30,7 @@ pieces of Liri libraries and infrastructure.
 
 
 %prep
-%setup -q -n %{?snaphash:%{modulename}-%{snaphash}}%{!?snaphash:%{name}-%{version}}
+%setup -q -n %{?snaphash:%{name}-%{snaphash}}%{!?snaphash:%{name}-%{version}}
 qbs setup-toolchains --type gcc /usr/bin/g++ gcc
 qbs setup-qt %{_qt5_qmake} qt5
 qbs config profiles.qt5.baseProfile gcc
