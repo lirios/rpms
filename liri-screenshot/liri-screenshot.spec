@@ -65,3 +65,4 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/io.liri.Screenshot.de
 %doc AUTHORS.md README.md
 %{_bindir}/liri-screenshot
 %{_datadir}/applications/io.liri.Screenshot.desktop
+%{_datadir}/liri-screenshot/translations/liri-screenshot_*.qm
