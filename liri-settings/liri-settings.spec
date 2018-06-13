@@ -77,10 +77,10 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 %license LICENSE.GPLv3
 %doc AUTHORS.md README.md
 %{_bindir}/liri-settings
-%dir %{_datadir}/liri/settings/
-%{_datadir}/liri/settings/modules/*
+%dir %{_datadir}/liri-settings/
+%{_datadir}/liri-settings/modules/*
 %{_datadir}/applications/*.desktop
 %{_qt5_qmldir}/Liri/Settings/
 # Not picked up by %find_lang
-%{_datadir}/liri/settings/translations/modules/*_???.qm
-%{_datadir}/liri/settings/translations/app/*_???.qm
+%{_datadir}/liri-settings/translations/modules/*_???.qm
+%{_datadir}/liri-settings/translations/app/*_???.qm
