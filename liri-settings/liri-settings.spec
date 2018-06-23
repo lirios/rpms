@@ -83,5 +83,5 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 %{_datadir}/applications/*.desktop
 %{_qt5_qmldir}/Liri/Settings/
 # Not picked up by %find_lang
-%{_datadir}/liri-settings/translations/modules/*_???.qm
-%{_datadir}/liri-settings/translations/app/*_???.qm
+%{_datadir}/liri-settings/translations/modules/*.qm
+%{_datadir}/liri-settings/translations/*.qm
