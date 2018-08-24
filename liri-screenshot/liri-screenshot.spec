@@ -4,7 +4,7 @@
 %define modulename screenshot
 
 Name:           liri-%{modulename}
-Summary:        Screenshot capture utility for Liri Shell
+Summary:        Take a picture of your screen
 Version:        @VERSION@
 Release:        0.1%{?snaphash:.%{snapdate}git%(echo %{snaphash} | cut -c -13)}%{?dist}
 License:        GPLv3+
@@ -19,12 +19,11 @@ BuildRequires:  qt5-rpm-macros
 BuildRequires:  liri-qbs-shared
 BuildRequires:  fluid-devel
 BuildRequires:  desktop-file-utils
-BuildRequires:  libliriwayland-client-devel
 
 Requires:       fluid
 
 %description
-Screenshot capture utility for Liri Shell.
+Take a picture of your screen under a Liri Shell session.
 
 
 %prep
