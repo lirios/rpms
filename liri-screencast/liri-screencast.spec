@@ -13,6 +13,8 @@ Source0:        https://github.com/lirios/%{modulename}/%{?snaphash:archive}%{!?
 
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:  qt5-qttools
+BuildRequires:  qt5-qttools-devel
 BuildRequires:  cmake(Qt5GStreamer)
 BuildRequires:  qt5-rpm-macros
 BuildRequires:  liri-qbs-shared
