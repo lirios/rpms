@@ -15,6 +15,10 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.31.0
 BuildRequires:  pkgconfig(Qt5GSettings)
+BuildRequires:  pkgconfig(LiriCore)
+BuildRequires:  cmake(KF5Solid)
+BuildRequires:  qt5-qttools
+BuildRequires:  qt5-qttools-devel
 BuildRequires:  qt5-rpm-macros
 BuildRequires:  liri-qbs-shared
 BuildRequires:  fluid-devel
