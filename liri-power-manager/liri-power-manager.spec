@@ -78,7 +78,7 @@ fi
 %files -f %{name}.lang
 %license LICENSE.GPLv3
 %doc AUTHORS.md README.md
-%{_bindir}/liri-powermanager
+%{_bindir}/liri-power-manager
 %{_sysconfdir}/xdg/autostart/liri-power-manager.desktop
 %{_datadir}/glib-2.0/schemas/*
 %{_datadir}/liri-settings/modules/power/
