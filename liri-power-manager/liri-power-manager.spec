@@ -62,7 +62,7 @@ qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 
 
 %check
-desktop-file-validate %{buildroot}%{_sysconfdir}/xdg/autostart/liri-power-manager.desktop
+desktop-file-validate %{buildroot}%{_sysconfdir}/xdg/autostart/io.liri.PowerManager.desktop
 
 
 %posttrans
@@ -79,7 +79,7 @@ fi
 %license LICENSE.GPLv3
 %doc AUTHORS.md README.md
 %{_bindir}/liri-power-manager
-%{_sysconfdir}/xdg/autostart/liri-power-manager.desktop
+%{_sysconfdir}/xdg/autostart/io.liri.PowerManager.desktop
 %{_datadir}/glib-2.0/schemas/*
 %{_datadir}/liri-power-manager/translations/*.qm
 %{_datadir}/liri-settings/modules/power/
