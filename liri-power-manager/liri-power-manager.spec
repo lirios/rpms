@@ -81,6 +81,7 @@ fi
 %{_bindir}/liri-power-manager
 %{_sysconfdir}/xdg/autostart/liri-power-manager.desktop
 %{_datadir}/glib-2.0/schemas/*
+%{_datadir}/liri-power-manager/translations/*.qm
 %{_datadir}/liri-settings/modules/power/
 %{_datadir}/liri-settings/translations/modules/power_*.qm
 %{_datadir}/liri-shell/indicators/power/
