@@ -20,6 +20,7 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xdg)
 BuildRequires:  pkgconfig(Qt5AccountsService)
 BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  cmake(KF5Solid)
 BuildRequires:  pam-devel
 BuildRequires:  git
 BuildRequires:  qt5-rpm-macros
