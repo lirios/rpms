@@ -9,8 +9,6 @@ License:        LGPLv3
 Url:            https://liri.io
 Source0:        https://github.com/lirios/%{name}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
 
-Requires:       qt5-qtdeclarative
-
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -28,7 +26,6 @@ Library for all Liri components.
 Summary:        Development files for %{name}
 Group:          Development/System
 Requires:       %{name}%{?_isa} = %{version}-%{release}
-Requires:       liri-qbs-shared
 
 %description devel
 The %{name}-devel package contains libraries and header files for

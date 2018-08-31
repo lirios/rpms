@@ -24,13 +24,14 @@ BuildRequires:  qt5-qttools-devel
 BuildRequires:  qt5-rpm-macros
 BuildRequires:  liri-qbs-shared
 BuildRequires:  fluid-devel
-BuildRequires:  kf5-kwayland-devel
 BuildRequires:  desktop-file-utils
 
 Requires:       qt5-qtaccountsservice
+Requires:       qt5-qtgsettings
 Requires:       polkit-qt5-1
 Requires:       fluid
 Requires:       xkeyboard-config
+Requires:       dconf
 
 
 %description

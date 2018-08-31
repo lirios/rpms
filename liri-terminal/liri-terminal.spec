@@ -19,6 +19,7 @@ BuildRequires:  libappstream-glib
 
 Requires:       fluid
 Requires:       qt5-gsettings
+Requires:       dconf
 
 
 %description

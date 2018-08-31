@@ -20,6 +20,7 @@ BuildRequires:  libappstream-glib
 
 Requires:       fluid
 Requires:       qt5-qtgsettings
+Requires:       dconf
 
 %description
 Files is a file manager for Liri.

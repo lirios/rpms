@@ -23,17 +23,18 @@ BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pam-devel
 BuildRequires:  git
 BuildRequires:  qt5-rpm-macros
+BuildRequires:  fluid-devel
 BuildRequires:  liri-qbs-shared
 
 Requires:       qt5-qtsvg
 Requires:       qt5-qttools
+Requires:       qt5-qtgsettings
+Requires:       fluid
 Requires:       dbus
 Requires:       pam
 Requires:       udisks2
 Requires:       upower
 Requires:       dconf
-Requires:       fluid
-Requires:       vibe
 Requires:       %{name}-components = %{version}
 
 %description
