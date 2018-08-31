@@ -98,11 +98,11 @@ fi
 %{_datadir}/glib-2.0/schemas/*
 %{_userunitdir}/*
 %{_libexecdir}/liri-shell-helper
+%{_qt5_qmldir}/Liri/Launcher/
+%{_qt5_qmldir}/Liri/Mpris/
 %{_qt5_qmldir}/Liri/PolicyKit/
 %{_qt5_qmldir}/Liri/Storage/
 
 %files components
-%{_qt5_qmldir}/Liri/Mpris/
-%{_qt5_qmldir}/Liri/Launcher/
 %{_qt5_qmldir}/Liri/LoginManager/
 %{_qt5_qmldir}/Liri/Shell/
