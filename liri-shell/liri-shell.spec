@@ -17,19 +17,24 @@ BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5WaylandClient)
+BuildRequires:  pkgconfig(Qt5WaylandCompositor)
 BuildRequires:  pkgconfig(Qt5Xdg)
 BuildRequires:  pkgconfig(Qt5AccountsService)
-BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(polkit-qt5-1)
 BuildRequires:  cmake(KF5Solid)
 BuildRequires:  pam-devel
 BuildRequires:  git
 BuildRequires:  qt5-rpm-macros
 BuildRequires:  fluid-devel
 BuildRequires:  liri-qbs-shared
+BuildRequires:  libliri-devel
+BuildRequires:  qt5-qtgsettings-devel
 
 Requires:       qt5-qtsvg
 Requires:       qt5-qttools
 Requires:       qt5-qtgsettings
+Requires:       libliri
 Requires:       fluid
 Requires:       dbus
 Requires:       pam
