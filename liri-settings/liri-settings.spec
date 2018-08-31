@@ -72,17 +72,13 @@ qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 
 
 %check
-desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/io.liri.Settings.desktop
 
 
 %files -f %{name}.lang
 %license LICENSE.GPLv3
 %doc AUTHORS.md README.md
 %{_bindir}/liri-settings
-%dir %{_datadir}/liri-settings/
-%{_datadir}/liri-settings/modules/*
-%{_datadir}/applications/*.desktop
+%{_datadir}/liri-settings/
+%{_datadir}/applications/io.liri.Settings.desktop
 %{_qt5_qmldir}/Liri/Settings/
-# Not picked up by %find_lang
-%{_datadir}/liri-settings/translations/modules/*.qm
-%{_datadir}/liri-settings/translations/*.qm
