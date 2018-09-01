@@ -30,10 +30,12 @@ BuildRequires:  fluid-devel
 BuildRequires:  liri-qbs-shared
 BuildRequires:  libliri-devel
 BuildRequires:  qt5-qtgsettings-devel
+BuildRequires:  liri-eglfs-devel
 
 Requires:       qt5-qtsvg
 Requires:       qt5-qttools
 Requires:       qt5-qtgsettings
+Requires:       liri-eglfs
 Requires:       libliri
 Requires:       fluid
 Requires:       dbus
