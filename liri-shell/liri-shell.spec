@@ -45,6 +45,8 @@ Requires:       upower
 Requires:       dconf
 Requires:       %{name}-components = %{version}
 
+Suggests:       qml-xwayland
+
 %description
 This is the Liri desktop environment shell.
 
