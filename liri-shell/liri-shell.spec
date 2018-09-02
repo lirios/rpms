@@ -69,6 +69,7 @@ qbs config profiles.qt5.baseProfile gcc
 
 %build
 qbs build --no-install -d build %{?_smp_mflags} profile:qt5 \
+    projects.Shell.systemdUserUnitDir:%{_userunitdir} \
     modules.lirideployment.prefix:%{_prefix} \
     modules.lirideployment.etcDir:%{_sysconfdir} \
     modules.lirideployment.binDir:%{_bindir} \
