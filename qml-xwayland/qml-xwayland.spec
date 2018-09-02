@@ -30,6 +30,13 @@ This package provides a QML plugin with an XWayland
 implementation for Liri Shell.
 
 
+%prep
+%setup -q -n %{?snaphash:%{name}-%{snaphash}}%{!?snaphash:%{name}-%{version}}
+qbs setup-toolchains --type gcc /usr/bin/g++ gcc
+qbs setup-qt %{_qt5_qmake} qt5
+qbs config profiles.qt5.baseProfile gcc
+
+
 %build
 qbs build --no-install -d build %{?_smp_mflags} profile:qt5 \
     modules.lirideployment.prefix:%{_prefix} \
