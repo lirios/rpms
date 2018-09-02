@@ -66,7 +66,7 @@ qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 
 
 %check
-desktop-file-validate %{buildroot}%{_datadir}/applications/io.liri.AppCenter.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/io.liri.AppCenter{,.Flatpak}.desktop
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.liri.AppCenter.appdata.xml
 
 
@@ -82,6 +82,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.liri.A
 %{_bindir}/liri-appcenter
 %{_bindir}/liri-update-notifier
 %{_datadir}/applications/io.liri.AppCenter.desktop
+%{_datadir}/applications/io.liri.AppCenter.Flatpak.desktop
 %{_datadir}/metainfo/io.liri.AppCenter.appdata.xml
 %{_libdir}/libLiriAppCenter.so.*
 %{_qt5_qmldir}/Liri/AppCenter/
