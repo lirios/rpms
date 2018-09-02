@@ -13,11 +13,13 @@ Source0:        https://github.com/lirios/%{modulename}/%{?snaphash:archive}%{!?
 
 BuildRequires:  qt5-qttools-devel
 BuildRequires:  fluid-devel
+BuildRequires:  libliri-devel
 BuildRequires:  liri-qbs-shared
 BuildRequires:  desktop-file-utils
 BuildRequires:  libappstream-glib
 
 Requires:       fluid
+Requires:       libliri
 Requires:       qt5-qtgsettings
 Requires:       dconf
 
