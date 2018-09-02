@@ -87,11 +87,15 @@ rm -rf %{buildroot}%{_includedir}/LiriLibInput/
 %{_qt5_plugindir}/liri/egldeviceintegrations/
 %{_libdir}/libLiriEglFSDeviceIntegration.so.*
 %{_libdir}/libLiriEglFSKmsSupport.so.*
+%{_libdir}/libLiriPlatformHeaders.so.*
 
 %files devel
 %{_includedir}/LiriEglFSDeviceIntegration/
 %{_includedir}/LiriEglFSKmsSupport/
+%{_includedir}/LiriPlatformHeaders/
 %{_datadir}/qbs/modules/LiriEglFSDeviceIntegration/
 %{_datadir}/qbs/modules/LiriEglFSKmsSupport/
+%{_datadir}/qbs/modules/LiriPlatformHeaders/
 %{_libdir}/libLiriEglFSDeviceIntegration.so
 %{_libdir}/libLiriEglFSKmsSupport.so
+%{_libdir}/libLiriPlatformHeaders.so
