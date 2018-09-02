@@ -102,7 +102,9 @@ fi
 %files
 %license LICENSE.GPLv3
 %doc AUTHORS.md README.md
+%{_bindir}/liri-session
 %{_bindir}/liri-shell
+%{_sysconfdir}/pam.d/liri-shell.pam
 %{_sysconfdir}/xdg/menus/*
 %{_datadir}/wayland-sessions/*
 %{_datadir}/desktop-directories/*
