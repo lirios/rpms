@@ -40,7 +40,7 @@ qbs build --no-install -d build %{?_smp_mflags} profile:gcc \
 
 
 %install
-qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
+qbs install --no-build -d build -v --install-root %{buildroot} profile:gcc
 
 
 %files
