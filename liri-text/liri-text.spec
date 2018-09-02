@@ -63,3 +63,4 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.liri.T
 %{_datadir}/liri-text/
 %{_datadir}/applications/io.liri.Text.desktop
 %{_datadir}/metainfo/io.liri.Text.appdata.xml
+%{_datadir}/icons/hicolor/*/*/io.liri.Text.png
