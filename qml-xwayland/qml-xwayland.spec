@@ -1,21 +1,15 @@
 %define snapdate @DATE@
 %define snaphash @HASH@
 
-%define modulename xwayland
-
-Name:           liri-%{modulename}
-Summary:        XWayland support for Liri Shell
-Version:        0.10.0
+Name:           qml-xwayland
+Summary:        XWayland support for QML Wayland compositors
+Version:        @VERSION@
 Release:        0.1%{?snaphash:.%{snapdate}git%(echo %{snaphash} | cut -c -13)}%{?dist}
 License:        GPLv3
 Url:            https://liri.io
-Source0:        https://github.com/lirios/%{modulename}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
+Source0:        https://github.com/lirios/%{name}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
 
-Requires:       qt5-qtdeclarative
-Suggests:       weston >= 1.5
 Requires:       xorg-x11-server-Xwayland
-Requires(post): /sbin/ldconfig
-Requires(postun): /sbin/ldconfig
 BuildRequires:  qt5-qtbase-static >= 5.5.0
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -58,6 +52,6 @@ qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 
 
 %files
-%license LICENSE.GPLv3
+%license LICENSE.LGPLv3
 %doc AUTHORS.md README.md
 %{_qt5_qmldir}/Liri/XWayland/
