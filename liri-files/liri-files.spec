@@ -55,8 +55,8 @@ qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 
 
 %check
-desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
-appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata.xml
+desktop-file-validate %{buildroot}%{_datadir}/applications/io.liri.Files.desktop
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.liri.Files.appdata.xml
 
 
 %files
