@@ -65,3 +65,5 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/io.liri.Browser.deskt
 %doc AUTHORS.md README.md
 %{_bindir}/liri-browser
 %{_datadir}/applications/io.liri.Browser.desktop
+%{_datadir}/icons/hicolor/*/*/io.liri.Browser.png
+%{_datadir}/icons/hicolor/*/*/io.liri.Browser.svg
