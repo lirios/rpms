@@ -15,6 +15,7 @@ BuildRequires:  qt5-qttools-devel
 BuildRequires:  fluid-devel
 BuildRequires:  libliri-devel
 BuildRequires:  pkgconfig(flatpak)
+BuildRequires:  cmake(AppStreamQt)
 BuildRequires:  liri-qbs-shared
 BuildRequires:  desktop-file-utils
 BuildRequires:  libappstream-glib
