@@ -21,6 +21,7 @@ BuildRequires:  pkgconfig(Qt5WaylandClient)
 BuildRequires:  pkgconfig(Qt5WaylandCompositor)
 BuildRequires:  pkgconfig(Qt5Xdg)
 BuildRequires:  pkgconfig(Qt5AccountsService)
+BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(polkit-qt5-1)
 BuildRequires:  cmake(KF5Solid)
 BuildRequires:  pam-devel
