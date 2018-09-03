@@ -49,6 +49,7 @@ This package contains the "Liri OS" theme for Plymouth.
 %package -n sddm-theme-lirios
 Summary:        Liri OS theme for SDDM
 Requires:       sddm
+Requires:       accountsservice
 
 %description -n sddm-theme-lirios
 This package contains the "Liri OS" theme for SDDM.
