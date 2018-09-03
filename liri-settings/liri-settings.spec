@@ -18,6 +18,7 @@ BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(polkit-qt5-1)
+BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(Qt5Xdg)
 BuildRequires:  qt5-qttools
 BuildRequires:  qt5-qttools-devel
