@@ -58,7 +58,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.liri.C
 
 %files
 %license LICENSE.GPLv3
-%doc AUTHORS.md README.md
+%doc README.md
 %{_bindir}/liri-calculator
 %{_datadir}/applications/io.liri.Calculator.desktop
 %{_datadir}/metainfo/io.liri.Calculator.appdata.xml
