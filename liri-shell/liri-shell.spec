@@ -32,6 +32,7 @@ BuildRequires:  liri-qbs-shared
 BuildRequires:  libliri-devel
 BuildRequires:  qt5-qtgsettings-devel
 BuildRequires:  liri-eglfs-devel
+BuildRequires:  pipewire-devel
 
 Requires:       qt5-qtsvg
 Requires:       qt5-qttools
