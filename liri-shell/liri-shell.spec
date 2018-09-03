@@ -45,6 +45,7 @@ Requires:       pam
 Requires:       udisks2
 Requires:       upower
 Requires:       dconf
+Requires:       accountsservice
 Requires:       %{name}-components = %{version}
 
 Suggests:       qml-xwayland
