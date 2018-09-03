@@ -36,6 +36,7 @@ Group:          Development/System
 Requires:       %{name} = %{version}-%{release}
 Requires:       qt5-qtdeclarative-devel%{?_isa}
 Requires:       qt5-qtquickcontrols2-devel%{?_isa}
+Requires:       qt5-qtsvg-devel%{?_isa}
 
 %description devel
 The %{name}-devel package contains libraries and header files for
