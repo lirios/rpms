@@ -71,8 +71,8 @@ qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 
 
 %check
-desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
-appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata.xml
+#desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
+#appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata.xml
 
 
 %files
@@ -80,8 +80,8 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata
 %doc AUTHORS.md README.md
 %{_bindir}/fluid-demo
 %{_qt5_qmldir}/Fluid/
-%{_datadir}/metainfo/io.liri.Fluid.Demo.appdata.xml
-%{_datadir}/applications/io.liri.Fluid.Demo.desktop
+#%{_datadir}/metainfo/io.liri.Fluid.Demo.appdata.xml
+#%{_datadir}/applications/io.liri.Fluid.Demo.desktop
 
 
 %files devel
