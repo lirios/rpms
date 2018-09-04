@@ -3,7 +3,7 @@
 Name:           liri-%{modulename}
 Summary:        Qt Platform Theme integration plugin for Liri
 Version:        1.0.0
-Release:        1
+Release:        1%{?dist}
 License:        GPLv3
 Url:            https://liri.io
 Source0:        https://github.com/lirios/%{modulename}/releases/download/v%{version}/%{name}-%{version}.tar.xz
