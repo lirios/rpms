@@ -8,7 +8,7 @@ Name:           liri-%{modulename}
 Version:        @VERSION@
 Release:        0.1%{?snaphash:.%{snapdate}git%(echo %{snaphash} | cut -c -13)}%{?dist}
 License:        CC-BY-SA
-URL:            http://liri.io
+URL:            https://liri.io
 Source:         https://github.com/lirios/%{modulename}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
 BuildRequires:  liri-qbs-shared
 BuildArch:      noarch

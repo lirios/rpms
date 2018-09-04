@@ -5,18 +5,18 @@
 
 %global _grubthemedir /boot/grub/themes
 
-Summary:        Liri OS themes
+Summary:        Liri themes
 Name:           liri-%{modulename}
 Version:        @VERSION@
 Release:        0.1%{?snaphash:.%{snapdate}git%(echo %{snaphash} | cut -c -13)}%{?dist}
 License:        GPLv3+
-URL:            http://liri.io
+URL:            https://liri.io
 Source:         https://github.com/lirios/%{modulename}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
 BuildRequires:  liri-qbs-shared
 BuildArch:      noarch
 
 %description
-This package contains Liri OS themes for GRUB and Plymouth.
+This package contains color schemes and themes for GRUB, Plymouth and SDDM.
 
 
 %package -n liri-color-schemes
