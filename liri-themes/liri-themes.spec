@@ -2,18 +2,25 @@
 
 %define modulename themes
 
-Summary:        Liri OS themes
-Name:           lirios-%{modulename}
-Version:        0.8.90
+Summary:        Liri themes
+Name:           liri-%{modulename}
+Version:        0.10.0
 Release:        1%{?dist}
 License:        GPLv3+
-URL:            https://github.com/lirios
-Source:         https://github.com/lirios/%{modulename}/archive/v%{version}.tar.gz
-BuildRequires:  cmake
+URL:            https://liri.io
+Source0:        https://github.com/lirios/%{modulename}/releases/download/v%{version}/%{name}-%{version}.tar.xz
+BuildRequires:  liri-qbs-shared
 BuildArch:      noarch
 
 %description
-This package contains Liri OS themes for GRUB and Plymouth.
+This package contains color schemes and themes for GRUB, Plymouth and SDDM.
+
+
+%package -n liri-color-schemes
+Summary:        Color schemes for Qt applications
+
+%description -n liri-color-schemes
+This package contains color schemes for Qt applications.
 
 
 %package -n grub2-themes-lirios
@@ -39,6 +46,7 @@ This package contains the "Liri OS" theme for Plymouth.
 %package -n sddm-theme-lirios
 Summary:        Liri OS theme for SDDM
 Requires:       sddm
+Requires:       accountsservice
 
 %description -n sddm-theme-lirios
 This package contains the "Liri OS" theme for SDDM.
@@ -46,19 +54,28 @@ This package contains the "Liri OS" theme for SDDM.
 
 %prep
 %setup -n %{name}-%{version}
+qbs setup-toolchains --type gcc /usr/bin/g++ gcc
 
 
 %build
-mkdir -p %{_target_platform}
-pushd %{_target_platform}
-%{cmake} ..
-popd
-
-make %{?_smp_mflags} -C %{_target_platform}
+qbs build --no-install -d build %{?_smp_mflags} profile:gcc \
+    modules.lirideployment.prefix:%{_prefix} \
+    modules.lirideployment.etcDir:%{_sysconfdir} \
+    modules.lirideployment.binDir:%{_bindir} \
+    modules.lirideployment.sbinDir:%{_sbindir} \
+    modules.lirideployment.libDir:%{_libdir} \
+    modules.lirideployment.libexecDir:%{_libexecdir} \
+    modules.lirideployment.includeDir:%{_includedir} \
+    modules.lirideployment.dataDir:%{_datadir} \
+    modules.lirideployment.docDir:%{_docdir} \
+    modules.lirideployment.manDir:%{_mandir} \
+    modules.lirideployment.infoDir:%{_infodir} \
+    modules.lirideployment.qmlDir:%{_qt5_qmldir} \
+    modules.lirideployment.pluginsDir:%{_qt5_plugindir}
 
 
 %install
-make install DESTDIR=%{buildroot} -C %{_target_platform}
+qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 
 
 %post -n plymouth-theme-lirios
@@ -77,6 +94,11 @@ if [ $1 -eq 0 ]; then
         %{_libexecdir}/plymouth/plymouth-generate-initrd
     fi
 fi
+
+
+%files -n liri-color-schemes
+%defattr(-,root,root,-)
+%{_datadir}/color-schemes/*.colors
 
 
 %files -n grub2-themes-lirios
@@ -100,5 +122,8 @@ fi
 
 
 %changelog
+* Tue Sep 04 2018 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 0.10.0-1
+- 0.10.0
+
 * Sat Sep 17 2016 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 0.8.90-1
 - Initial packaging.
