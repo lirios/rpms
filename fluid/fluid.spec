@@ -1,16 +1,14 @@
-%global snapdate @DATE@
-%global snaphash @HASH@
-
 Name:           fluid
 Summary:        Library for QtQuick apps with Material Design
 Version:        1.0.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 License:        MPLv2
 Url:            https://liri.io
 Source0:        https://github.com/lirios/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 
 Requires:       qt5-qtgraphicaleffects
 Requires:       qt5-qtquickcontrols2
+Requires:       qt5-qtsvg
 
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -35,7 +33,7 @@ Group:          Development/System
 Requires:       %{name} = %{version}-%{release}
 Requires:       qt5-qtdeclarative-devel%{?_isa}
 Requires:       qt5-qtquickcontrols2-devel%{?_isa}
-Requires:       liri-qbs-shared
+Requires:       qt5-qtsvg-devel%{?_isa}
 
 %description devel
 The %{name}-devel package contains libraries and header files for
@@ -88,3 +86,8 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata
 
 %files devel
 %{_datadir}/qbs/modules/Fluid/
+
+
+%changelog
+* Tue Sep 04 2018 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 1.0.0-3
+- Add missing dependencies
