@@ -51,6 +51,7 @@ qbs install --no-build -d build -v --install-root %{buildroot} profile:gcc
 %license LICENSE.GPLv3
 %doc AUTHORS.md README.md
 %{_sysconfdir}/calamares/*.conf
+%{_sysconfdir}/calamares/modules/*.conf
 %{_datadir}/calamares/branding/liri/
 %{_datadir}/liri-calamares-branding/
 %{_libdir}/calamares/modules/prepare/
