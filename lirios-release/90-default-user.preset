@@ -1,0 +1,7 @@
+# Enable the D-Bus service (including its socket for socket activation)
+enable dbus.socket
+enable dbus-daemon.service
+
+# This enables the pipewire service to be socket-activated for
+# individual user sessions
+enable pipewire.socket

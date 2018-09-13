@@ -1,0 +1,204 @@
+# We prefer NetworkManager over systemd
+disable systemd-timesyncd.service
+disable systemd-networkd.service
+disable systemd-networkd-wait-online.service
+disable systemd-resolved.service
+enable NetworkManager.service
+#enable NetworkManager-wait-online.service
+enable NetworkManager-dispatcher.service
+enable ModemManager.service
+
+# Disable sshd by default
+disable sshd.service
+disable sshd.socket
+
+# Locally-running services
+enable atd.*
+enable crond.*
+enable auditd.service
+enable restorecond.service
+enable irqbalance.service
+enable lm_sensors.service
+enable mcelog.*
+enable smartd.service
+enable pcscd.socket
+enable rngd.service
+
+# NTP
+enable chronyd.service
+
+# Bluetooth
+enable bluetooth.*
+
+# Avahi
+enable avahi-daemon.*
+
+# Enable cups on-demand socket activation by default
+enable cups.socket
+enable cups.path
+disable cups.service
+
+# Network facing
+enable firewalld.service
+
+# Storage
+enable multipathd.service
+enable libstoragemgmt.service
+enable lvm2-monitor.*
+enable lvm2-lvmetad.*
+enable lvm2-lvmpolld.*
+enable dm-event.*
+enable dmraid-activation.service
+
+# https://bugzilla.redhat.com/show_bug.cgi?id=855372
+enable mdmonitor.service
+enable mdmonitor-takeover.service
+
+# https://bugzilla.redhat.com/show_bug.cgi?id=876237
+enable spice-vdagentd.service
+
+# https://bugzilla.redhat.com/show_bug.cgi?id=885406
+enable qemu-guest-agent.service
+
+# https://bugzilla.redhat.com/show_bug.cgi?id=928726
+enable dnf-makecache.timer
+
+# https://bugzilla.redhat.com/show_bug.cgi?id=957135
+enable vmtoolsd.service
+
+# https://bugzilla.redhat.com/show_bug.cgi?id=976315
+enable dkms.service
+
+# https://bugzilla.redhat.com/show_bug.cgi?id=961878
+enable ipmi.service
+enable ipmievd.service
+
+# https://bugzilla.redhat.com/show_bug.cgi?id=1039351
+enable x509watch.timer
+
+# https://bugzilla.redhat.com/show_bug.cgi?id=1060754
+enable dnssec-triggerd.service
+
+# https://bugzilla.redhat.com/show_bug.cgi?id=1095353
+enable uuidd.socket
+
+# https://bugzilla.redhat.com/show_bug.cgi?id=1066421
+enable gpsd.socket
+
+# https://bugzilla.redhat.com/show_bug.cgi?id=1141607
+enable x2gocleansessions.service
+
+# https://bugzilla.redhat.com/show_bug.cgi?id=1215641
+enable unbound-anchor.timer
+
+# https://fedoraproject.org/wiki/Changes/UEFISecureBootBlacklistUpdates
+enable dbxtool.service
+
+# Other stuff
+# Note: abrt-ccpp.service is excluded in favor of systemd-coredump.
+enable abrtd.service
+enable abrt-journal-core.service
+enable abrt-oops.service
+enable abrt-xorg.service
+enable abrt-vmcore.service
+
+# Locally-running services
+enable ksm.service
+enable ksmtuned.service
+enable rootfs-resize.service
+enable sysstat.service
+enable sysstat-collect.timer
+enable sysstat-summary.timer
+enable uuidd.service
+enable xendomains.service
+enable xenstored.service
+enable xenconsoled.service
+
+# Desktop stuff
+# Locally-running services
+enable accounts-daemon.service
+enable rtkit-daemon.service
+enable upower.service
+enable udisks2.service
+enable polkit.service
+
+# https://bugzilla.redhat.com/show_bug.cgi?id=1187072
+enable timedatex.service
+
+# https://bugzilla.redhat.com/show_bug.cgi?id=1231745
+enable mlocate-updatedb.timer
+
+# https://bugzilla.redhat.com/show_bug.cgi?id=1218999
+enable sa-update.timer
+
+# Hyper-V guest support daemons
+# https://bugzilla.redhat.com/show_bug.cgi?id=1279322
+enable vmtoolsd.service
+
+# mcelog is a utility that collects and decodes Machine Check Exception data
+# on x86-32 and x86-64 systems.
+# https://bugzilla.redhat.com/show_bug.cgi?id=1302179
+enable mcelog.service
+
+# OPAL-prd is a utility specific to ppc64le systems
+# It is the "OPAL Processor Recovery Diagnostics Daemon"
+# https://bugzilla.redhat.com/show_bug.cgi?id=1312018
+enable opal-prd.service
+
+# virtlog.service is sometimes used by VMs started by libvirt.service
+# Enable virtlog.socket to have it socket activated
+# https://bugzilla.redhat.com/show_bug.cgi?id=1290357
+enable virtlogd.socket
+
+# lircd is the Linux Infrared Control daemon
+# Starting with version 0.9.4, it requires no manual configuration
+# https://bugzilla.redhat.com/show_bug.cgi?id=1340061
+enable lircd.socket
+
+# IPSec management
+# https://bugzilla.redhat.com/show_bug.cgi?id=1276285
+enable pluto.socket
+
+# https://bugzilla.redhat.com/show_bug.cgi?id=1367932
+# Automatically refresh installed snaps
+enable snapd.refresh.timer
+# Socket activated daemon to manage snaps
+enable snapd.socket
+
+# Support for dual-GPU systems
+# https://bugzilla.redhat.com/show_bug.cgi?id=1389762
+enable switcheroo-control.service
+
+# Support for the DRBD link-cleaning service
+# https://bugzilla.redhat.com/show_bug.cgi?id=1399387
+enable drbdlinksclean.service
+
+# Enable the System Security Services Daemon
+# https://bugzilla.redhat.com/show_bug.cgi?id=1427649
+enable sssd.service
+
+# Enable ostree-remount on ostree-based systems
+# (Does nothing on non-ostree systems)
+# https://bugzilla.redhat.com/show_bug.cgi?id=1451458
+enable ostree-remount.service
+
+# Enable Performance Co-Pilot services
+# https://bugzilla.redhat.com/show_bug.cgi?id=1472350
+enable pmcd.service
+enable pmlogger.service
+enable pmie.service
+
+# Enable SSSD Kerberos Credential Cache Server
+# https://bugzilla.redhat.com/show_bug.cgi?id=1475999
+enable sssd-kcm.socket
+enable sssd-secrets.socket
+
+# A mechanism to transfer state between the initramfs and the real
+# system. Obsolete since /run was introduced, but still used by some
+# services.
+# https://bugzilla.redhat.com/show_bug.cgi?id=1493479
+enable fedora-import-state.service
+
+# An initscripts mechanism for readonly root
+# https://bugzilla.redhat.com/show_bug.cgi?id=1493479
+enable fedora-readonly.service
