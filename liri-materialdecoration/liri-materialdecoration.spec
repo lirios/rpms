@@ -3,7 +3,7 @@
 Name:           liri-%{modulename}
 Summary:        Material Design decoration for Qt applications on Wayland
 Version:        1.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        LGPLv3
 Url:            https://liri.io
 Source0:        https://github.com/lirios/%{modulename}/releases/download/v%{version}/%{name}-%{version}.tar.xz
