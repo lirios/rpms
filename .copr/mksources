@@ -15,6 +15,7 @@ if ! test `command -v spectool`; then
 fi
 
 spectool -C $outdir -g $spec
+cp * $outdir
 
 LC_ALL=C rpmbuild --define "_sourcedir ${outdir}" --define "_specdir ${outdir}" --define "_builddir ${outdir}" \
     --define "_srcrpmdir ${outdir}" --define "_rpmdir ${outdir}" --define "_buildrootdir ${outdir}/.build" \
