@@ -3,7 +3,7 @@
 Name:           lirios-release
 Summary:        Liri OS release files
 Version:        0.10.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        MIT
 Source0:        LICENSE
 Source1:        README.license
@@ -75,7 +75,7 @@ cat >> %{buildroot}%{_rpmconfigdir}/macros.d/macros.dist << EOF
 
 %%fedora		%{dist_version}
 %%dist		.fc%{dist_version}
-%%fc%{version}		1
+%%fc%{dist_version}		1
 EOF
 
 # Install the .repo file
@@ -116,5 +116,8 @@ install -m 0644 %{SOURCE6} %{buildroot}%{_presetdir}/
 
 
 %changelog
+* Sat Sep 15 2018 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 0.10.0-2
+- Fix dist tag macros.
+
 * Mon Sep 03 2018 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 0.10.0-1
 - Setup for Liri OS 0.10.0.
