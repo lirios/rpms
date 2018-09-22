@@ -80,6 +80,13 @@ qbs build --no-install -d build %{?_smp_mflags} profile:gcc \
 %install
 qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 
+# Set SDDM theme
+mkdir -p %{buildroot}/usr/lib/sddm/sddm.conf.d
+cat > %{buildroot}/usr/lib/sddm/sddm.conf.d/00-lirios.conf <<EOF
+[Theme]
+Current=lirios
+EOF
+
 
 %post -n plymouth-theme-lirios
 export LIB=%{_lib}
@@ -119,4 +126,5 @@ fi
 %files -n sddm-theme-lirios
 %defattr(-,root,root,-)
 %doc AUTHORS.md README.md
+%{_prefix}/lib/sddm/sddm.conf.d/00-lirios.conf
 %{_datadir}/sddm/themes/lirios/
