@@ -13,6 +13,7 @@ License:        LGPLv3
 Url:            https://liri.io
 Source0:        https://github.com/lirios/%{modulename}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
 
+BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(Qt5WaylandClient)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  qt5-rpm-macros

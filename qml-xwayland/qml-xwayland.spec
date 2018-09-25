@@ -9,7 +9,7 @@ License:        GPLv3
 Url:            https://liri.io
 Source0:        https://github.com/lirios/%{name}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
 
-Requires:       xorg-x11-server-Xwayland
+BuildRequires:  gcc-c++
 BuildRequires:  qt5-qtbase-static >= 5.5.0
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -24,6 +24,8 @@ BuildRequires:  pkgconfig(xcb-cursor)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  qt5-rpm-macros
 BuildRequires:  liri-qbs-shared
+
+Requires:       xorg-x11-server-Xwayland
 
 %description
 This package provides a QML plugin with an XWayland

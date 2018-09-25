@@ -10,11 +10,13 @@ Release:        0.1%{?snaphash:.%{snapdate}git%(echo %{snaphash} | cut -c -13)}%
 License:        BSD-3
 Url:            https://liri.io
 Source0:        https://github.com/lirios/%{modulename}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
-BuildArch:      noarch
+
+BuildRequires:  gcc-c++
+BuildRequires:  qbs
 
 Requires:       qbs
 
-BuildRequires:  qbs
+BuildArch:      noarch
 
 %description
 Shared imports and modules for projects using the qbs build system.

@@ -12,6 +12,7 @@ License:        GPLv3+
 URL:            https://liri.io
 Source0:        https://github.com/lirios/%{name}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
 
+BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(xdg-desktop-portal) >= %{xdg_desktop_portal_version}
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)

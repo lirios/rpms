@@ -11,6 +11,7 @@ License:        GPLv3+
 URL:            https://liri.io
 Source0:        https://github.com/lirios/%{modulename}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
 
+BuildRequires:  gcc-c++
 BuildRequires:  qt5-qttools-devel
 BuildRequires:  fluid-devel
 BuildRequires:  libliri-devel

@@ -10,7 +10,10 @@ Release:        0.1%{?snaphash:.%{snapdate}git%(echo %{snaphash} | cut -c -13)}%
 License:        CC-BY-SA
 URL:            https://liri.io
 Source:         https://github.com/lirios/%{modulename}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
+
+BuildRequires:  gcc-c++
 BuildRequires:  liri-qbs-shared
+
 BuildArch:      noarch
 
 %description

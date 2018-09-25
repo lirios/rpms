@@ -12,6 +12,7 @@ URL:            https://liri.io
 Source0:        https://github.com/lirios/%{modulename}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
 BuildArch:      noarch
 
+BuildRequires:  gcc-c++
 BuildRequires:  qt5-rpm-macros
 BuildRequires:  liri-qbs-shared
 
