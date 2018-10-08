@@ -1,9 +1,10 @@
 %define dist_version 28
+%define lirios_version 0.10.0
 
 Name:           lirios-release
 Summary:        Liri OS release files
-Version:        0.10.0
-Release:        2%{?dist}
+Version:        %{dist_version}
+Release:        1%{?dist}
 License:        MIT
 Source0:        LICENSE
 Source1:        README.license
@@ -44,8 +45,8 @@ cp -a %{SOURCE0} %{SOURCE1} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} .
 
 %install
 install -d %{buildroot}%{_sysconfdir}
-echo "Liri OS release %{version}" > %{buildroot}%{_sysconfdir}/fedora-release
-echo "cpe:/o:lirios:lirios:%{version}" > %{buildroot}%{_sysconfdir}/system-release-cpe
+echo "Liri OS release %{lirios_version}" > %{buildroot}%{_sysconfdir}/fedora-release
+echo "cpe:/o:lirios:lirios:%{lirios_version}" > %{buildroot}%{_sysconfdir}/system-release-cpe
 cp -p %{buildroot}%{_sysconfdir}/fedora-release %{buildroot}%{_sysconfdir}/issue
 echo "Kernel \r on an \m (\l)" >> %{buildroot}%{_sysconfdir}/issue
 cp -p %{buildroot}%{_sysconfdir}/issue %{buildroot}%{_sysconfdir}/issue.net
@@ -56,12 +57,12 @@ ln -s fedora-release %{buildroot}%{_sysconfdir}/system-release
 install -d %{buildroot}/%{_prefix}/lib/os.release.d/
 cat << EOF >>%{buildroot}%{_prefix}/lib/os.release.d/os-release-lirios
 NAME="Liri OS"
-VERSION=%{version}
+VERSION=%{lirios_version}
 ID=lirios
-VERSION_ID=%{version}
-PRETTY_NAME="Liri OS %{version}"
+VERSION_ID=%{lirios_version}
+PRETTY_NAME="Liri OS %{lirios_version}"
 ANSI_COLOR="0;34"
-CPE_NAME="cpe:/o:lirios:lirios:%{version}"
+CPE_NAME="cpe:/o:lirios:lirios:%{lirios_version}"
 EOF
 # Create the symlink for /usr/lib/os-release
 ln -s ./os.release.d/os-release-lirios %{buildroot}%{_prefix}/lib/os-release
@@ -116,6 +117,10 @@ install -m 0644 %{SOURCE6} %{buildroot}%{_presetdir}/
 
 
 %changelog
+* Mon Oct 08 2018 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 28-1
+- Use the same version as Fedora since $releasever is often used,
+  for example in the official dnf repository files.
+
 * Sat Sep 15 2018 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 0.10.0-2
 - Fix dist tag macros.
 
