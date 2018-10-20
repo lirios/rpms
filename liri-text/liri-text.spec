@@ -2,7 +2,7 @@
 
 Name:           liri-%{modulename}
 Summary:        Advanced text editor
-Version:        0.3.0
+Version:        0.4.1
 Release:        1%{?dist}
 License:        GPLv3+
 URL:            https://liri.io
