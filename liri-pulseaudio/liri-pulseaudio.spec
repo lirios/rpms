@@ -65,8 +65,8 @@ qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 %files -f %{name}.lang
 %license LICENSE.GPLv3
 %doc AUTHORS.md README.md
-%{_datadir}/liri/settings/modules/pulseaudio/
+%{_datadir}/liri-settings/modules/pulseaudio/
 %{_datadir}/liri-shell/indicators/pulseaudio/
 %{_qt5_qmldir}/Liri/PulseAudio/
 # Not picked up by %find_lang
-%{_datadir}/liri/settings/translations/modules/pulseaudio_*.qm
+%{_datadir}/liri-settings/translations/modules/pulseaudio_*.qm
