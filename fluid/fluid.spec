@@ -1,7 +1,7 @@
 Name:           fluid
 Summary:        Library for QtQuick apps with Material Design
-Version:        1.0.0
-Release:        3%{?dist}
+Version:        1.1.0
+Release:        1%{?dist}
 License:        MPLv2
 Url:            https://liri.io
 Source0:        https://github.com/lirios/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
@@ -71,8 +71,8 @@ qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 
 
 %check
-#desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
-#appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata.xml
+desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata.xml
 
 
 %files
@@ -80,14 +80,9 @@ qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 %doc AUTHORS.md README.md
 %{_bindir}/fluid-demo
 %{_qt5_qmldir}/Fluid/
-#%{_datadir}/metainfo/io.liri.Fluid.Demo.appdata.xml
-#%{_datadir}/applications/io.liri.Fluid.Demo.desktop
+%{_datadir}/metainfo/io.liri.Fluid.Demo.appdata.xml
+%{_datadir}/applications/io.liri.Fluid.Demo.desktop
 
 
 %files devel
 %{_datadir}/qbs/modules/Fluid/
-
-
-%changelog
-* Tue Sep 04 2018 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 1.0.0-3
-- Add missing dependencies
