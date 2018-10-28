@@ -2,7 +2,7 @@
 
 Name:           liri-%{modulename}
 Summary:        Extra imports and modules for Qbs
-Version:        1.3.0
+Version:        1.4.0
 Release:        1%{dist}
 License:        BSD-3
 Url:            https://liri.io
