@@ -2,7 +2,7 @@
 
 Name:           liri-%{modulename}
 Summary:        Material Design calculator
-Version:        1.1.1
+Version:        1.2.0
 Release:        1%{?dist}
 License:        GPLv3+
 URL:            http://liri.io
@@ -57,14 +57,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.liri.C
 %license LICENSE.GPLv3
 %doc README.md
 %{_bindir}/liri-calculator
+%{_datadir}/liri-calculator/
 %{_datadir}/applications/io.liri.Calculator.desktop
 %{_datadir}/metainfo/io.liri.Calculator.appdata.xml
 %{_datadir}/icons/hicolor/*/*/io.liri.Calculator.png
-
-
-%changelog
-* Mon Oct 15 2018 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 1.1.1-1
-- Update to 1.1.1
-
-* Tue Sep 04 2018 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 1.1.0-1
-- Initial packaging
