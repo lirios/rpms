@@ -1,18 +1,6 @@
-%_liri_prefix %_prefix
-%_liri_archdatadir %_qt5_archdatadir
-%_liri_bindir %_liri_prefix/bin
-%_liri_datadir %_datadir
 %_liri_docdir /usr/share/doc
-%_liri_includedir %_includedir
-%_liri_libdir %_libdir
 %_liri_libexecdir %_libexecdir/liri
-%_liri_metainfodir %_metainfodir
-%_liri_qtplugindir %_qt5_plugindir
-%_liri_plugindir %_qt5_plugindir
-%_liri_sysconfdir %_sysconfdir
-%_liri_mandir %_liri_datadir/man
 %_liri_buildtype release
-%_liri_qmldir %_liri_archdatadir/qml
 
 %cmake_liri \
   QTDIR="%{_qt5_prefix}" ; export QTDIR ; \
@@ -25,13 +13,14 @@
     -DBUILD_TESTING:BOOL=FALSE \\\
     -DCMAKE_BUILD_TYPE=%{_liri_buildtype} \\\
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \\\
-    -DINSTALL_BINDIR:PATH=%{_liri_bindir} \\\
+    -DCMAKE_INSTALL_PREFIX=%{_prefix} \\\
+    -DINSTALL_BINDIR:PATH=%{_bindir} \\\
     -DINSTALL_INCLUDEDIR:PATH=%{_includedir} \\\
-    -DINSTALL_LIBDIR:PATH=%{_liri_libdir} \\\
-    -DINSTALL_PLUGINSDIR:PATH=${_liri_plugindir} \\\$
-    -DINSTALL_LIBEXECDIR:PATH=%{_libexecdir} \\\
-    -DINSTALL_QMLDIR:PATH=%{_liri_qmldir} \\\
-    -DINSTALL_DATADIR:PATH=%{_liri_datadir} \\\
-    -DINSTALL_METAINFODIR:PATH=%{_liri_metainfodir} \\\
+    -DINSTALL_LIBDIR:PATH=%{_libdir} \\\
+    -DINSTALL_PLUGINSDIR:PATH=%{_qt5_plugindir} \\\
+    -DINSTALL_LIBEXECDIR:PATH=%{_liri_libexecdir} \\\
+    -DINSTALL_QMLDIR:PATH=%{_qt5_qmldir} \\\
+    -DINSTALL_DATADIR:PATH=%{_datadir} \\\
+    -DINSTALL_METAINFODIR:PATH=%{_metainfodir} \\\
     -DINSTALL_DOCDIR:PATH=%{_liri_docdir} \\\
-    -DINSTALL_SYSCONFDIR:PATH=%{_liri_sysconfdir}
+    -DINSTALL_SYSCONFDIR:PATH=%{_sysconfdir}
