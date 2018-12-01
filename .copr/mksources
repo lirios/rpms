@@ -37,7 +37,11 @@ if [ -z "$_gitdate" -o -z "$_githash" ]; then
 fi
 
 qbs_filename=$(echo $pkgname | sed -e 's,^liri-,,g' -e 's,^qt5-,,g').qbs
-version=$(cat $qbs_filename | grep 'property string version' | perl -p -e 's@.+"([\d.]+)"$@$1@g')
+if [ -f $qbs_filename ]; then
+    version=$(cat $qbs_filename | grep 'property string version' | perl -p -e 's@.+"([\d.]+)"$@$1@g')
+else
+    version=$(cat CMakeLists.txt | grep -E '\sVERSION "[0-9.]+"$' | perl -p -e 's@.+"([\d.]+)"$@$1@g')
+fi
 if [ -z "$version" ]; then
     echo "Failed to determine package version"
     exit 1
