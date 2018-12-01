@@ -16,8 +16,7 @@ BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5Xdg)
-BuildRequires:  qt5-rpm-macros
-BuildRequires:  liri-qbs-shared
+BuildRequires:  liri-rpm-macros
 
 %description
 Library for all Liri components.
@@ -35,30 +34,18 @@ developing applications that use %{name}.
 
 %prep
 %setup -q -n %{?snaphash:%{name}-%{snaphash}}%{!?snaphash:%{name}-%{version}}
-qbs setup-toolchains --type gcc /usr/bin/g++ gcc
-qbs setup-qt %{_qt5_qmake} qt5
-qbs config profiles.qt5.baseProfile gcc
 
 
 %build
-qbs build --no-install -d build %{?_smp_mflags} profile:qt5 \
-    modules.lirideployment.prefix:%{_prefix} \
-    modules.lirideployment.etcDir:%{_sysconfdir} \
-    modules.lirideployment.binDir:%{_bindir} \
-    modules.lirideployment.sbinDir:%{_sbindir} \
-    modules.lirideployment.libDir:%{_libdir} \
-    modules.lirideployment.libexecDir:%{_libexecdir} \
-    modules.lirideployment.includeDir:%{_includedir} \
-    modules.lirideployment.dataDir:%{_datadir} \
-    modules.lirideployment.docDir:%{_docdir} \
-    modules.lirideployment.manDir:%{_mandir} \
-    modules.lirideployment.infoDir:%{_infodir} \
-    modules.lirideployment.qmlDir:%{_qt5_qmldir} \
-    modules.lirideployment.pluginsDir:%{_qt5_plugindir}
+mkdir -p %{_target_platform}
+pushd %{_target_platform}
+%{cmake_liri} ..
+popd
+make %{?_smp_mflags} -C %{_target_platform}
 
 
 %install
-qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
+make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 
 %files
@@ -68,12 +55,12 @@ qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 %{_qt5_qmldir}/Liri/Core/
 %{_qt5_qmldir}/Liri/Device/
 %{_qt5_qmldir}/Liri/Notifications/
-%{_libdir}/libLiriCore.so.*
-%{_libdir}/libLiriDBusService.so.*
-%{_libdir}/libLiriLocalDevice.so.*
-%{_libdir}/libLiriLogind.so.*
-%{_libdir}/libLiriModels.so.*
-%{_libdir}/libLiriNotifications.so.*
+%{_libdir}/libLiri1Core.so.*
+%{_libdir}/libLiri1DBusService.so.*
+%{_libdir}/libLiri1LocalDevice.so.*
+%{_libdir}/libLiri1Logind.so.*
+%{_libdir}/libLiri1Models.so.*
+%{_libdir}/libLiri1Notifications.so.*
 
 
 %files devel
@@ -83,27 +70,21 @@ qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 %{_includedir}/LiriLogind/
 %{_includedir}/LiriModels/
 %{_includedir}/LiriNotifications/
-%{_libdir}/libLiriCore.so
-%{_libdir}/libLiriDBusService.so
-%{_libdir}/libLiriLocalDevice.so
-%{_libdir}/libLiriLogind.so
-%{_libdir}/libLiriModels.so
-%{_libdir}/libLiriNotifications.so
-%{_datadir}/qbs/modules/LiriCore/
-%{_datadir}/qbs/modules/LiriDBusService/
-%{_datadir}/qbs/modules/LiriLocalDevice/
-%{_datadir}/qbs/modules/LiriLogind/
-%{_datadir}/qbs/modules/LiriModels/
-%{_datadir}/qbs/modules/LiriNotifications/
-%{_libdir}/cmake/LiriCore/
-%{_libdir}/cmake/LiriDBusService/
-%{_libdir}/cmake/LiriLocalDevice/
-%{_libdir}/cmake/LiriLogind/
-%{_libdir}/cmake/LiriModels/
-%{_libdir}/cmake/LiriNotifications/
-%{_libdir}/pkgconfig/LiriCore.pc
-%{_libdir}/pkgconfig/LiriDBusService.pc
-%{_libdir}/pkgconfig/LiriLocalDevice.pc
-%{_libdir}/pkgconfig/LiriLogind.pc
-%{_libdir}/pkgconfig/LiriModels.pc
-%{_libdir}/pkgconfig/LiriNotifications.pc
+%{_libdir}/libLiri1Core.so
+%{_libdir}/libLiri1DBusService.so
+%{_libdir}/libLiri1LocalDevice.so
+%{_libdir}/libLiri1Logind.so
+%{_libdir}/libLiri1Models.so
+%{_libdir}/libLiri1Notifications.so
+%{_libdir}/cmake/Liri1Core/
+%{_libdir}/cmake/Liri1DBusService/
+%{_libdir}/cmake/Liri1LocalDevice/
+%{_libdir}/cmake/Liri1Logind/
+%{_libdir}/cmake/Liri1Models/
+%{_libdir}/cmake/Liri1Notifications/
+%{_libdir}/pkgconfig/Liri1Core.pc
+%{_libdir}/pkgconfig/Liri1DBusService.pc
+%{_libdir}/pkgconfig/Liri1LocalDevice.pc
+%{_libdir}/pkgconfig/Liri1Logind.pc
+%{_libdir}/pkgconfig/Liri1Models.pc
+%{_libdir}/pkgconfig/Liri1Notifications.pc
