@@ -16,9 +16,10 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(xdg-desktop-portal) >= %{xdg_desktop_portal_version}
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  qt5-rpm-macros
-BuildRequires:  liri-qbs-shared
-BuildRequires:  fluid-devel
+BuildRequires:  pkgconfig(Qt5Qml)
+BuildRequires:  pkgconfig(Qt5Quick)
+BuildRequires:  pkgconfig(Qt5QuickControls2)
+BuildRequires:  liri-rpm-macros
 BuildRequires:  libliri-devel
 
 Requires:       xdg-desktop-portal >= %{xdg_desktop_portal_version}
@@ -32,35 +33,23 @@ pieces of Liri libraries and infrastructure.
 
 %prep
 %setup -q -n %{?snaphash:%{name}-%{snaphash}}%{!?snaphash:%{name}-%{version}}
-qbs setup-toolchains --type gcc /usr/bin/g++ gcc
-qbs setup-qt %{_qt5_qmake} qt5
-qbs config profiles.qt5.baseProfile gcc
 
 
 %build
-qbs build --no-install -d build %{?_smp_mflags} profile:qt5 \
-    modules.lirideployment.prefix:%{_prefix} \
-    modules.lirideployment.etcDir:%{_sysconfdir} \
-    modules.lirideployment.binDir:%{_bindir} \
-    modules.lirideployment.sbinDir:%{_sbindir} \
-    modules.lirideployment.libDir:%{_libdir} \
-    modules.lirideployment.libexecDir:%{_libexecdir} \
-    modules.lirideployment.includeDir:%{_includedir} \
-    modules.lirideployment.dataDir:%{_datadir} \
-    modules.lirideployment.docDir:%{_docdir} \
-    modules.lirideployment.manDir:%{_mandir} \
-    modules.lirideployment.infoDir:%{_infodir} \
-    modules.lirideployment.qmlDir:%{_qt5_qmldir} \
-    modules.lirideployment.pluginsDir:%{_qt5_plugindir}
+mkdir -p %{_target_platform}
+pushd %{_target_platform}
+%{cmake_liri} ..
+popd
+make %{?_smp_mflags} -C %{_target_platform}
 
 
 %install
-qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
+make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 
 %files
 %license LICENSE.GPLv3
 %doc AUTHORS.md README.md
-%{_libexecdir}/xdg-desktop-portal-liri
+%{_liri_libexecdir}/xdg-desktop-portal-liri
 %{_datadir}/xdg-desktop-portal/portals/liri.portal
 %{_datadir}/dbus-1/services/org.freedesktop.impl.portal.desktop.liri.service

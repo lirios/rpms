@@ -17,15 +17,14 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Udev)
-BuildRequires:  pkgconfig(LiriLogind)
+BuildRequires:  pkgconfig(Liri1Logind)
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libinput) >= 0.12
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(gbm)
-BuildRequires:  qt5-rpm-macros
-BuildRequires:  liri-qbs-shared
+BuildRequires:  liri-rpm-macros
 
 %description
 This package includes a Qt platform plugin with support for kms and DRM.
@@ -43,36 +42,21 @@ developing applications that use %{name}.
 
 %prep
 %setup -q -n %{?snaphash:%{modulename}-%{snaphash}}%{!?snaphash:%{name}-%{version}}
-qbs setup-toolchains --type gcc /usr/bin/g++ gcc
-qbs setup-qt %{_qt5_qmake} qt5
-qbs config profiles.qt5.baseProfile gcc
 
 
 %build
-qbs build --no-install -d build %{?_smp_mflags} profile:qt5 \
-    modules.lirideployment.prefix:%{_prefix} \
-    modules.lirideployment.etcDir:%{_sysconfdir} \
-    modules.lirideployment.binDir:%{_bindir} \
-    modules.lirideployment.sbinDir:%{_sbindir} \
-    modules.lirideployment.libDir:%{_libdir} \
-    modules.lirideployment.libexecDir:%{_libexecdir} \
-    modules.lirideployment.includeDir:%{_includedir} \
-    modules.lirideployment.dataDir:%{_datadir} \
-    modules.lirideployment.docDir:%{_docdir} \
-    modules.lirideployment.manDir:%{_mandir} \
-    modules.lirideployment.infoDir:%{_infodir} \
-    modules.lirideployment.qmlDir:%{_qt5_qmldir} \
-    modules.lirideployment.pluginsDir:%{_qt5_plugindir}
+mkdir -p %{_target_platform}
+pushd %{_target_platform}
+%{cmake_liri} ..
+popd
+make %{?_smp_mflags} -C %{_target_platform}
 
 
 %install
-qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
-rm -f %{buildroot}%{_libdir}/libLiriEdidSupport.a
-rm -f %{buildroot}%{_libdir}/libLiriKmsSupport.a
-rm -f %{buildroot}%{_libdir}/libLiriLibInput.a
-rm -rf %{buildroot}%{_includedir}/LiriEdidSupport/
-rm -rf %{buildroot}%{_includedir}/LiriKmsSupport/
-rm -rf %{buildroot}%{_includedir}/LiriLibInput/
+make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
+rm -f %{buildroot}%{_libdir}/libLiri1{EdidSupport,KmsSupport,LibInput}.a
+rm -rf %{buildroot}%{_includedir}/Liri{EglFSDeviceIntegration,EglFSKmsSupport,EdidSupport,KmsSupport,LibInput}
+rm -f %{buildroot}%{_libdir}/libLiri1EglFS{DeviceIntegration,KmsSupport}.so
 
 
 %post -p /sbin/ldconfig
@@ -86,17 +70,12 @@ rm -rf %{buildroot}%{_includedir}/LiriLibInput/
 %doc AUTHORS.md README.md
 %{_qt5_plugindir}/platforms/liblirieglfs.so
 %{_qt5_plugindir}/liri/egldeviceintegrations/
-%{_libdir}/libLiriEglFSDeviceIntegration.so.*
-%{_libdir}/libLiriEglFSKmsSupport.so.*
-%{_libdir}/libLiriPlatformHeaders.so.*
+%{_libdir}/libLiri1EglFSDeviceIntegration.so.*
+%{_libdir}/libLiri1EglFSKmsSupport.so.*
+%{_libdir}/libLiri1PlatformHeaders.so.*
 
 %files devel
-%{_includedir}/LiriEglFSDeviceIntegration/
-%{_includedir}/LiriEglFSKmsSupport/
 %{_includedir}/LiriPlatformHeaders/
-%{_datadir}/qbs/modules/LiriEglFSDeviceIntegration/
-%{_datadir}/qbs/modules/LiriEglFSKmsSupport/
-%{_datadir}/qbs/modules/LiriPlatformHeaders/
-%{_libdir}/libLiriEglFSDeviceIntegration.so
-%{_libdir}/libLiriEglFSKmsSupport.so
-%{_libdir}/libLiriPlatformHeaders.so
+%{_libdir}/cmake/Liri1PlatformHeaders/
+%{_libdir}/libLiri1PlatformHeaders.so
+%{_libdir}/pkgconfig/Liri1PlatformHeaders.pc
