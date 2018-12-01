@@ -54,6 +54,7 @@ popd >/dev/null
 rm -rf /tmp/$pkgname
 ####
 
+cp ${pkgdir}/* ${outdir}
 sed -e "s,@VERSION@,${newversion},g" -e "s,@DATE@,${_gitdate},g" -e "s,@HASH@,${_githash},g" ${pkgdir}/${pkgname}.spec > ${outdir}/${pkgname}.spec
 pushd $outdir >/dev/null
 spectool -g ${pkgname}.spec
