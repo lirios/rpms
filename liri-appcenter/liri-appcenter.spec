@@ -75,7 +75,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.liri.A
 %{_datadir}/applications/io.liri.AppCenter.desktop
 %{_datadir}/applications/io.liri.AppCenter.Flatpak.desktop
 %{_datadir}/metainfo/io.liri.AppCenter.appdata.xml
-%{_libdir}/libLiriAppCenter.so.*
+%{_libdir}/libLiri1AppCenter.so.*
 %{_qt5_qmldir}/Liri/AppCenter/
 %{_qt5_plugindir}/liri/appcenter/
 
