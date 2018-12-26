@@ -84,4 +84,3 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.liri.A
 %{_includedir}/LiriAppCenter/
 %{_libdir}/libLiri1AppCenter.so
 %{_libdir}/cmake/Liri1AppCenter/
-%{_libdir}/pkgconfig/Liri1AppCenter.pc
