@@ -21,6 +21,7 @@ BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(Qt5WaylandClient)
 BuildRequires:  liri-rpm-macros
 BuildRequires:  desktop-file-utils
 BuildRequires:  libappstream-glib
