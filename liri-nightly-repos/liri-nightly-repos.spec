@@ -1,6 +1,6 @@
 Name:           liri-nightly-repos
 Summary:        Liri unstable repository
-Version:        1
+Version:        2
 Release:        1%{?dist}
 License:        MIT
 Source0:        plfiorini-liri-nightly.repo
