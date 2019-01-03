@@ -5,7 +5,7 @@
 
 Name:           liri-%{modulename}
 Summary:        EGL fullscreen platform plugin
-Version:        0.10.0
+Version:        @VERSION@
 Release:        0.1%{?snaphash:.%{snapdate}git%(echo %{snaphash} | cut -c -13)}%{?dist}
 License:        LGPLv3
 Url:            https://liri.io
