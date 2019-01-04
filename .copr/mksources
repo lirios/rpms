@@ -38,10 +38,10 @@ if [ -e ${pkgdir}/.sourceinfo ]; then
     fi
 
     qbs_filename=$(echo $pkgname | sed -e 's,^liri-,,g' -e 's,^qt5-,,g').qbs
-    if [ -f $qbs_filename ]; then
-        version=$(cat $qbs_filename | grep 'property string version' | perl -p -e 's@.+"([\d.]+)"$@$1@g')
-    else
+    if [ -f CMakeLists.txt ]; then
         version=$(cat CMakeLists.txt | grep -E '\sVERSION "[0-9.]+"$' | perl -p -e 's@.+"([\d.]+)"$@$1@g')
+    elif [ -f $qbs_filename ]; then
+        version=$(cat $qbs_filename | grep 'property string version' | perl -p -e 's@.+"([\d.]+)"$@$1@g')
     fi
     if [ -z "$version" ]; then
         echo "Failed to determine package version"
