@@ -21,7 +21,7 @@ BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(polkit-qt5-1)
 BuildRequires:  pkgconfig(polkit-gobject-1)
-BuildRequires:  pkgconfig(Qt5Xdg)
+BuildRequires:  cmake(Liri1Xdg)
 BuildRequires:  qt5-qttools
 BuildRequires:  qt5-qttools-devel
 BuildRequires:  liri-rpm-macros

@@ -21,10 +21,10 @@ BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5WaylandClient)
 BuildRequires:  pkgconfig(Qt5WaylandCompositor)
-BuildRequires:  pkgconfig(Qt5Xdg)
 BuildRequires:  pkgconfig(Qt5AccountsService)
 BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(polkit-qt5-1)
+BuildRequires:  cmake(Liri1Xdg)
 BuildRequires:  cmake(KF5Solid)
 BuildRequires:  pam-devel
 BuildRequires:  git

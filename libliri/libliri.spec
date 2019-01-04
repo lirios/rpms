@@ -15,7 +15,6 @@ BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
-BuildRequires:  pkgconfig(Qt5Xdg)
 BuildRequires:  liri-rpm-macros
 
 %description
@@ -55,12 +54,14 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_qt5_qmldir}/Liri/Core/
 %{_qt5_qmldir}/Liri/Device/
 %{_qt5_qmldir}/Liri/Notifications/
+%{_qt5_qmldir}/Liri/Xdg/
 %{_libdir}/libLiri1Core.so.*
 %{_libdir}/libLiri1DBusService.so.*
 %{_libdir}/libLiri1LocalDevice.so.*
 %{_libdir}/libLiri1Logind.so.*
 %{_libdir}/libLiri1Models.so.*
 %{_libdir}/libLiri1Notifications.so.*
+%{_libdir}/libLiri1Xdg.so.*
 
 
 %files devel
@@ -70,21 +71,25 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_includedir}/LiriLogind/
 %{_includedir}/LiriModels/
 %{_includedir}/LiriNotifications/
+%{_includedir}/LiriXdg/
 %{_libdir}/libLiri1Core.so
 %{_libdir}/libLiri1DBusService.so
 %{_libdir}/libLiri1LocalDevice.so
 %{_libdir}/libLiri1Logind.so
 %{_libdir}/libLiri1Models.so
 %{_libdir}/libLiri1Notifications.so
+%{_libdir}/libLiri1Xdg.so
 %{_libdir}/cmake/Liri1Core/
 %{_libdir}/cmake/Liri1DBusService/
 %{_libdir}/cmake/Liri1LocalDevice/
 %{_libdir}/cmake/Liri1Logind/
 %{_libdir}/cmake/Liri1Models/
 %{_libdir}/cmake/Liri1Notifications/
+%{_libdir}/cmake/Liri1Xdg/
 %{_libdir}/pkgconfig/Liri1Core.pc
 %{_libdir}/pkgconfig/Liri1DBusService.pc
 %{_libdir}/pkgconfig/Liri1LocalDevice.pc
 %{_libdir}/pkgconfig/Liri1Logind.pc
 %{_libdir}/pkgconfig/Liri1Models.pc
 %{_libdir}/pkgconfig/Liri1Notifications.pc
+%{_libdir}/pkgconfig/Liri1Xdg.pc
