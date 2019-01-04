@@ -21,6 +21,8 @@ fi
 pkgdir=$(realpath `dirname $spec`)
 pkgname=$(basename $spec .spec)
 
+cp ${pkgdir}/* ${outdir}
+
 if [ -e ${pkgdir}/.sourceinfo ]; then
     source ${pkgdir}/.sourceinfo
 
@@ -58,7 +60,6 @@ if [ -e ${pkgdir}/.sourceinfo ]; then
     sed -e "s,@VERSION@,${newversion},g" -e "s,@DATE@,${_gitdate},g" -e "s,@HASH@,${_githash},g" ${pkgdir}/${pkgname}.spec > ${outdir}/${pkgname}.spec
 fi
 
-cp ${pkgdir}/* ${outdir}
 pushd $outdir >/dev/null
 spectool -g ${pkgname}.spec
 LC_ALL=C rpmbuild --define "_sourcedir ${outdir}" --define "_specdir ${outdir}" --define "_builddir ${outdir}" \
