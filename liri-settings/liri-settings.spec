@@ -14,6 +14,7 @@ Source0:        https://github.com/lirios/%{modulename}/%{?snaphash:archive}%{!?
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
