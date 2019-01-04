@@ -54,7 +54,6 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_qt5_qmldir}/Liri/Core/
 %{_qt5_qmldir}/Liri/Device/
 %{_qt5_qmldir}/Liri/Notifications/
-%{_qt5_qmldir}/Liri/Xdg/
 %{_libdir}/libLiri1Core.so.*
 %{_libdir}/libLiri1DBusService.so.*
 %{_libdir}/libLiri1LocalDevice.so.*
