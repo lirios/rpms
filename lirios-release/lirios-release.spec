@@ -1,4 +1,4 @@
-%define dist_version 28
+%define dist_version 29
 %define lirios_version 0.10.0
 
 Name:           lirios-release
@@ -117,6 +117,9 @@ install -m 0644 %{SOURCE6} %{buildroot}%{_presetdir}/
 
 
 %changelog
+* Sat Jan 05 2019 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 29-1
+- Update to Fedora 29.
+
 * Mon Oct 08 2018 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 28-1
 - Use the same version as Fedora since $releasever is often used,
   for example in the official dnf repository files.
