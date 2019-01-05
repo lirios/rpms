@@ -44,16 +44,19 @@ make %{?_smp_mflags} -C %{_target_platform}
 %install
 make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
+%find_lang %{name} --all-name --with-qt
+
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/io.liri.Files.desktop
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.liri.Files.appdata.xml
 
 
-%files
+%files -f %{name}.lang
 %license LICENSE.GPLv3
 %doc AUTHORS.md README.md
 %{_bindir}/liri-files
+%{_datadir}/liri-files/
 %{_datadir}/applications/io.liri.Files.desktop
 %{_datadir}/metainfo/io.liri.Files.appdata.xml
 %{_qt5_qmldir}/Liri/Files/
