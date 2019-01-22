@@ -40,6 +40,7 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %files
 %license LICENSE.GPLv3
 %doc AUTHORS.md README.md
+%{_bindir}/calamares.sh
 %{_sysconfdir}/calamares/*.conf
 %{_sysconfdir}/calamares/modules/*.conf
 %{_datadir}/calamares/branding/liri/
