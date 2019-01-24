@@ -1,3 +1,7 @@
+# D-Bus
+enable dbus.socket
+enable dbus-daemon.service
+
 # We prefer NetworkManager over systemd
 disable systemd-timesyncd.service
 disable systemd-networkd.service

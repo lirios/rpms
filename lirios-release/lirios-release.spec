@@ -4,7 +4,7 @@
 Name:           lirios-release
 Summary:        Liri OS release files
 Version:        %{dist_version}
-Release:        1%{?dist}
+Release:        2%{?dist}
 License:        MIT
 Source0:        LICENSE
 Source1:        README.license
@@ -117,6 +117,9 @@ install -m 0644 %{SOURCE6} %{buildroot}%{_presetdir}/
 
 
 %changelog
+* Thu Jan 24 2019 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 29-2
+- Enable dbus-daemon explicitely.
+
 * Sat Jan 05 2019 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 29-1
 - Update to Fedora 29.
 
