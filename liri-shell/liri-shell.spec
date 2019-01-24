@@ -33,7 +33,7 @@ BuildRequires:  liri-rpm-macros
 BuildRequires:  libliri-devel
 BuildRequires:  qt5-qtgsettings-devel
 BuildRequires:  liri-eglfs-devel
-BuildRequires:  pipewire-devel
+#BuildRequires:  pipewire-devel
 
 Requires:       qt5-qtsvg
 Requires:       qt5-qttools
@@ -70,7 +70,10 @@ with the SDDM theme.
 %build
 mkdir -p %{_target_platform}
 pushd %{_target_platform}
-%{cmake_liri} -DINSTALL_SYSTEMDUSERUNITDIR:PATH=%{_userunitdir} ..
+%{cmake_liri} \
+    -DINSTALL_SYSTEMDUSERUNITDIR:PATH=%{_userunitdir} \
+    -DLIRI_SHELL_WITH_SCREENCAST:BOOL=OFF
+..
 popd
 make %{?_smp_mflags} -C %{_target_platform}
 
