@@ -72,7 +72,7 @@ mkdir -p %{_target_platform}
 pushd %{_target_platform}
 %{cmake_liri} \
     -DINSTALL_SYSTEMDUSERUNITDIR:PATH=%{_userunitdir} \
-    -DLIRI_SHELL_WITH_SCREENCAST:BOOL=OFF
+    -DLIRI_SHELL_WITH_SCREENCAST:BOOL=OFF \
 ..
 popd
 make %{?_smp_mflags} -C %{_target_platform}
