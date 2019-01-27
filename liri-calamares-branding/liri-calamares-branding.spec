@@ -45,4 +45,4 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_sysconfdir}/calamares/modules/*.conf
 %{_datadir}/calamares/branding/liri/
 %{_datadir}/liri-calamares-branding/
-%{_libdir}/calamares/modules/prepare/
+%{_libdir}/calamares/modules/*/
