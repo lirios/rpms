@@ -16,6 +16,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  liri-rpm-macros
 
 Requires:       calamares
+Requires:       rpm-ostree
 
 %description
 Liri OS branding and customizations for Calamares.
