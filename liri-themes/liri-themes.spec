@@ -3,7 +3,7 @@
 
 %define modulename themes
 
-%global _grubdir /boot/grub
+%global _grubdir /boot/grub2
 %global _grubthemedir %{_grubdir}/themes
 
 Summary:        Liri themes
