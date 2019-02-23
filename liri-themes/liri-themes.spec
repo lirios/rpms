@@ -45,6 +45,7 @@ This package contains the "Liri OS" theme for GRUB.
 %package -n plymouth-theme-lirios
 Summary:        Liri OS theme for Plymouth
 Requires:       plymouth-plugin-two-step
+Provides:       plymouth(system-theme) = %{version}-%{release}
 
 %description -n plymouth-theme-lirios
 This package contains the "Liri OS" theme for Plymouth.
