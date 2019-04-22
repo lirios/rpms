@@ -2,7 +2,7 @@
 
 Name:           qt5-%{qt_module}
 Summary:        Qt5 - GSettings addon
-Version:        1.1.0
+Version:        1.3.0
 Release:        1%{?dist}
 
 License:        LGPLv3+
@@ -15,9 +15,7 @@ BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  qt5-qtbase-devel
-BuildRequires:  qt5-rpm-macros
-BuildRequires:  liri-qbs-shared
+BuildRequires:  liri-rpm-macros
 
 Requires:       dconf
 
@@ -28,7 +26,6 @@ Qt-style API wrapper for GSettings.
 %package devel
 Summary:    Development files for %{name}
 Requires:   %{name}%{?isa} = %{version}-%{release}
-Requires:   qbs
 
 %description devel
 The %{name}-devel package contains libraries and header files for
@@ -37,30 +34,18 @@ developing applications that use %{name}.
 
 %prep
 %setup -q -n %{qt_module}-%{version}
-qbs setup-toolchains --type gcc /usr/bin/g++ gcc
-qbs setup-qt %{_qt5_qmake} qt5
-qbs config profiles.qt5.baseProfile gcc
 
 
 %build
-qbs build --no-install -d build %{?_smp_mflags} profile:qt5 \
-    modules.lirideployment.prefix:%{_prefix} \
-    modules.lirideployment.etcDir:%{_sysconfdir} \
-    modules.lirideployment.binDir:%{_bindir} \
-    modules.lirideployment.sbinDir:%{_sbindir} \
-    modules.lirideployment.libDir:%{_libdir} \
-    modules.lirideployment.libexecDir:%{_libexecdir} \
-    modules.lirideployment.includeDir:%{_includedir} \
-    modules.lirideployment.dataDir:%{_datadir} \
-    modules.lirideployment.docDir:%{_docdir} \
-    modules.lirideployment.manDir:%{_mandir} \
-    modules.lirideployment.infoDir:%{_infodir} \
-    modules.lirideployment.qmlDir:%{_qt5_qmldir} \
-    modules.lirideployment.pluginsDir:%{_qt5_plugindir}
+mkdir -p %{_target_platform}
+pushd %{_target_platform}
+%{cmake_liri} ..
+popd
+make %{?_smp_mflags} -C %{_target_platform}
 
 
 %install
-qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
+make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 
 %post -p /sbin/ldconfig
@@ -78,12 +63,6 @@ qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
 
 %files devel
 %{_includedir}/Qt5GSettings/
-%{_datadir}/qbs/modules/Qt5GSettings/
 %{_libdir}/libQt5GSettings.so
 %{_libdir}/cmake/Qt5GSettings/
 %{_libdir}/pkgconfig/Qt5GSettings.pc
-
-
-%changelog
-* Fri Apr 06 2018 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 1.1.0-1
-- Initial packaging.
