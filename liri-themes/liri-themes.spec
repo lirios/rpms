@@ -87,7 +87,6 @@ EOF
 export LIB=%{_lib}
 if [ $1 -eq 1 ]; then
     %{_sbindir}/plymouth-set-default-theme lirios
-    %{_libexecdir}/plymouth/plymouth-generate-initrd
 fi
 
 
@@ -96,7 +95,6 @@ export LIB=%{_lib}
 if [ $1 -eq 0 ]; then
     if [ "$(%{_sbindir}/plymouth-set-default-theme)" == "lirios" ]; then
         %{_sbindir}/plymouth-set-default-theme --reset
-        %{_libexecdir}/plymouth/plymouth-generate-initrd
     fi
 fi
 
