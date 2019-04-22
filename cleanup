@@ -1,0 +1,24 @@
+#!/usr/bin/python3
+
+from copr.v3 import Client, BuildProxy, PackageProxy
+
+ownername = 'plfiorini'
+projectname = 'liri-nightly'
+
+# Create an API client from config file
+client = Client.create_from_config_file()
+
+# Create build proxy from config file
+build_proxy = BuildProxy.create_from_config_file()
+
+# Create a package proxy from config file
+package_proxy = PackageProxy.create_from_config_file()
+
+# Iterate over all packages and keep only the first successful build
+for project in package_proxy.get_list(ownername, projectname):
+    found = False
+    for build in build_proxy.get_list(ownername, projectname, packagename=project.name):
+        if found is False and build.state == 'succeeded':
+            found = True
+        else:
+            build_proxy.delete(build.id)
