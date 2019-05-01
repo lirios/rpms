@@ -1,7 +1,7 @@
 Summary:        Liri OS customization
 Name:           lirios-customization
-Version:        0.9.0
-Release:        1.20161009%{?dist}
+Version:        0.10.0
+Release:        1.20190501%{?dist}
 URL:            http://liri.io
 License:        MIT
 BuildArch:      noarch
@@ -36,5 +36,8 @@ EOF
 
 
 %changelog
+* Wed May 01 2019 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 0.10.0-1.20190501
+- Update version.
+
 * Sun Oct 09 2016 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 0.9.0-1.20161009
 - Initial packaging.
