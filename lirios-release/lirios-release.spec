@@ -1,10 +1,10 @@
-%define dist_version 29
+%define dist_version 30
 %define lirios_version 0.10.0
 
 Name:           lirios-release
 Summary:        Liri OS release files
 Version:        %{dist_version}
-Release:        3
+Release:        1
 License:        MIT
 Source0:        LICENSE
 Source1:        README.license
@@ -13,6 +13,7 @@ Source3:        85-display-manager.preset
 Source4:        90-default.preset
 Source5:        90-default-user.preset
 Source6:        99-default-disable.preset
+Source7:        lirios.conf
 
 # for macros.systemd
 BuildRequires:  systemd
@@ -94,6 +95,10 @@ install -m 0644 %{SOURCE4} %{buildroot}%{_presetdir}/
 install -m 0644 %{SOURCE5} %{buildroot}/%{_userpresetdir}/
 install -m 0644 %{SOURCE6} %{buildroot}%{_presetdir}/
 
+# Install the OSTree remote config
+install -d -m 755 %{buildroot}/etc/ostree/remotes.d/
+install -m 644 %{SOURCE7} %{buildroot}/etc/ostree/remotes.d/
+
 
 %files
 %license LICENSE README.license
@@ -115,9 +120,15 @@ install -m 0644 %{SOURCE6} %{buildroot}%{_presetdir}/
 %{_presetdir}/99-default-disable.preset
 %dir %{_userpresetdir}/
 %{_userpresetdir}/90-default-user.preset
+%dir /etc/ostree/remotes.d/
+/etc/ostree/remotes.d/lirios.conf
 
 
 %changelog
+* Wed May 01 2019 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 30-1
+- Add OSTree remote config.
+- Update to Fedora 30.
+
 * Fri Feb 22 2019 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 29-3
 - Provides system-release(releasever) = 29 so that libdnf will know
   the Fedora version we are using and expand $releasever accordingly.
