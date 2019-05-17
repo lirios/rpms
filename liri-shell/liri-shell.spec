@@ -34,6 +34,9 @@ BuildRequires:  libliri-devel
 BuildRequires:  qt5-qtgsettings-devel
 BuildRequires:  liri-eglfs-devel
 #BuildRequires:  pipewire-devel
+%if 0%{?fedora} >= 30
+BuildRequires:  qt5-qtbase-private-devel
+%endif
 
 Requires:       qt5-qtsvg
 Requires:       qt5-qttools
