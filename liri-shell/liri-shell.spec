@@ -41,7 +41,6 @@ Requires:       qt5-qtgsettings
 Requires:       liri-eglfs
 Requires:       libliri
 Requires:       fluid
-Requires:       dbus
 Requires:       pam
 Requires:       udisks2
 Requires:       upower
@@ -96,13 +95,9 @@ fi
 %files
 %license LICENSE.GPLv3
 %doc AUTHORS.md README.md
-%{_bindir}/liri-session
-%{_bindir}/liri-shell
-%{_sysconfdir}/xdg/menus/*
-%{_datadir}/wayland-sessions/*
-%{_datadir}/desktop-directories/*
 %{_datadir}/glib-2.0/schemas/*
 %{_userunitdir}/*
+%{_liri_libexecdir}/liri-shell
 %{_liri_libexecdir}/liri-shell-helper
 %{_qt5_qmldir}/Liri/Launcher/
 %{_qt5_qmldir}/Liri/Mpris/
