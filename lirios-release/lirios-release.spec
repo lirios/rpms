@@ -4,7 +4,7 @@
 Name:           lirios-release
 Summary:        Liri OS release files
 Version:        %{dist_version}
-Release:        1
+Release:        2
 License:        MIT
 Source0:        LICENSE
 Source1:        README.license
@@ -125,6 +125,9 @@ install -m 644 %{SOURCE7} %{buildroot}/etc/ostree/remotes.d/
 
 
 %changelog
+* Sat Jun 01 2019 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 30-2
+- Default to dbus-broker instead of dbus-daemon.
+
 * Wed May 01 2019 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 30-1
 - Add OSTree remote config.
 - Update to Fedora 30.
