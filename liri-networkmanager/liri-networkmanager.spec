@@ -23,6 +23,7 @@ BuildRequires:  pkgconfig(ModemManager)
 BuildRequires:  pkgconfig(mm-glib)
 BuildRequires:  cmake(KF5NetworkManagerQt)
 BuildRequires:  cmake(KF5ModemManagerQt)
+BuildRequires:  cmake(Liri1Notifications)
 BuildRequires:  qt5-linguist
 BuildRequires:  liri-rpm-macros
 
