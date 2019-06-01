@@ -70,4 +70,5 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/io.liri.Settings.desk
 %{_bindir}/liri-settings
 %{_datadir}/liri-settings/
 %{_datadir}/applications/io.liri.Settings.desktop
+%{_datadir}/dbus-1/services/io.liri.Settings.service
 %{_qt5_qmldir}/Liri/Settings/
