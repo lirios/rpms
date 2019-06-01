@@ -55,6 +55,7 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %doc AUTHORS.md README.md
 %{_bindir}/liri-notify
 %{_qt5_qmldir}/Liri/Core/
+%{_qt5_qmldir}/Liri/DBusService/
 %{_qt5_qmldir}/Liri/Device/
 %{_qt5_qmldir}/Liri/Notifications/
 %{_libdir}/libLiri1Core.so.*
