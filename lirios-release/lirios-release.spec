@@ -4,7 +4,7 @@
 Name:           lirios-release
 Summary:        Liri OS release files
 Version:        %{dist_version}
-Release:        2
+Release:        3
 License:        MIT
 Source0:        LICENSE
 Source1:        README.license
@@ -18,23 +18,86 @@ Source7:        lirios.conf
 # for macros.systemd
 BuildRequires:  systemd
 
-Provides:       redhat-release
+Provides:       lirios-release = %{version}-%{release}
+Provides:       lirios-release-variant = %{version}-%{release}
+
+Conflicts:      system-release
 Provides:       system-release
 Provides:       system-release(%{dist_version})
 Provides:       system-release(releasever) = %{dist_version}
+Conflicts:      generic-release
+Provides:       base-module(platform:f%{dist_version})
 
 Requires:       filesystem
 Requires:       fedora-repos(%{dist_version})
-
-Conflicts:      redhat-release
-Conflicts:      fedora-release
-Conflicts:      generic-release
+Requires:       lirios-release-common = %{version}-%{release}
 
 BuildArch:      noarch
 
 %description
 Liri OS release files such as yum configs and various /etc/ files that
 define the release.
+
+
+%package common
+Summary: Liri OS release files
+Requires: lirios-release-variant = %{version}-%{release}
+Suggests: lirios-release
+
+Obsoletes: redhat-release
+Provides:  redhat-release
+Obsoletes: lirios-release < 30-3
+
+%description common
+Release files common to all Liri OS variants.
+
+
+%package desktop
+Summary: Base package for the desktop specific variant of Liri OS
+
+RemovePathPostfixes: .desktop
+Conflicts:  system-release
+Provides:   lirios-release = %{version}-%{release}
+Provides:   lirios-release-variant = %{version}-%{release}
+Provides:   system-release
+Provides:   system-release(%{dist_version})
+Provides:   base-module(platform:f%{dist_version})
+Requires:   lirios-release-common = %{version}-%{release}
+
+%description desktop
+Provides a base package for Liri OS Desktop.
+
+
+%package mobile
+Summary: Base package for the mobile specific variant of Liri OS
+
+RemovePathPostfixes: .mobile
+Conflicts:  system-release
+Provides:   lirios-release = %{version}-%{release}
+Provides:   lirios-release-variant = %{version}-%{release}
+Provides:   system-release
+Provides:   system-release(%{dist_version})
+Provides:   base-module(platform:f%{dist_version})
+Requires:   lirios-release-common = %{version}-%{release}
+
+%description mobile
+Provides a base package for Liri OS Mobile.
+
+
+%package embedded
+Summary: Base package for the embedded specific variant of Liri OS
+
+RemovePathPostfixes: .embedded
+Conflicts:  system-release
+Provides:   lirios-release = %{version}-%{release}
+Provides:   lirios-release-variant = %{version}-%{release}
+Provides:   system-release
+Provides:   system-release(%{dist_version})
+Provides:   base-module(platform:f%{dist_version})
+Requires:   lirios-release-common = %{version}-%{release}
+
+%description embedded
+Provides a base package for Liri OS Embedded.
 
 
 %prep
@@ -46,30 +109,45 @@ cp -a %{SOURCE0} %{SOURCE1} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} .
 
 
 %install
+install -d %{buildroot}%{_prefix}/lib
+echo "Liri OS release %{lirios_version}" > %{buildroot}%{_prefix}/lib/fedora-release
+
+# Symlink the -release files
 install -d %{buildroot}%{_sysconfdir}
-echo "Liri OS release %{lirios_version}" > %{buildroot}%{_sysconfdir}/fedora-release
-echo "cpe:/o:lirios:lirios:%{lirios_version}" > %{buildroot}%{_sysconfdir}/system-release-cpe
-cp -p %{buildroot}%{_sysconfdir}/fedora-release %{buildroot}%{_sysconfdir}/issue
-echo "Kernel \r on an \m (\l)" >> %{buildroot}%{_sysconfdir}/issue
-cp -p %{buildroot}%{_sysconfdir}/issue %{buildroot}%{_sysconfdir}/issue.net
-echo >> %{buildroot}%{_sysconfdir}/issue
+ln -s ../usr/lib/fedora-release %{buildroot}%{_sysconfdir}/fedora-release
 ln -s fedora-release %{buildroot}%{_sysconfdir}/redhat-release
 ln -s fedora-release %{buildroot}%{_sysconfdir}/system-release
 
-install -d %{buildroot}/%{_prefix}/lib/os.release.d/
-cat << EOF >>%{buildroot}%{_prefix}/lib/os.release.d/os-release-lirios
+# Create base os-release file
+cat << EOF >>%{buildroot}%{_prefix}/lib/os-release
 NAME="Liri OS"
-VERSION=%{lirios_version}
+VERSION="%{lirios_version} (Base)"
 ID=lirios
 VERSION_ID=%{lirios_version}
 PRETTY_NAME="Liri OS %{lirios_version}"
 ANSI_COLOR="0;34"
-CPE_NAME="cpe:/o:lirios:lirios:%{lirios_version}"
 EOF
-# Create the symlink for /usr/lib/os-release
-ln -s ./os.release.d/os-release-lirios %{buildroot}%{_prefix}/lib/os-release
-# Create the symlink for /etc/os-release
-ln -s ..%{_prefix}/lib/os-release %{buildroot}%{_sysconfdir}/os-release
+
+# Create os-release file for desktop
+cp -p %{buildroot}%{_prefix}/lib/os-release \
+      %{buildroot}%{_prefix}/lib/os-release.desktop
+echo "VARIANT=\"Desktop\"" >> %{buildroot}%{_prefix}/lib/os-release.desktop
+echo "VARIANT_ID=desktop" >> %{buildroot}%{_prefix}/lib/os-release.desktop
+sed -i -e "s|(Base)|(Desktop)|g" %{buildroot}%{_prefix}/lib/os-release.desktop
+
+# Create os-release file for mobile
+cp -p %{buildroot}%{_prefix}/lib/os-release \
+      %{buildroot}%{_prefix}/lib/os-release.mobile
+echo "VARIANT=\"Mobile\"" >> %{buildroot}%{_prefix}/lib/os-release.mobile
+echo "VARIANT_ID=mobile" >> %{buildroot}%{_prefix}/lib/os-release.mobile
+sed -i -e "s|(Base)|(Mobile)|g" %{buildroot}%{_prefix}/lib/os-release.mobile
+
+# Create os-release file for embedded
+cp -p %{buildroot}%{_prefix}/lib/os-release \
+      %{buildroot}%{_prefix}/lib/os-release.embedded
+echo "VARIANT=\"Embedded\"" >> %{buildroot}%{_prefix}/lib/os-release.embedded
+echo "VARIANT_ID=embedded" >> %{buildroot}%{_prefix}/lib/os-release.embedded
+sed -i -e "s|(Base)|(Embedded)|g" %{buildroot}%{_prefix}/lib/os-release.embedded
 
 # Set up the dist tag macros
 install -d -m 755 %{buildroot}%{_rpmconfigdir}/macros.d
@@ -96,21 +174,34 @@ install -m 0644 %{SOURCE5} %{buildroot}/%{_userpresetdir}/
 install -m 0644 %{SOURCE6} %{buildroot}%{_presetdir}/
 
 # Install the OSTree remote config
-install -d -m 755 %{buildroot}/etc/ostree/remotes.d/
-install -m 644 %{SOURCE7} %{buildroot}/etc/ostree/remotes.d/
+install -d -m 755 %{buildroot}%{_sysconfdir}/ostree/remotes.d/
+install -m 644 %{SOURCE7} %{buildroot}%{_sysconfdir}/ostree/remotes.d/
 
 
 %files
+%{_prefix}/lib/os-release
+
+%files desktop
+%{_prefix}/lib/os-release.desktop
+
+%files mobile
+%{_prefix}/lib/os-release.mobile
+
+%files embedded
+%{_prefix}/lib/os-release.embedded
+
+%files common
 %license LICENSE README.license
-%config %attr(0644,root,root) %{_prefix}/lib/os-release
-%config %attr(0644,root,root) %{_prefix}/lib/os.release.d/os-release-lirios
+%{_prefix}/lib/fedora-release
 %{_sysconfdir}/os-release
-%config %attr(0644,root,root) %{_sysconfdir}/fedora-release
+%{_sysconfdir}/fedora-release
 %{_sysconfdir}/redhat-release
 %{_sysconfdir}/system-release
-%config %attr(0644,root,root) %{_sysconfdir}/system-release-cpe
-%config(noreplace) %attr(0644,root,root) %{_sysconfdir}/issue
-%config(noreplace) %attr(0644,root,root) %{_sysconfdir}/issue.net
+%attr(0644,root,root) %{_prefix}/lib/issue
+%config(noreplace) %{_sysconfdir}/issue
+%attr(0644,root,root) %{_prefix}/lib/issue.net
+%config(noreplace) %{_sysconfdir}/issue.net
+%dir %{_sysconfdir}/issue.d
 %dir %{_sysconfdir}/yum.repos.d/
 %config(noreplace) %{_sysconfdir}/yum.repos.d/*
 %attr(0644,root,root) %{_rpmconfigdir}/macros.d/macros.dist
@@ -120,11 +211,15 @@ install -m 644 %{SOURCE7} %{buildroot}/etc/ostree/remotes.d/
 %{_presetdir}/99-default-disable.preset
 %dir %{_userpresetdir}/
 %{_userpresetdir}/90-default-user.preset
-%dir /etc/ostree/remotes.d/
-/etc/ostree/remotes.d/lirios.conf
+%dir ${_sysconfdir}/ostree/remotes.d/
+%{_sysconfdir}/ostree/remotes.d/lirios.conf
 
 
 %changelog
+* Sat Jun 01 2019 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 30-3
+- New subpackages for desktop, mobile and embedded variants.
+- Remove CPE_NAME and related release files, because we don't have a CPE name.
+
 * Sat Jun 01 2019 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 30-2
 - Default to dbus-broker instead of dbus-daemon.
 
