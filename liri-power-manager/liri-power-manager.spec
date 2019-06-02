@@ -17,11 +17,14 @@ BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.31.0
 BuildRequires:  pkgconfig(Qt5GSettings)
 BuildRequires:  pkgconfig(Liri1Core)
+BuildRequires:  pkgconfig(Liri1LocalDevice)
+BuildRequires:  pkgconfig(Liri1Logind)
+BuildRequires:  pkgconfig(Liri1Notifications)
+BuildRequires:  pkgconfig(Liri1Session)
 BuildRequires:  cmake(KF5Solid)
 BuildRequires:  qt5-qttools
 BuildRequires:  qt5-qttools-devel
 BuildRequires:  liri-rpm-macros
-BuildRequires:  desktop-file-utils
 
 Requires:       fluid
 Requires:       qt5-qtgsettings
@@ -47,10 +50,6 @@ make %{?_smp_mflags} -C %{_target_platform}
 make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 
-%check
-desktop-file-validate %{buildroot}%{_sysconfdir}/xdg/autostart/io.liri.PowerManager.desktop
-
-
 %posttrans
 glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
 
@@ -64,11 +63,10 @@ fi
 %files
 %license LICENSE.GPLv3
 %doc AUTHORS.md README.md
-%{_bindir}/liri-power-manager
-%{_sysconfdir}/xdg/autostart/io.liri.PowerManager.desktop
 %{_datadir}/glib-2.0/schemas/*
 %{_datadir}/liri-power-manager/translations/*.qm
 %{_datadir}/liri-settings/modules/power/
 %{_datadir}/liri-settings/translations/modules/power_*.qm
 %{_datadir}/liri-shell/indicators/power/
 %{_qt5_qmldir}/Liri/Power/
+%{_qt5_plugindir}/liri/sessionmodules/libpower.so
