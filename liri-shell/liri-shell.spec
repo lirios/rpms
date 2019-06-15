@@ -80,6 +80,7 @@ make %{?_smp_mflags} -C %{_target_platform}
 
 %install
 make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
+rm -f %{buildroot}%{_libdir}/*.a
 
 
 %posttrans
@@ -95,6 +96,7 @@ fi
 %files
 %license LICENSE.GPLv3
 %doc AUTHORS.md README.md
+%{_datadir}/liri-shell/
 %{_datadir}/glib-2.0/schemas/*
 %{_userunitdir}/*
 %{_liri_libexecdir}/liri-shell
@@ -103,6 +105,7 @@ fi
 %{_qt5_qmldir}/Liri/Mpris/
 %{_qt5_qmldir}/Liri/PolicyKit/
 %{_qt5_qmldir}/Liri/Storage/
+%{_qt5_qmldir}/Liri/private/shell/
 
 %files components
 %{_qt5_qmldir}/Liri/LoginManager/
