@@ -76,7 +76,9 @@ fi
 %{_datadir}/wayland-sessions/*
 %{_datadir}/desktop-directories/*
 %{_datadir}/glib-2.0/schemas/*
+%{_datadir}/dbus-1/services/io.liri.*.service
 %{_libdir}/libLiri1Session.so.*
+%{_liri_libexecdir}/liri-launcher
 
 
 %files devel
