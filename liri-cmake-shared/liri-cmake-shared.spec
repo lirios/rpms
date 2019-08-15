@@ -2,7 +2,7 @@
 
 Name:           liri-%{modulename}
 Summary:        Additional modules for the CMake build system
-Version:        1.0.0
+Version:        1.1.0
 Release:        1%{dist}
 License:        BSD-3
 Url:            https://liri.io
