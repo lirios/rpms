@@ -1,6 +1,6 @@
 Name:           fluid
 Summary:        Library for QtQuick apps with Material Design
-Version:        1.1.0
+Version:        1.2.0
 Release:        1%{?dist}
 License:        MPLv2
 Url:            https://liri.io
@@ -10,6 +10,7 @@ Requires:       qt5-qtgraphicaleffects
 Requires:       qt5-qtquickcontrols2
 Requires:       qt5-qtsvg
 
+BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Svg)
@@ -17,57 +18,32 @@ BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  qt5-rpm-macros
-BuildRequires:  liri-qbs-shared
+BuildRequires:  pkgconfig(Qt5WaylandClient)
+BuildRequires:  pkgconfig(wayland-scanner)
+BuildRequires:  liri-rpm-macros
 BuildRequires:  desktop-file-utils
 BuildRequires:  libappstream-glib
+BuildRequires:  qt5-doctools
 
 %description
 Library for fluid and dynamic development of QtQuick apps
 with the Material Design language.
 
 
-%package devel
-Summary:        Development files for %{name}
-Group:          Development/System
-Requires:       %{name} = %{version}-%{release}
-Requires:       qt5-qtdeclarative-devel%{?_isa}
-Requires:       qt5-qtquickcontrols2-devel%{?_isa}
-Requires:       qt5-qtsvg-devel%{?_isa}
-
-%description devel
-The %{name}-devel package contains libraries and header files for
-developing applications that use %{name}.
-
-
 %prep
 %setup -q -n %{name}-%{version}
-qbs setup-toolchains --type gcc /usr/bin/g++ gcc
-qbs setup-qt %{_qt5_qmake} qt5
-qbs config profiles.qt5.baseProfile gcc
 
 
 %build
-qbs build --no-install -d build %{?_smp_mflags} profile:qt5 \
-    project.withDocumentation:false \
-    project.useSystemQbsShared:true \
-    modules.lirideployment.prefix:%{_prefix} \
-    modules.lirideployment.etcDir:%{_sysconfdir} \
-    modules.lirideployment.binDir:%{_bindir} \
-    modules.lirideployment.sbinDir:%{_sbindir} \
-    modules.lirideployment.libDir:%{_libdir} \
-    modules.lirideployment.libexecDir:%{_libexecdir} \
-    modules.lirideployment.includeDir:%{_includedir} \
-    modules.lirideployment.dataDir:%{_datadir} \
-    modules.lirideployment.docDir:%{_docdir} \
-    modules.lirideployment.manDir:%{_mandir} \
-    modules.lirideployment.infoDir:%{_infodir} \
-    modules.lirideployment.qmlDir:%{_qt5_qmldir} \
-    modules.lirideployment.pluginsDir:%{_qt5_plugindir}
+mkdir -p %{_target_platform}
+pushd %{_target_platform}
+%{cmake_liri} -DFLUID_USE_SYSTEM_LCS:BOOL=ON ..
+popd
+make %{?_smp_mflags} -C %{_target_platform}
 
 
 %install
-qbs install --no-build -d build -v --install-root %{buildroot} profile:qt5
+make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 
 %check
@@ -84,7 +60,4 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.appdata
 %{_datadir}/applications/io.liri.Fluid.Demo.desktop
 %{_datadir}/icons/hicolor/*/apps/io.liri.Fluid.Demo.png
 %{_datadir}/icons/hicolor/scalable/apps/io.liri.Fluid.Demo.svg
-
-
-%files devel
-%{_datadir}/qbs/modules/Fluid/
+%{_datadir}/doc/fluid/html/
