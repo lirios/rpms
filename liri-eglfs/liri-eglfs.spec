@@ -28,6 +28,9 @@ BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  liri-rpm-macros
+%if 0%{?fedora} >= 30
+BuildRequires:  qt5-qtbase-private-devel
+%endif
 
 %description
 This package includes a Qt platform plugin with support for kms and DRM.
