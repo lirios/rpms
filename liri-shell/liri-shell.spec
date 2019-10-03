@@ -12,6 +12,7 @@ URL:            https://liri.io
 Source0:        https://github.com/lirios/%{modulename}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
 
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -98,7 +99,7 @@ fi
 %doc AUTHORS.md README.md
 %{_datadir}/liri-shell/
 %{_datadir}/glib-2.0/schemas/*
-%{_userunitdir}/*
+%{_userunitdir}/liri-*
 %{_liri_libexecdir}/liri-shell
 %{_liri_libexecdir}/liri-shell-helper
 %{_qt5_qmldir}/Liri/Launcher/

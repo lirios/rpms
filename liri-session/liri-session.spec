@@ -12,6 +12,7 @@ URL:            https://liri.io
 Source0:        https://github.com/lirios/%{modulename}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
 
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  cmake(Qt5GSettings)
@@ -48,6 +49,7 @@ mkdir -p %{_target_platform}
 pushd %{_target_platform}
 %{cmake_liri} \
     -DINSTALL_SYSTEMDUSERUNITDIR:PATH=%{_userunitdir} \
+    -DINSTALL_SYSTEMDUSERGENERATORSDIR:PATH=%{_systemdusergeneratordir} \
 ..
 popd
 make %{?_smp_mflags} -C %{_target_platform}
@@ -72,16 +74,26 @@ fi
 %license LICENSE.LGPLv3
 %doc AUTHORS.md README.md
 %{_bindir}/liri-session
+%{_bindir}/liri-session-ctl
 %{_sysconfdir}/xdg/menus/*
 %{_datadir}/wayland-sessions/*
 %{_datadir}/desktop-directories/*
 %{_datadir}/glib-2.0/schemas/*
 %{_datadir}/dbus-1/services/io.liri.*.service
+%{_libdir}/libLiri1Daemon.so.*
 %{_libdir}/libLiri1Session.so.*
+%{_qt5_plugindir}/liri/daemon/liblocale.so
+%{_liri_libexecdir}/liri-daemon
 %{_liri_libexecdir}/liri-launcher
+%{_userunitdir}/liri-*
+%{_systemdusergeneratordir}/liri-*
 
 
 %files devel
+%{_includedir}/LiriDaemon/
+%{_libdir}/libLiri1Daemon.so
+%{_libdir}/cmake/Liri1Daemon/
+%{_libdir}/pkgconfig/Liri1Daemon.pc
 %{_includedir}/LiriSession/
 %{_libdir}/libLiri1Session.so
 %{_libdir}/cmake/Liri1Session/

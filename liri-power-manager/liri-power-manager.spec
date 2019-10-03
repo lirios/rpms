@@ -12,6 +12,7 @@ URL:            https://liri.io
 Source0:        https://github.com/lirios/%{modulename}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
 
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.31.0
@@ -41,7 +42,9 @@ settings module to configure power consumption settings.
 %build
 mkdir -p %{_target_platform}
 pushd %{_target_platform}
-%{cmake_liri} ..
+%{cmake_liri} \
+    -DINSTALL_SYSTEMDUSERUNITDIR:PATH=%{_userunitdir} \
+..
 popd
 make %{?_smp_mflags} -C %{_target_platform}
 
@@ -69,4 +72,5 @@ fi
 %{_datadir}/liri-settings/translations/modules/power_*.qm
 %{_datadir}/liri-shell/indicators/power/
 %{_qt5_qmldir}/Liri/Power/
-%{_qt5_plugindir}/liri/sessionmodules/libpower.so
+%{_qt5_plugindir}/liri/daemon/libpower.so
+%{_userunitdir}/liri-*
