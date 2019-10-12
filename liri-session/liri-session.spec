@@ -79,14 +79,12 @@ fi
 %{_datadir}/wayland-sessions/*
 %{_datadir}/desktop-directories/*
 %{_datadir}/glib-2.0/schemas/*
-%{_datadir}/dbus-1/services/io.liri.*.service
+%{_datadir}/liri-session/
 %{_libdir}/libLiri1Daemon.so.*
 %{_libdir}/libLiri1Session.so.*
 %{_qt5_plugindir}/liri/daemon/liblocale.so
 %{_liri_libexecdir}/liri-daemon
-%{_liri_libexecdir}/liri-launcher
 %{_userunitdir}/liri-*
-%{_systemdusergeneratordir}/liri-*
 
 
 %files devel
