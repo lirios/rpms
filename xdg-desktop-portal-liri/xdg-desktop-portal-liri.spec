@@ -38,7 +38,9 @@ pieces of Liri libraries and infrastructure.
 %build
 mkdir -p %{_target_platform}
 pushd %{_target_platform}
-%{cmake_liri} ..
+%{cmake_liri} \
+    -DINSTALL_SYSTEMDUSERUNITDIR:PATH=%{_userunitdir} \
+..
 popd
 make %{?_smp_mflags} -C %{_target_platform}
 
@@ -53,3 +55,4 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %{_liri_libexecdir}/xdg-desktop-portal-liri
 %{_datadir}/xdg-desktop-portal/portals/liri.portal
 %{_datadir}/dbus-1/services/org.freedesktop.impl.portal.desktop.liri.service
+%{_userunitdir}/xdg-desktop-portal-liri.service
