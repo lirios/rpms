@@ -27,6 +27,8 @@ BuildRequires:  pkgconfig(Qt5AccountsService)
 BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(polkit-qt5-1)
 BuildRequires:  cmake(Liri1Xdg)
+BuildRequires:  cmake(Liri1WaylandClient)
+BuildRequires:  cmake(Liri1WaylandServer)
 BuildRequires:  cmake(KF5Solid)
 BuildRequires:  pam-devel
 BuildRequires:  git
@@ -40,6 +42,7 @@ Requires:       qt5-qtsvg
 Requires:       qt5-qttools
 Requires:       qt5-qtgsettings
 Requires:       liri-eglfs
+Requires:       liri-wayland
 Requires:       libliri
 Requires:       fluid
 Requires:       pam
