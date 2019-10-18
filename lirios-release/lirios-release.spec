@@ -1,10 +1,10 @@
-%define dist_version 30
+%define dist_version %{dist}
 %define lirios_version 0.10.0
 
 Name:           lirios-release
 Summary:        Liri OS release files
 Version:        %{dist_version}
-Release:        3
+Release:        20191018
 License:        MIT
 Source0:        LICENSE
 Source1:        README.license
