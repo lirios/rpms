@@ -1,4 +1,4 @@
-%define dist_version %{dist}
+%define dist_version %{fedora}
 %define lirios_version 0.10.0
 
 Name:           lirios-release
