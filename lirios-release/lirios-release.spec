@@ -236,36 +236,3 @@ install -Dm0644 %{SOURCE8} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %dir ${_sysconfdir}/ostree/remotes.d/
 %{_sysconfdir}/ostree/remotes.d/lirios.conf
 %attr(0644,root,root) %{_prefix}/share/polkit-1/rules.d/org.projectatomic.rpmostree1.rules
-
-
-%changelog
-* Sat Jun 01 2019 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 30-3
-- New subpackages for desktop, mobile and embedded variants.
-- Remove CPE_NAME and related release files, because we don't have a CPE name.
-
-* Sat Jun 01 2019 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 30-2
-- Default to dbus-broker instead of dbus-daemon.
-
-* Wed May 01 2019 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 30-1
-- Add OSTree remote config.
-- Update to Fedora 30.
-
-* Fri Feb 22 2019 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 29-3
-- Provides system-release(releasever) = 29 so that libdnf will know
-  the Fedora version we are using and expand $releasever accordingly.
-
-* Thu Jan 24 2019 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 29-2
-- Enable dbus-daemon explicitely.
-
-* Sat Jan 05 2019 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 29-1
-- Update to Fedora 29.
-
-* Mon Oct 08 2018 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 28-1
-- Use the same version as Fedora since $releasever is often used,
-  for example in the official dnf repository files.
-
-* Sat Sep 15 2018 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 0.10.0-2
-- Fix dist tag macros.
-
-* Mon Sep 03 2018 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 0.10.0-1
-- Setup for Liri OS 0.10.0.
