@@ -4,7 +4,7 @@
 Name:           lirios-release
 Summary:        Liri OS release files
 Version:        %{dist_version}
-Release:        20191018
+Release:        20191018.1
 License:        MIT
 Source0:        LICENSE
 Source1:        README.license
@@ -14,6 +14,7 @@ Source4:        90-default.preset
 Source5:        90-default-user.preset
 Source6:        99-default-disable.preset
 Source7:        lirios.conf
+Source8:        org.projectatomic.rpmostree1.rules
 
 # for macros.systemd
 BuildRequires:  systemd
@@ -195,6 +196,9 @@ install -m 0644 %{SOURCE6} %{buildroot}%{_presetdir}/
 install -d -m 755 %{buildroot}%{_sysconfdir}/ostree/remotes.d/
 install -m 644 %{SOURCE7} %{buildroot}%{_sysconfdir}/ostree/remotes.d/
 
+# Polkit rules for rpm-ostree
+install -Dm0644 %{SOURCE8} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
+
 
 %files
 %{_prefix}/lib/os-release
@@ -231,6 +235,7 @@ install -m 644 %{SOURCE7} %{buildroot}%{_sysconfdir}/ostree/remotes.d/
 %{_userpresetdir}/90-default-user.preset
 %dir ${_sysconfdir}/ostree/remotes.d/
 %{_sysconfdir}/ostree/remotes.d/lirios.conf
+%attr(0644,root,root) %{_prefix}/share/polkit-1/rules.d/org.projectatomic.rpmostree1.rules
 
 
 %changelog
