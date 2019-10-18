@@ -149,6 +149,24 @@ echo "VARIANT=\"Embedded\"" >> %{buildroot}%{_prefix}/lib/os-release.embedded
 echo "VARIANT_ID=embedded" >> %{buildroot}%{_prefix}/lib/os-release.embedded
 sed -i -e "s|(Base)|(Embedded)|g" %{buildroot}%{_prefix}/lib/os-release.embedded
 
+# Create the common /etc/issue
+echo "\S" > %{buildroot}%{_prefix}/lib/issue
+echo "Kernel \r on an \m (\l)" >> %{buildroot}%{_prefix}/lib/issue
+echo >> %{buildroot}%{_prefix}/lib/issue
+ln -s ../usr/lib/issue %{buildroot}%{_sysconfdir}/issue
+
+# Create /etc/issue.net
+echo "\S" > %{buildroot}%{_prefix}/lib/issue.net
+echo "Kernel \r on an \m (\l)" >> %{buildroot}%{_prefix}/lib/issue.net
+ln -s ../usr/lib/issue.net %{buildroot}%{_sysconfdir}/issue.net
+
+# Create /etc/issue.d
+mkdir -p %{buildroot}%{_sysconfdir}/issue.d
+
+
+# Create the symlink for /etc/os-release
+ln -s ../usr/lib/os-release %{buildroot}%{_sysconfdir}/os-release
+
 # Set up the dist tag macros
 install -d -m 755 %{buildroot}%{_rpmconfigdir}/macros.d
 cat >> %{buildroot}%{_rpmconfigdir}/macros.d/macros.dist << EOF
