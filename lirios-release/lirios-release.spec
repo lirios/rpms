@@ -193,8 +193,8 @@ install -m 0644 %{SOURCE5} %{buildroot}/%{_userpresetdir}/
 install -m 0644 %{SOURCE6} %{buildroot}%{_presetdir}/
 
 # Install the OSTree remote config
-install -d -m 755 %{buildroot}%{_sysconfdir}/ostree/remotes.d/
-install -m 644 %{SOURCE7} %{buildroot}%{_sysconfdir}/ostree/remotes.d/
+install -d -m 755 %{buildroot}/etc/ostree/remotes.d/
+install -m 644 %{SOURCE7} %{buildroot}/etc/ostree/remotes.d/
 
 # Polkit rules for rpm-ostree
 install -Dm0644 %{SOURCE8} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
@@ -233,6 +233,6 @@ install -Dm0644 %{SOURCE8} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %{_presetdir}/99-default-disable.preset
 %dir %{_userpresetdir}/
 %{_userpresetdir}/90-default-user.preset
-%dir ${_sysconfdir}/ostree/remotes.d/
-%{_sysconfdir}/ostree/remotes.d/lirios.conf
+%dir /etc/ostree/remotes.d/
+/etc/ostree/remotes.d/lirios.conf
 %attr(0644,root,root) %{_prefix}/share/polkit-1/rules.d/org.projectatomic.rpmostree1.rules
