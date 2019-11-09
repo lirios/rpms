@@ -17,6 +17,7 @@ BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5QuickControls2)
+BuildRequires:  cmake(Liri1WaylandClient)
 BuildRequires:  qt5-qttools
 BuildRequires:  qt5-qttools-devel
 BuildRequires:  liri-rpm-macros
