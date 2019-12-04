@@ -4,7 +4,7 @@
 Name:           lirios-release
 Summary:        Liri OS release files
 Version:        %{dist_version}
-Release:        1.20191204
+Release:        2.20191204
 License:        MIT
 URL:            https://liri.io/
 Source0:        LICENSE
@@ -17,20 +17,6 @@ Source6:        99-default-disable.preset
 # for macros.systemd
 BuildRequires:  systemd
 
-Provides:       lirios-release = %{version}-%{release}
-Provides:       lirios-release-variant = %{version}-%{release}
-
-Conflicts:      system-release
-Provides:       system-release
-Provides:       system-release(%{dist_version})
-Provides:       system-release(releasever) = %{dist_version}
-Conflicts:      generic-release
-Provides:       base-module(platform:f%{dist_version})
-
-Requires:       filesystem
-Requires:       fedora-repos(%{dist_version})
-Requires:       lirios-release-common = %{version}-%{release}
-
 BuildArch:      noarch
 
 %description
@@ -41,7 +27,6 @@ define the release.
 %package common
 Summary: Liri OS release files
 Requires: lirios-release-variant = %{version}-%{release}
-Suggests: lirios-release
 
 Obsoletes: redhat-release
 Provides:  redhat-release
@@ -55,11 +40,14 @@ Release files common to all Liri OS variants.
 Summary: Base package for the desktop specific variant of Liri OS
 
 RemovePathPostfixes: .desktop
-Conflicts:  system-release
+Requires:   filesystem
 Provides:   lirios-release = %{version}-%{release}
 Provides:   lirios-release-variant = %{version}-%{release}
+Conflicts:  generic-release
+Conflicts:  system-release
 Provides:   system-release
 Provides:   system-release(%{dist_version})
+Provides:   system-release(releasever) = %{dist_version}
 Provides:   base-module(platform:f%{dist_version})
 Requires:   lirios-release-common = %{version}-%{release}
 
@@ -71,11 +59,14 @@ Provides a base package for Liri OS Desktop.
 Summary: Base package for the mobile specific variant of Liri OS
 
 RemovePathPostfixes: .mobile
-Conflicts:  system-release
+Requires:   filesystem
 Provides:   lirios-release = %{version}-%{release}
 Provides:   lirios-release-variant = %{version}-%{release}
+Conflicts:  generic-release
+Conflicts:  system-release
 Provides:   system-release
 Provides:   system-release(%{dist_version})
+Provides:   system-release(releasever) = %{dist_version}
 Provides:   base-module(platform:f%{dist_version})
 Requires:   lirios-release-common = %{version}-%{release}
 
@@ -87,11 +78,14 @@ Provides a base package for Liri OS Mobile.
 Summary: Base package for the embedded specific variant of Liri OS
 
 RemovePathPostfixes: .embedded
-Conflicts:  system-release
+Requires:   filesystem
 Provides:   lirios-release = %{version}-%{release}
 Provides:   lirios-release-variant = %{version}-%{release}
+Conflicts:  generic-release
+Conflicts:  system-release
 Provides:   system-release
 Provides:   system-release(%{dist_version})
+Provides:   system-release(releasever) = %{dist_version}
 Provides:   base-module(platform:f%{dist_version})
 Requires:   lirios-release-common = %{version}-%{release}
 
@@ -159,9 +153,11 @@ echo "\S" > %{buildroot}%{_prefix}/lib/issue.net
 echo "Kernel \r on an \m (\l)" >> %{buildroot}%{_prefix}/lib/issue.net
 ln -s ../usr/lib/issue.net %{buildroot}%{_sysconfdir}/issue.net
 
+# Remove the now useless base os-release
+rm -f %{buildroot}%{_prefix}/lib/os-release
+
 # Create /etc/issue.d
 mkdir -p %{buildroot}%{_sysconfdir}/issue.d
-
 
 # Create the symlink for /etc/os-release
 ln -s ../usr/lib/os-release %{buildroot}%{_sysconfdir}/os-release
@@ -185,9 +181,6 @@ install -m 0644 %{SOURCE4} %{buildroot}%{_presetdir}/
 install -m 0644 %{SOURCE5} %{buildroot}/%{_userpresetdir}/
 install -m 0644 %{SOURCE6} %{buildroot}%{_presetdir}/
 
-
-%files
-%{_prefix}/lib/os-release
 
 %files desktop
 %{_prefix}/lib/os-release.desktop
