@@ -8,6 +8,7 @@ URL:            https://liri.io/
 Source0:        plfiorini-lirios.repo
 Source1:        plfiorini-liri-stable.repo
 Source2:        plfiorini-liri-nightly.repo
+Source3:        lirios.conf
 
 Requires:       fedora-repos(%{fedora})
 
@@ -36,6 +37,9 @@ This package provides the Liri OS repository definition for the 'nightly' channe
 %package ostree
 Summary:        OSTree remote definition for Liri OS
 Requires:       fedora-repos-ostree
+
+%description ostree
+This package provides the OSTree remote definition for Liri OS.
 
 
 %prep

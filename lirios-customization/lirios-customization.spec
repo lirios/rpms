@@ -6,7 +6,7 @@ URL:            https://liri.io
 License:        MIT
 
 Source0:        10-disk-scheduler.rules
-Source0:        org.projectatomic.rpmostree1.rules
+Source1:        org.projectatomic.rpmostree1.rules
 
 BuildRequires:  pkgconfig(systemd)
 
@@ -26,7 +26,7 @@ Customization for Liri OS.
 
 %install
 # Configure disk schedulers
-install -Dm0644 %{_sourcedir}/10-disk-scheduler.rules %{buildroot}%{_udevrulesdir}/
+install -Dm0644 %{_sourcedir}/10-disk-scheduler.rules -t %{buildroot}%{_udevrulesdir}/
 
 # Polkit rules for rpm-ostree
 install -Dm0644 %{_sourcedir}/org.projectatomic.rpmostree1.rules -t %{buildroot}%{_datadir}/polkit-1/rules.d/
