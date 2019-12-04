@@ -2,7 +2,7 @@ Summary:        Liri OS customization
 Name:           lirios-customization
 Version:        0.10.0
 Release:        1.20190501%{?dist}
-URL:            http://liri.io
+URL:            https://liri.io
 License:        MIT
 
 Source0:        10-disk-scheduler.rules
