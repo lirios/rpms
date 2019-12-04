@@ -9,12 +9,10 @@ License:        MIT
 URL:            https://liri.io/
 Source0:        LICENSE
 Source1:        README.license
-Source2:        plfiorini-lirios.repo
 Source3:        85-display-manager.preset
 Source4:        90-default.preset
 Source5:        90-default-user.preset
 Source6:        99-default-disable.preset
-Source7:        lirios.conf
 Source8:        org.projectatomic.rpmostree1.rules
 
 # for macros.systemd
@@ -179,11 +177,6 @@ cat >> %{buildroot}%{_rpmconfigdir}/macros.d/macros.dist << EOF
 %%fc%{dist_version}		1
 EOF
 
-# Install the .repo file
-install -dm 755 %{buildroot}%{_sysconfdir}/yum.repos.d
-install -pm 644 %{SOURCE2} \
-    %{buildroot}%{_sysconfdir}/yum.repos.d
-
 # Add presets
 mkdir -p %{buildroot}%{_presetdir}
 %global _userpresetdir %{dirname:%{_presetdir}}/user-preset
@@ -192,10 +185,6 @@ install -m 0644 %{SOURCE3} %{buildroot}%{_presetdir}/
 install -m 0644 %{SOURCE4} %{buildroot}%{_presetdir}/
 install -m 0644 %{SOURCE5} %{buildroot}/%{_userpresetdir}/
 install -m 0644 %{SOURCE6} %{buildroot}%{_presetdir}/
-
-# Install the OSTree remote config
-install -d -m 755 %{buildroot}/etc/ostree/remotes.d/
-install -m 644 %{SOURCE7} %{buildroot}/etc/ostree/remotes.d/
 
 # Polkit rules for rpm-ostree
 install -Dm0644 %{SOURCE8} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
@@ -225,8 +214,6 @@ install -Dm0644 %{SOURCE8} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %attr(0644,root,root) %{_prefix}/lib/issue.net
 %config(noreplace) %{_sysconfdir}/issue.net
 %dir %{_sysconfdir}/issue.d
-%dir %{_sysconfdir}/yum.repos.d/
-%config(noreplace) %{_sysconfdir}/yum.repos.d/*
 %attr(0644,root,root) %{_rpmconfigdir}/macros.d/macros.dist
 %dir %{_presetdir}/
 %{_presetdir}/85-display-manager.preset
@@ -234,6 +221,4 @@ install -Dm0644 %{SOURCE8} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %{_presetdir}/99-default-disable.preset
 %dir %{_userpresetdir}/
 %{_userpresetdir}/90-default-user.preset
-%dir /etc/ostree/remotes.d/
-/etc/ostree/remotes.d/lirios.conf
 %attr(0644,root,root) %{_prefix}/share/polkit-1/rules.d/org.projectatomic.rpmostree1.rules

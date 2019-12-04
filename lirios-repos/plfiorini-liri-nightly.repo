@@ -1,0 +1,10 @@
+[plfiorini-liri-nightly]
+name=Copr repo for liri-nightly owned by plfiorini
+baseurl=https://copr-be.cloud.fedoraproject.org/results/plfiorini/liri-nightly/fedora-$releasever-$basearch/
+type=rpm-md
+skip_if_unavailable=True
+gpgcheck=1
+gpgkey=https://copr-be.cloud.fedoraproject.org/results/plfiorini/liri-nightly/pubkey.gpg
+repo_gpgcheck=0
+enabled=1
+enabled_metadata=1
