@@ -5,6 +5,7 @@ Release:        1.20190501%{?dist}
 URL:            http://liri.io
 License:        MIT
 
+Source0:        10-disk-scheduler.rules
 Source0:        org.projectatomic.rpmostree1.rules
 
 BuildRequires:  pkgconfig(systemd)
@@ -25,14 +26,7 @@ Customization for Liri OS.
 
 %install
 # Configure disk schedulers
-install -d %{buildroot}%{_udevrulesdir}
-cat > %{buildroot}%{_udevrulesdir}/10-disk-scheduler.rules <<EOF
-# Set deadline scheduler for non-rotating disks
-ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="deadline"
-
-# Set cfq scheduler for rotating disks
-ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="cfq"
-EOF
+install -Dm0644 %{_sourcedir}/10-disk-scheduler.rules %{buildroot}%{_udevrulesdir}/
 
 # Polkit rules for rpm-ostree
 install -Dm0644 %{_sourcedir}/org.projectatomic.rpmostree1.rules -t %{buildroot}%{_datadir}/polkit-1/rules.d/
