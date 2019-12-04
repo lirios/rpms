@@ -13,7 +13,6 @@ Source3:        85-display-manager.preset
 Source4:        90-default.preset
 Source5:        90-default-user.preset
 Source6:        99-default-disable.preset
-Source8:        org.projectatomic.rpmostree1.rules
 
 # for macros.systemd
 BuildRequires:  systemd
@@ -186,9 +185,6 @@ install -m 0644 %{SOURCE4} %{buildroot}%{_presetdir}/
 install -m 0644 %{SOURCE5} %{buildroot}/%{_userpresetdir}/
 install -m 0644 %{SOURCE6} %{buildroot}%{_presetdir}/
 
-# Polkit rules for rpm-ostree
-install -Dm0644 %{SOURCE8} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
-
 
 %files
 %{_prefix}/lib/os-release
@@ -221,4 +217,3 @@ install -Dm0644 %{SOURCE8} -t %{buildroot}%{_datadir}/polkit-1/rules.d/
 %{_presetdir}/99-default-disable.preset
 %dir %{_userpresetdir}/
 %{_userpresetdir}/90-default-user.preset
-%attr(0644,root,root) %{_prefix}/share/polkit-1/rules.d/org.projectatomic.rpmostree1.rules
