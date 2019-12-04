@@ -1,7 +1,7 @@
 Summary:        Liri OS customization
 Name:           lirios-customization
 Version:        0.10.0
-Release:        1.20190501%{?dist}
+Release:        1.20191204%{?dist}
 URL:            https://liri.io
 License:        MIT
 
