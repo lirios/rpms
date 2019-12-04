@@ -36,11 +36,3 @@ install -Dm0644 %{_sourcedir}/org.projectatomic.rpmostree1.rules -t %{buildroot}
 %defattr(-,root,root,-)
 %{_udevrulesdir}/10-disk-scheduler.rules
 %attr(0644,root,root) %{_datadir}/polkit-1/rules.d/org.projectatomic.rpmostree1.rules
-
-
-%changelog
-* Wed May 01 2019 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 0.10.0-1.20190501
-- Update version.
-
-* Sun Oct 09 2016 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com> - 0.9.0-1.20161009
-- Initial packaging.
