@@ -6,6 +6,7 @@ Summary:        Liri OS release files
 Version:        %{dist_version}
 Release:        20191018.1
 License:        MIT
+URL:            https://liri.io/
 Source0:        LICENSE
 Source1:        README.license
 Source2:        plfiorini-lirios.repo
