@@ -16,7 +16,7 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  qt5-qttools
 BuildRequires:  qt5-qttools-devel
-BuildRequires:  cmake(Qt5GStreamer)
+BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  liri-rpm-macros
 
 %description
