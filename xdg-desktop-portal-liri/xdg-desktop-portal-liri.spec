@@ -19,11 +19,16 @@ BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5QuickControls2)
+%if 0%{?fedora} >= 32
+BuildRequires:  pkgconfig(libpipewire-0.3)
+%endif
+BuildRequires:  cmake(Liri1WaylandClient)
+BuildRequires:  cmake(Liri1Notifications)
 BuildRequires:  liri-rpm-macros
-BuildRequires:  libliri-devel
 
 Requires:       xdg-desktop-portal >= %{xdg_desktop_portal_version}
 Requires:       fluid
+Requires:       liri-wayland
 Requires:       libliri
 
 %description

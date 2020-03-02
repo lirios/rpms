@@ -36,7 +36,6 @@ BuildRequires:  liri-rpm-macros
 BuildRequires:  libliri-devel
 BuildRequires:  qt5-qtgsettings-devel
 BuildRequires:  liri-eglfs-devel
-#BuildRequires:  pipewire-devel
 
 Requires:       qt5-qtsvg
 Requires:       qt5-qttools
@@ -75,7 +74,6 @@ mkdir -p %{_target_platform}
 pushd %{_target_platform}
 %{cmake_liri} \
     -DINSTALL_SYSTEMDUSERUNITDIR:PATH=%{_userunitdir} \
-    -DLIRI_SHELL_WITH_SCREENCAST:BOOL=OFF \
     -DLIRI_SHELL_DEVELOPMENT_BUILD:BOOL=ON \
 ..
 popd
