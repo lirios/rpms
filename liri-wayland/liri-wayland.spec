@@ -32,6 +32,8 @@ Group:          Development/System
 Requires:       %{name} = %{version}-%{release}
 Requires:       pkgconfig(wayland-client)
 Requires:       pkgconfig(wayland-server)
+BuildRequires:  pkgconfig(Qt5WaylandClient)
+BuildRequires:  pkgconfig(Qt5WaylandCompositor)
 
 %description devel
 The %{name}-devel package contains libraries and header files for
