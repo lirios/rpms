@@ -16,6 +16,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(xdg-desktop-portal) >= %{xdg_desktop_portal_version}
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5QuickControls2)
