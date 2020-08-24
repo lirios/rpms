@@ -17,6 +17,7 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  qt5-qttools-devel
 BuildRequires:  libliri-devel
+BuildRequires:  pkgconfig(Qt5AccountsService)
 BuildRequires:  pkgconfig(flatpak)
 BuildRequires:  cmake(AppStreamQt)
 BuildRequires:  liri-rpm-macros
@@ -25,6 +26,7 @@ BuildRequires:  libappstream-glib
 
 Requires:       fluid
 Requires:       libliri
+Requires:       qt5-qtaccountsservice
 Requires:       qt5-qtgsettings
 Requires:       dconf
 
@@ -72,6 +74,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.liri.A
 %doc AUTHORS.md README.md
 %{_bindir}/liri-appcenter
 %{_bindir}/liri-update-notifier
+%{_sysconfdir}/xdg/autostart/io.liri.AppCenter.Notifier.desktop
 %{_datadir}/applications/io.liri.AppCenter.desktop
 %{_datadir}/applications/io.liri.AppCenter.Flatpak.desktop
 %{_datadir}/metainfo/io.liri.AppCenter.appdata.xml
