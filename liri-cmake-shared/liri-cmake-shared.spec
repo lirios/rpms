@@ -38,15 +38,24 @@ RPM macros for building Liri packages.
 
 
 %build
+%if 0%{?fedora} >= 33
+%cmake
+%cmake_build
+%else
 mkdir -p %{_target_platform}
 pushd %{_target_platform}
 %{cmake} ..
 popd
 make %{?_smp_mflags} -C %{_target_platform}
+%endif
 
 
 %install
+%if 0%{?fedora} >= 33
+%cmake_install
+%else
 make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
+%endif
 
 install -Dpm644 %{_sourcedir}/macros.liri %{buildroot}%{_rpmconfigdir}/macros.d/macros.liri
 
