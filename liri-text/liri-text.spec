@@ -1,3 +1,5 @@
+%undefine __cmake_in_source_build
+
 %global snapdate @DATE@
 %global snaphash @HASH@
 
@@ -34,15 +36,12 @@ Advanced text editor built in accordance with Material Design.
 
 
 %build
-mkdir -p %{_target_platform}
-pushd %{_target_platform}
-%{cmake_liri} ..
-popd
-make %{?_smp_mflags} -C %{_target_platform}
+%cmake_liri
+%cmake_build
 
 
 %install
-make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
+%cmake_install
 
 
 %check

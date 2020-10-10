@@ -1,3 +1,5 @@
+%undefine __cmake_in_source_build
+
 %define snapdate @DATE@
 %define snaphash @HASH@
 
@@ -48,15 +50,12 @@ developing applications that use %{name}.
 
 
 %build
-mkdir -p %{_target_platform}
-pushd %{_target_platform}
-%{cmake_liri} ..
-popd
-make %{?_smp_mflags} -C %{_target_platform}
+%cmake_liri
+%cmake_build
 
 
 %install
-make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
+%cmake_install
 rm -f %{buildroot}%{_libdir}/libLiri1{EdidSupport,KmsSupport,LibInput}.a
 rm -rf %{buildroot}%{_includedir}/Liri{EglFSDeviceIntegration,EglFSKmsSupport,EdidSupport,KmsSupport,LibInput}
 rm -f %{buildroot}%{_libdir}/libLiri1EglFS{DeviceIntegration,KmsSupport}.so

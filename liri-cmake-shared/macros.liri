@@ -2,14 +2,17 @@
 %_liri_libexecdir %_libexecdir/liri
 %_liri_buildtype release
 
-%cmake_liri \
+%cmake_liri \\\
+  %undefine __cmake_in_source_build \
   QTDIR="%{_qt5_prefix}" ; export QTDIR ; \
   PATH="%{_qt5_bindir}:$PATH" ; export PATH ; \
   CFLAGS="${CFLAGS:-%optflags}" ; export CFLAGS ; \
   CXXFLAGS="${CXXFLAGS:-%optflags}" ; export CXXFLAGS ; \
   FFLAGS="${FFLAGS:-%optflags%{?_fmoddir: -I%_fmoddir}}" ; export FFLAGS ; \
   %{?__global_ldflags:LDFLAGS="${LDFLAGS:-%__global_ldflags}" ; export LDFLAGS ;} \
-  %{?fedora:%{__cmake}}%{?rhel:%{__cmake3}} \\\
+    %{__cmake} \\\
+    %{?__cmake_builddir:-S "%{_vpath_srcdir}"} \\\
+    %{?__cmake_builddir:-B "%{__cmake_builddir}"} \\\
     -DBUILD_TESTING:BOOL=FALSE \\\
     -DCMAKE_BUILD_TYPE=%{_liri_buildtype} \\\
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \\\

@@ -1,3 +1,5 @@
+%undefine __cmake_in_source_build
+
 %global snapdate @DATE@
 %global snaphash @HASH@
 
@@ -71,18 +73,14 @@ with the SDDM theme.
 
 
 %build
-mkdir -p %{_target_platform}
-pushd %{_target_platform}
-%{cmake_liri} \
+%cmake_liri \
     -DINSTALL_SYSTEMDUSERUNITDIR:PATH=%{_userunitdir} \
-    -DLIRI_SHELL_DEVELOPMENT_BUILD:BOOL=ON \
-..
-popd
-make %{?_smp_mflags} -C %{_target_platform}
+    -DLIRI_SHELL_DEVELOPMENT_BUILD:BOOL=ON
+%cmake_build
 
 
 %install
-make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
+%cmake_install
 rm -f %{buildroot}%{_libdir}/*.a
 
 

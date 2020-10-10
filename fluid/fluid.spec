@@ -1,3 +1,5 @@
+%undefine __cmake_in_source_build
+
 %global snapdate @DATE@
 %global snaphash @HASH@
 
@@ -39,15 +41,12 @@ with the Material Design language.
 
 
 %build
-mkdir -p %{_target_platform}
-pushd %{_target_platform}
-%{cmake_liri} -DFLUID_USE_SYSTEM_LCS:BOOL=ON ..
-popd
-make %{?_smp_mflags} -C %{_target_platform}
+%cmake_liri -DFLUID_USE_SYSTEM_LCS:BOOL=ON
+%cmake_build
 
 
 %install
-make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
+%cmake_install
 
 
 %check

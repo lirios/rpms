@@ -1,3 +1,5 @@
+%undefine __cmake_in_source_build
+
 %global snapdate @DATE@
 %global snaphash @HASH@
 
@@ -40,17 +42,13 @@ settings module to configure power consumption settings.
 
 
 %build
-mkdir -p %{_target_platform}
-pushd %{_target_platform}
-%{cmake_liri} \
-    -DINSTALL_SYSTEMDUSERUNITDIR:PATH=%{_userunitdir} \
-..
-popd
-make %{?_smp_mflags} -C %{_target_platform}
+%cmake_liri \
+    -DINSTALL_SYSTEMDUSERUNITDIR:PATH=%{_userunitdir}
+%cmake_build
 
 
 %install
-make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
+%cmake_install
 
 
 %posttrans

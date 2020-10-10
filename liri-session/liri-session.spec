@@ -1,3 +1,5 @@
+%undefine __cmake_in_source_build
+
 %global snapdate @DATE@
 %global snaphash @HASH@
 
@@ -45,18 +47,14 @@ developing applications that use %{name}.
 
 
 %build
-mkdir -p %{_target_platform}
-pushd %{_target_platform}
-%{cmake_liri} \
+%cmake_liri \
     -DINSTALL_SYSTEMDUSERUNITDIR:PATH=%{_userunitdir} \
-    -DINSTALL_SYSTEMDUSERGENERATORSDIR:PATH=%{_systemdusergeneratordir} \
-..
-popd
-make %{?_smp_mflags} -C %{_target_platform}
+    -DINSTALL_SYSTEMDUSERGENERATORSDIR:PATH=%{_systemdusergeneratordir}
+%cmake_build
 
 
 %install
-make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
+%cmake_install
 
 
 %posttrans

@@ -1,5 +1,7 @@
 # This package needs to be rebuilt every time Qt is updated.
 
+%undefine __cmake_in_source_build
+
 %global snapdate @DATE@
 %global snaphash @HASH@
 
@@ -29,15 +31,12 @@ Qt Platform Theme integration plugin for Liri.
 
 
 %build
-mkdir -p %{_target_platform}
-pushd %{_target_platform}
-%{cmake_liri} ..
-popd
-make %{?_smp_mflags} -C %{_target_platform}
+%cmake_liri
+%cmake_build
 
 
 %install
-make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
+%cmake_install
 
 
 %files

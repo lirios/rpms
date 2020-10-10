@@ -1,3 +1,5 @@
+%undefine __cmake_in_source_build
+
 %global snapdate @DATE@
 %global snaphash @HASH@
 
@@ -65,15 +67,12 @@ This package contains the "Liri OS" theme for SDDM.
 
 
 %build
-mkdir -p %{_target_platform}
-pushd %{_target_platform}
-%{cmake_liri} -DINSTALL_GRUBDIR=%{_grubdir} ..
-popd
-make %{?_smp_mflags} -C %{_target_platform}
+%cmake_liri -DINSTALL_GRUBDIR=%{_grubdir}
+%cmake_build
 
 
 %install
-make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
+%cmake_install
 
 # Set SDDM theme
 mkdir -p %{buildroot}/usr/lib/sddm/sddm.conf.d
