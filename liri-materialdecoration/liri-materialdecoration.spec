@@ -17,6 +17,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(Qt5WaylandClient)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  liri-rpm-macros
+BuildRequires:  qt5-qtbase-private-devel
 
 %description
 Material Design decoration for Qt applications on Wayland.

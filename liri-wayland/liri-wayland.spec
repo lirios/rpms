@@ -21,6 +21,7 @@ BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  liri-rpm-macros
+BuildRequires:  qt5-qtbase-private-devel
 
 %description
 Wayland client and server libraries for Qt applications.

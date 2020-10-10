@@ -34,6 +34,7 @@ BuildRequires:  pam-devel
 BuildRequires:  git
 BuildRequires:  liri-rpm-macros
 BuildRequires:  libliri-devel
+BuildRequires:  qt5-qtbase-private-devel
 BuildRequires:  qt5-qtgsettings-devel
 BuildRequires:  liri-eglfs-devel
 
