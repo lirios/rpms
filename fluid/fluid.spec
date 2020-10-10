@@ -27,6 +27,7 @@ BuildRequires:  liri-rpm-macros
 BuildRequires:  desktop-file-utils
 BuildRequires:  libappstream-glib
 BuildRequires:  qt5-doctools
+BuildRequires:  qt5-qtbase-private-devel
 
 %description
 Library for fluid and dynamic development of QtQuick apps
