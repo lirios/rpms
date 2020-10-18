@@ -72,7 +72,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.liri.A
 %license LICENSE.GPLv3 LICENSE.LGPLv3
 %doc AUTHORS.md README.md
 %{_bindir}/liri-appcenter
-%{_bindir}/liri-update-notifier
+%{_liri_libexecdir}/liri-appcenter-notifier
 %{_sysconfdir}/xdg/autostart/io.liri.AppCenter.Notifier.desktop
 %{_datadir}/applications/io.liri.AppCenter.desktop
 %{_datadir}/applications/io.liri.AppCenter.Flatpak.desktop
