@@ -210,15 +210,11 @@ developing custom modules for Calamares.
 rm -f src/modules/*/*.conf.default-settings
 
 %build
-mkdir -p %{_target_platform}
-pushd %{_target_platform}
-%{cmake_kf5} -DBUILD_TESTING:BOOL=OFF -DWITH_PYTHONQT:BOOL=OFF -DWEBVIEW_FORCE_WEBKIT:BOOL="%{webview_force_webkit}" -DCMAKE_BUILD_TYPE:STRING="RelWithDebInfo" ..
-popd
-
-make %{?_smp_mflags} -C %{_target_platform}
+%cmake_kf5 -DBUILD_TESTING:BOOL=OFF -DWITH_PYTHONQT:BOOL=OFF -DWEBVIEW_FORCE_WEBKIT:BOOL="%{webview_force_webkit}"
+%cmake_build
 
 %install
-make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
+%cmake_install
 # create the auto branding directory
 mkdir -p %{buildroot}%{_datadir}/calamares/branding/auto
 touch %{buildroot}%{_datadir}/calamares/branding/auto/branding.desc
