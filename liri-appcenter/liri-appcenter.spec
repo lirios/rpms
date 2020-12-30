@@ -75,6 +75,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/io.liri.A
 %{_liri_libexecdir}/liri-appcenter-notifier
 %{_sysconfdir}/xdg/autostart/io.liri.AppCenter.Notifier.desktop
 %{_datadir}/applications/io.liri.AppCenter.desktop
+%{_datadir}/applications/io.liri.AppCenter.Notifier.desktop
 %{_datadir}/applications/io.liri.AppCenter.Flatpak.desktop
 %{_datadir}/metainfo/io.liri.AppCenter.appdata.xml
 %{_datadir}/liri-appcenter/
