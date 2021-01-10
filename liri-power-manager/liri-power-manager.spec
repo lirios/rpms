@@ -68,7 +68,7 @@ fi
 %{_datadir}/liri-power-manager/translations/*.qm
 %{_datadir}/liri-settings/modules/power/
 %{_datadir}/liri-settings/translations/modules/power_*.qm
-%{_datadir}/liri-shell/indicators/power/
+%{_datadir}/liri-shell/statusarea/power/
 %{_qt5_qmldir}/Liri/Power/
 %{_qt5_plugindir}/liri/daemon/libpower.so
 %{_userunitdir}/liri-*

@@ -50,6 +50,6 @@ to access volume and media players from the Liri shell.
 %license LICENSE.GPLv3
 %doc AUTHORS.md README.md
 %{_datadir}/liri-settings/modules/pulseaudio/
-%{_datadir}/liri-shell/indicators/pulseaudio/
+%{_datadir}/liri-shell/statusarea/pulseaudio/
 %{_qt5_qmldir}/Liri/PulseAudio/
 %{_datadir}/liri-settings/translations/modules/pulseaudio_*.qm

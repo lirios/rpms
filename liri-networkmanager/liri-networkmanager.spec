@@ -54,6 +54,6 @@ to access network options from the Liri shell.
 %license LICENSE.GPLv3
 %doc AUTHORS.md README.md
 %{_datadir}/liri-settings/modules/networkmanager/
-%{_datadir}/liri-shell/indicators/networkmanager/
+%{_datadir}/liri-shell/statusarea/networkmanager/
 %{_qt5_qmldir}/Liri/NetworkManager/
 %{_datadir}/liri-settings/translations/modules/networkmanager_*.qm
