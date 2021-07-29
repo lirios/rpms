@@ -17,10 +17,14 @@ Source0:        https://github.com/lirios/%{modulename}/%{?snaphash:archive}%{!?
 
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5WaylandClient)
 BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5GSettings)
+BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  liri-rpm-macros
+BuildRequires:  cmake(Liri1WaylandClient)
 BuildRequires:  qt5-qtbase-private-devel
+BuildRequires:  qt5-qtbase-static
 
 %description
 Qt Platform Theme integration plugin for Liri.
@@ -43,3 +47,4 @@ Qt Platform Theme integration plugin for Liri.
 %license LICENSE.GPLv3
 %doc AUTHORS.md README.md
 %{_qt5_plugindir}/platformthemes/libliritheme.so
+%{_qt5_plugindir}/wayland-shell-integration/libliri-layer-shell.so
