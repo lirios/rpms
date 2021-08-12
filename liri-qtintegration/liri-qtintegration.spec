@@ -5,10 +5,10 @@
 %global snapdate @DATE@
 %global snaphash @HASH@
 
-%define modulename platformtheme
+%define modulename qtintegration
 
 Name:           liri-%{modulename}
-Summary:        Qt Platform Theme integration plugin for Liri
+Summary:        Qt applications integration with the Liri desktop environment
 Version:        @VERSION@
 Release:        0.1%{?snaphash:.%{snapdate}git%(echo %{snaphash} | cut -c -13)}%{?dist}
 License:        GPLv3
@@ -21,13 +21,14 @@ BuildRequires:  pkgconfig(Qt5WaylandClient)
 BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5GSettings)
 BuildRequires:  pkgconfig(wayland-protocols)
+BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  liri-rpm-macros
 BuildRequires:  cmake(Liri1WaylandClient)
 BuildRequires:  qt5-qtbase-private-devel
 BuildRequires:  qt5-qtbase-static
 
 %description
-Qt Platform Theme integration plugin for Liri.
+Qt applications integration with the Liri desktop environment.
 
 
 %prep
@@ -44,7 +45,8 @@ Qt Platform Theme integration plugin for Liri.
 
 
 %files
-%license LICENSE.GPLv3
+%license LICENSE.GPLv3 LICENSE.LGPLv3
 %doc AUTHORS.md README.md
 %{_qt5_plugindir}/platformthemes/libliritheme.so
 %{_qt5_plugindir}/wayland-shell-integration/libliri-layer-shell.so
+%{_qt5_plugindir}/wayland-decoration-client/libmaterialdecoration.so
