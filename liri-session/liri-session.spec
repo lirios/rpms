@@ -81,6 +81,7 @@ fi
 %{_libdir}/libLiri1Daemon.so.*
 %{_libdir}/libLiri1Session.so.*
 %{_qt5_plugindir}/liri/daemon/liblocale.so
+%{_qt5_qmldir}/Liri/Session/
 %{_liri_libexecdir}/liri-daemon
 %{_userunitdir}/liri-*
 
