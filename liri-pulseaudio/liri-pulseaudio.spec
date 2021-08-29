@@ -24,7 +24,7 @@ BuildRequires:  pkgconfig(libpulse-mainloop-glib)
 BuildRequires:  qt5-linguist
 BuildRequires:  liri-rpm-macros
 
-Requires:       pulseaudio
+Requires:       pulseaudio-daemon
 Requires:       fluid
 
 %description
