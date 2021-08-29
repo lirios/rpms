@@ -45,6 +45,7 @@ Requires:       qt5-qttools
 Requires:       qt5-qtgsettings
 Requires:       liri-eglfs
 Requires:       liri-wayland
+Requires:       liri-qtintegration
 Requires:       libliri
 Requires:       fluid
 Requires:       pam
