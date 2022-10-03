@@ -19,6 +19,7 @@ BuildRequires:  pkgconfig(Qt5WaylandClient)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  liri-rpm-macros
+BuildRequires:  qt5-qtbase-private-devel
 BuildRequires:  aurora-scanner
 
 %description
