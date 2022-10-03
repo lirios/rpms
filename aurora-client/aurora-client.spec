@@ -19,6 +19,7 @@ BuildRequires:  pkgconfig(Qt5WaylandClient)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  liri-rpm-macros
+BuildRequires:  aurora-scanner
 
 %description
 Qt-style API to interact with Wayland protocols inside Qt-based graphical applications.
