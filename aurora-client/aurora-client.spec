@@ -16,12 +16,9 @@ BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5WaylandClient)
-BuildRequires:  pkgconfig(Qt5WaylandCompositor)
 BuildRequires:  pkgconfig(wayland-client)
-BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  liri-rpm-macros
-BuildRequires:  qt5-qtbase-private-devel
 
 %description
 Qt-style API to interact with Wayland protocols inside Qt-based graphical applications.
@@ -32,9 +29,7 @@ Summary:        Development files for %{name}
 Group:          Development/System
 Requires:       %{name} = %{version}-%{release}
 Requires:       pkgconfig(wayland-client)
-Requires:       pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(Qt5WaylandClient)
-BuildRequires:  pkgconfig(Qt5WaylandCompositor)
 
 %description devel
 The %{name}-devel package contains libraries and header files for
