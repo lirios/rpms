@@ -60,10 +60,10 @@ developing applications that use %{name}.
 %files
 %doc README.md
 %{_libdir}/libLiri1AuroraClient.so.*
-%{_qt5_qmldir}/Liri/WaylandClient/
+%{_qt5_qmldir}/Aurora/Client/
 
 %files devel
-%{_includedir}/LiriWaylandClient/
+%{_includedir}/LiriAuroraClient/
 %{_libdir}/libLiri1AuroraClient.so
 %{_libdir}/pkgconfig/Liri1AuroraClient.pc
 %{_libdir}/cmake/Liri1AuroraClient/
