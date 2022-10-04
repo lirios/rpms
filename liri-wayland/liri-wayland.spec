@@ -7,7 +7,7 @@
 
 Name:           liri-%{modulename}
 Summary:        Wayland client and server libraries for Qt applications
-Version:        0.10.0
+Version:        @VERSION@
 Release:        0.1%{?snaphash:.%{snapdate}git%(echo %{snaphash} | cut -c -13)}%{?dist}
 License:        LGPLv3 or GPLv2 or GPLv3
 Url:            https://liri.io

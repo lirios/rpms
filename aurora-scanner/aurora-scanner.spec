@@ -5,7 +5,7 @@
 
 Name:           aurora-scanner
 Summary:        Converts Wayland protocol definition to C++ code
-Version:        0.1.0
+Version:        @VERSION@
 Release:        0.1%{?snaphash:.%{snapdate}git%(echo %{snaphash} | cut -c -13)}%{?dist}
 License:        GPLv3
 Url:            https://liri.io
