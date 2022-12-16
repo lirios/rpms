@@ -50,7 +50,6 @@ install -Dpm644 %{_sourcedir}/macros.liri %{buildroot}%{_rpmconfigdir}/macros.d/
 
 
 %files
-%license LICENSE.BSD
 %doc README.md
 %{_datadir}/LiriCMakeShared/
 
