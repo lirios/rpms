@@ -11,7 +11,6 @@ License:        LGPLv3
 Url:            https://liri.io
 Source0:        https://github.com/lirios/%{name}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
 
-BuildRequires:  gcc-c++
 BuildRequires:  qt5-qtbase-static >= 5.9.0
 BuildRequires:  qt5-qtbase-private-devel
 BuildRequires:  pkgconfig(Qt5Core)
@@ -99,6 +98,8 @@ developing applications that use %{name}.
 %{_libdir}/pkgconfig/Liri1AuroraPlatformHeaders.pc
 %{_includedir}/LiriAuroraLogind/
 %{_libdir}/libLiri1AuroraLogind.so
+%{_libdir}/cmake/Liri1AuroraLogind/
+%{_libdir}/pkgconfig/Liri1AuroraLogind.pc
 %{_includedir}/LiriAuroraUdev/
 %{_libdir}/libLiri1AuroraUdev.so
 %{_includedir}/LiriAuroraLibInput/

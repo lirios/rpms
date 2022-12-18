@@ -28,16 +28,16 @@ BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  cmake(Qt5AccountsService)
 BuildRequires:  cmake(Qt5GSettings)
 BuildRequires:  cmake(Liri1Notifications)
-BuildRequires:  cmake(Liri1WaylandClient)
 BuildRequires:  cmake(Liri1Xdg)
+BuildRequires:  cmake(Liri1AuroraClient)
 BuildRequires:  liri-rpm-macros
 
 Requires:       xdg-desktop-portal >= %{xdg_desktop_portal_version}
 Requires:       fluid
 Requires:       qt5-qtaccountsservice
 Requires:       qt5-qtgsettings
-Requires:       liri-wayland
 Requires:       libliri
+Requires:       aurora-client
 
 %description
 A backend implementation for xdg-desktop-portal that is using Qt and various

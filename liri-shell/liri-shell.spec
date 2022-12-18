@@ -13,7 +13,6 @@ License:        GPLv3+
 URL:            https://liri.io
 Source0:        https://github.com/lirios/%{modulename}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
 
-BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
@@ -24,27 +23,23 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5WaylandClient)
-BuildRequires:  pkgconfig(Qt5WaylandCompositor)
-BuildRequires:  pkgconfig(Qt5AccountsService)
 BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(polkit-qt5-1)
+BuildRequires:  cmake(Qt5AccountsService)
+BuildRequires:  cmake(Qt5GSettings)
 BuildRequires:  cmake(Liri1Xdg)
-BuildRequires:  cmake(Liri1WaylandClient)
-BuildRequires:  cmake(Liri1WaylandServer)
+BuildRequires:  cmake(Liri1AuroraCompositor)
+BuildRequires:  cmake(Liri1AuroraClient)
 BuildRequires:  cmake(KF5Solid)
 BuildRequires:  pam-devel
 BuildRequires:  git
 BuildRequires:  liri-rpm-macros
-BuildRequires:  libliri-devel
 BuildRequires:  qt5-qtbase-private-devel
-BuildRequires:  qt5-qtgsettings-devel
-BuildRequires:  liri-eglfs-devel
+BuildRequires:  aurora-scanner
 
 Requires:       qt5-qtsvg
 Requires:       qt5-qttools
 Requires:       qt5-qtgsettings
-Requires:       liri-eglfs
-Requires:       liri-wayland
 Requires:       liri-qtintegration
 Requires:       libliri
 Requires:       fluid
@@ -54,8 +49,6 @@ Requires:       upower
 Requires:       dconf
 Requires:       accountsservice
 Requires:       %{name}-components = %{version}
-
-Suggests:       qml-xwayland
 
 %description
 This is the Liri desktop environment shell.

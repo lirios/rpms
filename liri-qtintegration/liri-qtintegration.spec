@@ -23,9 +23,10 @@ BuildRequires:  pkgconfig(Qt5GSettings)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  liri-rpm-macros
-BuildRequires:  cmake(Liri1WaylandClient)
+BuildRequires:  cmake(Liri1AuroraClient)
 BuildRequires:  qt5-qtbase-private-devel
 BuildRequires:  qt5-qtbase-static
+BuildRequires:  aurora-scanner
 
 %description
 Qt applications integration with the Liri desktop environment.

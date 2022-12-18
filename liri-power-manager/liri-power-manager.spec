@@ -21,7 +21,6 @@ BuildRequires:  pkgconfig(gio-2.0) >= 2.31.0
 BuildRequires:  pkgconfig(Qt5GSettings)
 BuildRequires:  pkgconfig(Liri1Core)
 BuildRequires:  pkgconfig(Liri1LocalDevice)
-BuildRequires:  pkgconfig(Liri1Logind)
 BuildRequires:  pkgconfig(Liri1Notifications)
 BuildRequires:  pkgconfig(Liri1Session)
 BuildRequires:  cmake(KF5Solid)
