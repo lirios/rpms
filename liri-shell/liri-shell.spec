@@ -72,6 +72,13 @@ with the SDDM theme.
     -DLIRI_SHELL_DEVELOPMENT_BUILD:BOOL=ON
 %cmake_build
 
+# Set SDDM theme
+mkdir -p %{buildroot}/usr/lib/sddm/sddm.conf.d
+cat > %{buildroot}/usr/lib/sddm/sddm.conf.d/00-liri.conf <<EOF
+[Theme]
+Current=liri
+EOF
+
 
 %install
 %cmake_install
@@ -97,11 +104,11 @@ fi
 %{_liri_libexecdir}/liri-shell
 %{_liri_libexecdir}/liri-shell-helper
 %{_qt5_qmldir}/Liri/Launcher/
+%{_qt5_qmldir}/Liri/LoginManager/
 %{_qt5_qmldir}/Liri/Mpris/
 %{_qt5_qmldir}/Liri/PolicyKit/
+%{_qt5_qmldir}/Liri/Shell/
 %{_qt5_qmldir}/Liri/Storage/
 %{_qt5_qmldir}/Liri/private/shell/
-
-%files components
-%{_qt5_qmldir}/Liri/LoginManager/
-%{_qt5_qmldir}/Liri/Shell/
+%{_prefix}/lib/sddm/sddm.conf.d/00-liri.conf
+%{_datadir}/sddm/themes/liri/

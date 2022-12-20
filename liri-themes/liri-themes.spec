@@ -53,15 +53,6 @@ Provides:       plymouth(system-theme) = %{version}-%{release}
 This package contains the "Liri OS" theme for Plymouth.
 
 
-%package -n sddm-theme-lirios
-Summary:        Liri OS theme for SDDM
-Requires:       sddm
-Requires:       accountsservice
-
-%description -n sddm-theme-lirios
-This package contains the "Liri OS" theme for SDDM.
-
-
 %prep
 %setup -q -n %{?snaphash:%{modulename}-%{snaphash}}%{!?snaphash:%{name}-%{version}}
 
@@ -73,13 +64,6 @@ This package contains the "Liri OS" theme for SDDM.
 
 %install
 %cmake_install
-
-# Set SDDM theme
-mkdir -p %{buildroot}/usr/lib/sddm/sddm.conf.d
-cat > %{buildroot}/usr/lib/sddm/sddm.conf.d/00-lirios.conf <<EOF
-[Theme]
-Current=lirios
-EOF
 
 
 %post -n plymouth-theme-lirios
@@ -113,10 +97,3 @@ fi
 %defattr(-,root,root,-)
 %doc AUTHORS.md README.md
 %{_datadir}/plymouth/themes/lirios/
-
-
-%files -n sddm-theme-lirios
-%defattr(-,root,root,-)
-%doc AUTHORS.md README.md
-%{_prefix}/lib/sddm/sddm.conf.d/00-lirios.conf
-%{_datadir}/sddm/themes/lirios/
