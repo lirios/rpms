@@ -5,8 +5,8 @@
 
 %global qt_module qtgsettings
 
-Name:           qt5-%{qt_module}
-Summary:        Qt5 - GSettings addon
+Name:           qt6-%{qt_module}
+Summary:        Qt6 - GSettings addon
 Version:        @VERSION@
 Release:        0.1%{?snaphash:.%{snapdate}git%(echo %{snaphash} | cut -c -13)}%{?dist}
 
@@ -15,13 +15,13 @@ Url:            https://liri.io
 Source0:        https://github.com/lirios/%{qt_module}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{qt_module}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
 
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Qml)
-BuildRequires:  pkgconfig(Qt5Quick)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6DBus)
+BuildRequires:  pkgconfig(Qt6Qml)
+BuildRequires:  pkgconfig(Qt6Quick)
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  liri-rpm-macros
+BuildRequires:  liri-cmake_shared
 
 Requires:       dconf
 
@@ -43,7 +43,7 @@ developing applications that use %{name}.
 
 
 %build
-%cmake_liri
+%cmake_kf6
 %cmake_build
 
 
@@ -60,12 +60,12 @@ developing applications that use %{name}.
 %files
 %license LICENSE.LGPLv3
 %doc AUTHORS.md README.md
-%{_libdir}/libQt5GSettings.so.*
-%{_qt5_qmldir}/QtGSettings/
+%{_libdir}/libQt6GSettings.so.*
+%{_kf6_qmldir}/QtGSettings/
 
 
 %files devel
-%{_includedir}/Qt5GSettings/
-%{_libdir}/libQt5GSettings.so
-%{_libdir}/cmake/Qt5GSettings/
-%{_libdir}/pkgconfig/Qt5GSettings.pc
+%{_includedir}/Qt6GSettings/
+%{_libdir}/libQt6GSettings.so
+%{_libdir}/cmake/Qt6GSettings/
+%{_libdir}/pkgconfig/Qt6GSettings.pc

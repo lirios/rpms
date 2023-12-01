@@ -11,9 +11,9 @@ License:        GPLv3
 Url:            https://liri.io
 Source0:        https://github.com/lirios/aurora-scanner/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
 
-BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(wayland-scanner)
-BuildRequires:  liri-rpm-macros
+BuildRequires:  extra-cmake-modules >= 5.245.0-1
 
 %description
 Converts Wayland protocol definition to C++ code.
@@ -24,7 +24,7 @@ Converts Wayland protocol definition to C++ code.
 
 
 %build
-%cmake_liri
+%cmake_kf6
 %cmake_build
 
 

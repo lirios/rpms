@@ -14,7 +14,7 @@ URL:            https://liri.io
 Source:         https://github.com/lirios/%{modulename}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
 
 BuildRequires:  gcc-c++
-BuildRequires:  liri-rpm-macros
+BuildRequires:  extra-cmake-modules >= 5.245.0-1
 
 BuildArch:      noarch
 
@@ -27,7 +27,7 @@ This package contains backgrounds for the Liri desktop.
 
 
 %build
-%cmake_liri
+%cmake_kf6
 %cmake_build
 
 

@@ -19,7 +19,7 @@ BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5QuickControls2)
-BuildRequires:  liri-rpm-macros
+BuildRequires:  extra-cmake-modules >= 5.245.0-1
 BuildRequires:  desktop-file-utils
 
 Requires:       calamares
@@ -35,7 +35,7 @@ Liri OS branding and customizations for Calamares.
 
 
 %build
-%cmake_liri
+%cmake_kf6
 %cmake_build
 
 

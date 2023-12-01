@@ -12,13 +12,14 @@ Url:            https://liri.io
 Source0:        https://github.com/lirios/%{name}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
 
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Xml)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Qml)
-BuildRequires:  pkgconfig(Qt5Quick)
-BuildRequires:  liri-rpm-macros
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6DBus)
+BuildRequires:  pkgconfig(Qt6Xml)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Qml)
+BuildRequires:  pkgconfig(Qt6QmlIntegration)
+BuildRequires:  pkgconfig(Qt6Quick)
+BuildRequires:  liri-cmake-shared
 
 %description
 Library for all Liri components.
@@ -28,9 +29,9 @@ Library for all Liri components.
 Summary:        Development files for %{name}
 Group:          Development/System
 Requires:       %{name}%{?_isa} = %{version}-%{release}
-Requires:       pkgconfig(Qt5Core)
-Requires:       pkgconfig(Qt5DBus)
-Requires:       pkgconfig(Qt5Xml)
+Requires:       pkgconfig(Qt6Core)
+Requires:       pkgconfig(Qt6DBus)
+Requires:       pkgconfig(Qt6Xml)
 
 %description devel
 The %{name}-devel package contains libraries and header files for
@@ -42,7 +43,7 @@ developing applications that use %{name}.
 
 
 %build
-%cmake_liri
+%cmake_kf6
 %cmake_build
 
 
@@ -54,10 +55,10 @@ developing applications that use %{name}.
 %license LICENSE.LGPLv3
 %doc AUTHORS.md README.md
 %{_bindir}/liri-notify
-%{_qt5_qmldir}/Liri/Core/
-%{_qt5_qmldir}/Liri/DBusService/
-%{_qt5_qmldir}/Liri/Device/
-%{_qt5_qmldir}/Liri/Notifications/
+%{_kf6_qmldir}/Liri/Core/
+%{_kf6_qmldir}/Liri/DBusService/
+%{_kf6_qmldir}/Liri/Device/
+%{_kf6_qmldir}/Liri/Notifications/
 %{_libdir}/libLiri1Core.so.*
 %{_libdir}/libLiri1DBusService.so.*
 %{_libdir}/libLiri1LocalDevice.so.*
