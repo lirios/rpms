@@ -16,17 +16,11 @@ Url:            https://liri.io
 Source0:        https://github.com/lirios/%{modulename}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
 
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5WaylandClient)
-BuildRequires:  pkgconfig(Qt5QuickControls2)
-BuildRequires:  pkgconfig(Qt5GSettings)
-BuildRequires:  pkgconfig(wayland-protocols)
-BuildRequires:  pkgconfig(wayland-client)
-BuildRequires:  liri-rpm-macros
-BuildRequires:  cmake(Liri1AuroraClient)
-BuildRequires:  qt5-qtbase-private-devel
-BuildRequires:  qt5-qtbase-static
-BuildRequires:  aurora-scanner
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6QuickControls2)
+BuildRequires:  pkgconfig(Qt6GSettings)
+BuildRequires:  kf6-rpm-macros
+BuildRequires:  qt6-qtbase-private-devel
 
 %description
 Qt applications integration with the Liri desktop environment.
@@ -37,7 +31,7 @@ Qt applications integration with the Liri desktop environment.
 
 
 %build
-%cmake_liri
+%cmake_kf6 -DFEATURE_qtintegration_material_decoration:BOOL=off
 %cmake_build
 
 
@@ -46,8 +40,6 @@ Qt applications integration with the Liri desktop environment.
 
 
 %files
-%license LICENSE.GPLv3 LICENSE.LGPLv3
 %doc AUTHORS.md README.md
-%{_qt5_plugindir}/platformthemes/libliritheme.so
-%{_qt5_plugindir}/wayland-shell-integration/libliri-layer-shell.so
-%{_qt5_plugindir}/wayland-decoration-client/libmaterialdecoration.so
+%{_kf6_qtplugindir}/platformthemes/liritheme.so
+#%{_kf6_qtplugindir}/wayland-decoration-client/materialdecoration.so
