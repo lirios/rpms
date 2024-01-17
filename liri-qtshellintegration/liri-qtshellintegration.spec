@@ -61,3 +61,4 @@ Requires: cmake(Qt6Gui)
 %{_includedir}/LiriQtShellIntegration/
 %{_libdir}/libLiri1QtShellIntegration.so
 %{_libdir}/cmake/Liri1QtShellIntegration/
+%{_libdir}/pkgconfig/Liri1QtShellIntegration.pc
