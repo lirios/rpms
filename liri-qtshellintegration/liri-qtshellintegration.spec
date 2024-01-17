@@ -54,6 +54,7 @@ Requires: cmake(Qt6Gui)
 %license LICENSES/*
 %doc AUTHORS.md README.md
 %{_libdir}/libLiri1QtShellIntegration.so.*
+%{_kf6_qmldir}/Liri/QtShellIntegration/
 %{_qt6_plugindir}/wayland-shell-integration/
 
 %files devel
