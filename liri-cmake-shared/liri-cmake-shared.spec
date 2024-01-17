@@ -14,7 +14,8 @@ Url:            https://liri.io
 Source0:        https://github.com/lirios/%{modulename}/%{?snaphash:archive}%{!?snaphash:releases/download}/%{?snaphash}%{!?snaphash:v%{version}}/%{name}-%{?snaphash}%{!?snaphash:%{version}}.tar.gz
 
 BuildRequires:  gcc-c++
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.29.0-1
+BuildRequires:  extra-cmake-modules >= 5.245.0-1
 
 Requires:       extra-cmake-modules >= 5.245.0-1
 
