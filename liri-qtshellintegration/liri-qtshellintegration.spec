@@ -21,7 +21,7 @@ BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  kf6-rpm-macros
-BuildRequires:  extra-cmake-modules
+BuildRequires:  liri-cmake-shared
 BuildRequires:  qt6-qtbase-private-devel
 
 %description
