@@ -21,7 +21,7 @@ BuildRequires:  pkgconfig(Qt6DBus)
 BuildRequires:  pkgconfig(Qt6Qml)
 BuildRequires:  pkgconfig(Qt6Quick)
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  liri-cmake_shared
+BuildRequires:  liri-cmake-shared
 
 Requires:       dconf
 
